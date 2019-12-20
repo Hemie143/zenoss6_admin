@@ -17,17 +17,27 @@ if __name__ == '__main__':
 
     # Get all templates. Result length: 485 on Z6_test
     # Does not list all templates, but is fast
-    '''
+
     root_tree = template_router.callMethod('getTemplates', id='/zport/dmd/Devices')     # dict
     result = root_tree['result']                                                        # list of many items
 
+    i = 0
+    templates_count = 0
     for r in result:
-        print(r['uid'])
+        t_uid = r['uid']
+        # print(r['name'])
+        templates = template_router.callMethod('getTemplates', id=t_uid)['result']
+        templates_count += len(templates)
+        for t in templates:
+            # print('    {}'.format(t['text']))
+            print('{}\t{}\t{}'.format(r['name'], t['text'], t['uid']))
+    print(templates_count)
+
     print(len(result))
     t = list(filter(lambda r: 'backup' in r['uid'], result))
     print(t)
     print(len(t))       # 39
-    '''
+
 
 
     # Get all templates by Device Class. 626 on Z6_test
@@ -35,6 +45,7 @@ if __name__ == '__main__':
     # Dicts and lists are nested
     # Each lower layer is found in a 'children' key
 
+    '''
     root_tree = template_router.callMethod('getDeviceClassTemplates', id='/zport/dmd/Devices')     # dict
     result = root_tree['result']                                                                   # list of 1 item (root)
 
@@ -58,7 +69,7 @@ if __name__ == '__main__':
     tt = list(filter(lambda t: 'backup' in t, templates))
     print(tt)
     print(len(tt))  # 39
-
+    '''
 
     '''
     # Get templates. Result length: 31 on Z6_test
