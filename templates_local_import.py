@@ -39,7 +39,7 @@ def set_datasource_prop(router, template_uid, action, object_name, key, value):
 def process_templates(device_router, template_router, data):
 
     rows = data.max_row
-    for r, (template_name, device_class, device, component, action) in enumerate(data.iter_rows(min_row=2, max_col=5)):
+    for r, (template_name, device_class, device, component, action, key, value) in enumerate(data.iter_rows(min_row=2, max_col=7)):
 
         parent_uid, template_uid = get_template_uid(device_router,
                                                     template_name.value,
@@ -50,32 +50,79 @@ def process_templates(device_router, template_router, data):
                                                     'Templates')
 
         # TODO: check if template_uid is None
-
         t_result = template_router.callMethod('getInfo', uid=template_uid)['result']
         t_present = t_result['success'] and t_result['data']['uid'] == template_uid
 
+        msg = 'Templates Row {}/{}: Template unchanged'.format(r + 2, rows)
+
         if action.value == 'ADD':
             if t_present:
-                print('Templates Row {}/{}: Template unchanged'.format(r + 2, rows))
+                pass
             else:
                 if device.value:
                     template_uid = create_local_template(template_router, parent_uid, template_name.value)
                 else:
                     # Device class
-                    template_source = get_parent_template(template_router, parent_uid, template_name.value)
-                    result = template_router.callMethod('copyTemplate', uid=template_source, targetUid=parent_uid)['result']
-                    if result['success']:
+                    # TODO: test this again, refactor the names, they are confusing
+                    template_source = get_parent_template(template_router, template_uid)
+                    if template_source:
+                        t_result = template_router.callMethod('copyTemplate', uid=template_source,
+                                                              targetUid=parent_uid)['result']
+                    else:
+                        t_result = template_router.callMethod('addTemplate', id=template_name.value,
+                                                              targetUid=parent_uid)['result']
+                    if t_result['success']:
                         template_uid = 'OK'
                     else:
                         template_uid = None
                 if template_uid:
-                    print('Templates Row {}/{}: Template added'.format(r + 2, rows))
+                    msg = 'Templates Row {}/{}: Template added'.format(r + 2, rows)
                 else:
-                    print('Templates Row {}/{}: Template failed to add: {}'.format(r + 2, rows, template_uid))
+                    msg = 'Templates Row {}/{}: Template failed to add: {}'.format(r + 2, rows, template_uid)
         elif action.value == 'DELETE':
-            print('Templates Row {}/{}: DELETE action to implement'.format(r + 2, rows))
+            msg = 'Templates Row {}/{}: DELETE action to implement'.format(r + 2, rows)
         else:
-            print('Templates Row {}/{}: action unknown: {}'.format(r + 2, rows, action.value))
+            msg = 'Templates Row {}/{}: action unknown: {}'.format(r + 2, rows, action.value)
+
+        if key.value:
+            if action.value == 'ADD':
+                current_value = t_result['data'].get(key.value, u'')
+                if isinstance(current_value, unicode):
+                    new_value = unicode(str(value.value), 'utf-8')
+                elif isinstance(current_value, bool):
+                    if value.value.lower() in ['false', '0']:
+                        new_value = False
+                    elif value.value.lower() in ['true', '1']:
+                        new_value = True
+                    else:
+                        msg = 'Templates Row {}/{}: Value not recognized'.format(r + 2, rows)
+                elif isinstance(current_value, int):
+                    new_value = int(value.value)
+                else:
+                    msg = 'Templates Row {}/{}: ERROR: Datasource value unknown: {}'.format(r + 2, rows,
+                                                                                           type(current_value))
+                    print('-- Templates type current: {}'.format(type(current_value)))
+                    print('-- Templates type new    : {}'.format(type(str(value.value))))
+                    print('-- Templates value current: {}'.format(current_value))
+                    print('-- Templates value new    : {}'.format((str(value.value))))
+                    print('-- Templates test current    : {}'.format((isinstance(current_value, unicode))))
+                    continue
+
+                if current_value == new_value:
+                    msg = 'Templates Row {}/{}: Template unchanged'.format(r + 2, rows)
+                else:
+                    data = {u'uid': t_result['data']['uid'], key.value: new_value}
+                    result = template_router.callMethod('setInfo', **data)['result']
+                    if result['success']:
+                        msg = 'Templates Row {}/{}: Template edited'.format(r + 2, rows)
+                    else:
+                        msg = 'Templates Row {}/{}: Template failed'.format(r + 2, rows)
+                        print(result)
+            elif action.value == 'DELETE':
+                msg = 'Templates Row {}/{}: DELETE action to implement'.format(r + 2, rows)
+            else:
+                msg = 'Templates Row {}/{}: action unknown: {}'.format(r + 2, rows, action.value)
+        print(msg)
     return
 
 def process_datasources(device_router, template_router, data):
@@ -137,7 +184,7 @@ def process_datasources(device_router, template_router, data):
         if key.value:
             if action.value == 'ADD':
                 # print(ds_result)
-                if key.value == 'commandTemplate':
+                if key.value in ['commandTemplate', 'oid']:
                     current_value = ds_result['data'].get('source', u'')
                     if current_value.endswith(' over SSH'):
                         current_value = current_value[:-9]
@@ -146,6 +193,8 @@ def process_datasources(device_router, template_router, data):
                     current_value = source.endswith(' over SSH')
                 else:
                     current_value = ds_result['data'].get(key.value, u'')
+                    # print(ds_result)
+                    # print('--current_value: **{}/{}**'.format(current_value, type(current_value)))
                 if isinstance(current_value, unicode):
                     new_value = unicode(str(value.value), 'utf-8')
                 elif isinstance(current_value, bool):
@@ -156,7 +205,10 @@ def process_datasources(device_router, template_router, data):
                     else:
                         print('Datasources Row {}/{}: Value not recognized'.format(r + 2, rows))
                 elif isinstance(current_value, int):
-                    new_value = int(value.value)
+                    try:
+                        new_value = int(value.value)
+                    except ValueError:
+                        pass
                 else:
                     print('Datasources Row {}/{}: ERROR: Datasource value unknown: {}'.format(r + 2, rows,
                                                                                            type(current_value)))
@@ -170,9 +222,8 @@ def process_datasources(device_router, template_router, data):
                 if current_value == new_value:
                     print('Datasources Row {}/{}: Datasource unchanged'.format(r + 2, rows))
                 else:
-                    # print('new_value    : **{}**'.format(new_value))
-                    # print('current_value: **{}**'.format(current_value))
-
+                    # print('new_value    : **{}/{}**'.format(new_value, type(new_value)))
+                    # print('current_value: **{}/{}**'.format(current_value, type(current_value)))
                     data = {u'uid': ds_uid, key.value: new_value}
                     result = template_router.callMethod('setInfo', **data)['result']
                     if result['success']:
@@ -220,8 +271,8 @@ def process_datapoints(device_router, template_router, data):
 
         # Create datapoint
         dp_uid = '{}/datapoints/{}'.format(ds_uid, dp_name.value)
-        result = template_router.callMethod('getInfo', uid=dp_uid)['result']
-        dp_present = result['success']
+        dp_result = template_router.callMethod('getInfo', uid=dp_uid)['result']
+        dp_present = dp_result['success']
         # print(result)
         if action.value == 'ADD':
             if dp_present:
@@ -251,17 +302,45 @@ def process_datapoints(device_router, template_router, data):
         # Edit datapoint
         if key.value:
             if action.value == 'ADD':
-                print('Datapoints Row {}: NOT IMPLEMENTED'.format(r + 2))
-                # if result['data'][]
-                # TODO: don't setInfo if value is already correct
-                '''
-                data = {u'uid': ds_uid, key.value: value.value}
-                result = template_router.callMethod('setInfo', **data)['result']
-                if result['success']:
-                    print('Datapoints Row {}: Datasource edited'.format(r + 2))
+                current_value = dp_result['data'].get(key.value, u'')
+                if isinstance(current_value, unicode):
+                    new_value = unicode(str(value.value), 'utf-8')
+                elif isinstance(current_value, bool):
+                    if value.value.lower() in ['false', '0']:
+                        new_value = False
+                    elif value.value.lower() in ['true', '1']:
+                        new_value = True
+                    else:
+                        print('Datapoints Row {}/{}: Value not recognized'.format(r + 2, rows))
+                elif isinstance(current_value, int):
+                    try:
+                        new_value = int(value.value)
+                    except ValueError:
+                        pass
+                elif current_value is None:
+                    new_value = value.value
                 else:
-                    print('Datapoints Row {}: Datasource failed'.format(r + 2))
-                '''
+                    print('Datapoints Row {}/{}: ERROR: Datasource value unknown: {}'.format(r + 2, rows,
+                                                                                           type(current_value)))
+                    print('-- Datapoints type current: {}'.format(type(current_value)))
+                    print('-- Datapoints type new    : {}'.format(type(str(value.value))))
+                    print('-- Datapoints value current: {}'.format(current_value))
+                    print('-- Datapoints value new    : {}'.format((str(value.value))))
+                    print('-- Datapoints test current    : {}'.format((isinstance(current_value, unicode))))
+                    continue
+
+                if current_value == new_value:
+                    print('Datapoints Row {}/{}: Datapoint unchanged'.format(r + 2, rows))
+                else:
+                    # print('new_value    : **{}/{}**'.format(new_value, type(new_value)))
+                    # print('current_value: **{}/{}**'.format(current_value, type(current_value)))
+                    data = {u'uid': dp_uid, key.value: new_value}
+                    result = template_router.callMethod('setInfo', **data)['result']
+                    if result['success']:
+                        print('Datapoints Row {}/{}: Datasource edited'.format(r + 2, rows))
+                    else:
+                        print('Datapoints Row {}/{}: Datasource failed'.format(r + 2, rows))
+                        print(result)
             elif action.value == 'DELETE':
                 print('Datapoints Row {}/{}: DELETE action to implement'.format(r + 2, rows))
             else:
@@ -431,27 +510,27 @@ def process_graphs(device_router, template_router, data):
         if action.value == 'ADD':
             if gr_present:
                 # print('Graphs Row {}: Graph added'.format(r + 2))
-                pass
+                msg = 'Graphs Row {}/{}: Graph already present'.format(r + 2, rows)
             else:
                 response = template_router.callMethod('addGraphDefinition', templateUid=template_uid, graphDefinitionId=gr_name.value)
                 gr_result = response['result']
                 if gr_result['success']:
                     gr_result = template_router.callMethod('getInfo', uid=gr_uid)['result']
-                    print('Graphs Row {}: Graph added'.format(r + 2))
+                    msg = 'Graphs Row {}: Graph added'.format(r + 2)
                 else:
-                    print('Graphs Row {}: ERROR: Graph not added'.format(r + 2))
+                    msg = 'Graphs Row {}: ERROR: Graph not added'.format(r + 2)
         elif action.value == 'DELETE':
             if not key.value:
                 if gr_present:
                     result = template_router.callMethod('deleteGraphDefinition', uid=gr_uid)
                     if result['result']['success']:
-                        print('Graphs Row {}/{}: Graph deleted'.format(r + 2, rows))
+                        msg = 'Graphs Row {}/{}: Graph deleted'.format(r + 2, rows)
                     else:
-                        print('Graphs Row {}/{}: Graphed failed to delete'.format(r + 2, rows))
+                        msg = 'Graphs Row {}/{}: Graphed failed to delete'.format(r + 2, rows)
                 else:
-                    print('Graphs Row {}/{}: Graph already deleted'.format(r + 2, rows))
+                    msg = 'Graphs Row {}/{}: Graph already deleted'.format(r + 2, rows)
         else:
-            print('Graphs Row {}: action unknown: {}'.format(r + 2, action.value))
+            msg = 'Graphs Row {}: action unknown: {}'.format(r + 2, action.value)
 
         # Apply graph edit
         if key.value:
@@ -459,6 +538,13 @@ def process_graphs(device_router, template_router, data):
             current_value = gr_result['data'][key.value]
             if isinstance(current_value, unicode):
                 new_value = unicode(str(value.value), 'utf-8')
+            elif isinstance(current_value, bool):
+                if value.value.lower() in ['false', '0']:
+                    new_value = False
+                elif value.value.lower() in ['true', '1']:
+                    new_value = True
+                else:
+                    print('Datapoints Row {}/{}: Value not recognized'.format(r + 2, rows))
             elif isinstance(current_value, int):
                 new_value = int(value.value)
             else:
@@ -471,18 +557,19 @@ def process_graphs(device_router, template_router, data):
                 continue
             if action.value == 'ADD':
                 if current_value == new_value:
-                    print('Graphs Row {}/{}: Graph unchanged'.format(r + 2, rows))
+                    msg = 'Graphs Row {}/{}: Graph unchanged'.format(r + 2, rows)
                 else:
                     data = {u'uid': gr_uid, key.value: new_value}
                     result = template_router.callMethod('setInfo', **data)['result']
                     if result['success']:
-                        print('Graphs Row {}/{}: Graph edited'.format(r + 2, rows))
+                        msg = 'Graphs Row {}/{}: Graph edited'.format(r + 2, rows)
                     else:
-                        print('Graphs Row {}/{}: Graph failed'.format(r + 2, rows))
+                        msg = 'Graphs Row {}/{}: Graph failed'.format(r + 2, rows)
             elif action.value == 'DELETE':
-                print('Graphs Row {}/{}: DELETE action to implement'.format(r + 2, rows))
+                msg = 'Graphs Row {}/{}: DELETE action to implement'.format(r + 2, rows)
             else:
-                print('Graphs Row {}/{}: action unknown: {}'.format(r + 2, rows, action.value))
+                msg = 'Graphs Row {}/{}: action unknown: {}'.format(r + 2, rows, action.value)
+        print(msg)
     return
 
 def process_graphpoints(device_router, template_router, data):
@@ -573,7 +660,10 @@ def process_graphpoints(device_router, template_router, data):
         gp_uid = '{}/graphPoints/{}'.format(gr_uid, gp_name.value)
 
         gp_result = template_router.callMethod('getInfo', uid=gp_uid)['result']
-        gp_present = gp_result['success']
+        gp_present = gp_result['success'] and gp_result['data']['uid'] == gp_uid
+
+        # print(gp_uid)
+        # print(gp_result)
 
         if action.value == 'ADD':
             if gp_present:

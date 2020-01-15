@@ -94,12 +94,12 @@ def compare_templates(router, t_list):
     for t in t_list:
         print(t)
         parent_uid = get_parent_template(router, t)
-        inspect_datasources(router, parent_uid, t)
-        inspect_datapoints(router, parent_uid, t)
+        compare_datasources(router, parent_uid, t)
+        compare_datapoints(router, parent_uid, t)
         compare_thresholds(router, parent_uid, t)
         compare_graphs(router, parent_uid, t)
 
-def inspect_datasources(router, uid1, uid2):
+def compare_datasources(router, uid1, uid2):
     datasources1 = router.callMethod('getDataSources', uid=uid1)['result']['data']
     datasources1 = sorted(datasources1, key=lambda k: k['id'])
     datasources2 = router.callMethod('getDataSources', uid=uid2)['result']['data']
@@ -133,7 +133,7 @@ def inspect_datasources(router, uid1, uid2):
         print('        New datasources: {}'.format(','.join(datasources2_names)))
     return
 
-def inspect_datapoints(router, uid1, uid2):
+def compare_datapoints(router, uid1, uid2):
     datapoints1 = router.callMethod('getDataPoints', uid=uid1)['result']['data']
     datapoints1 = sorted(datapoints1, key=lambda k: k['id'])
     datapoints2 = router.callMethod('getDataPoints', uid=uid2)['result']['data']
@@ -252,7 +252,10 @@ def compare_graphs(router, uid1, uid2):
             if gp1_name not in gr2_points_names:
                 print('        Removed graph {} graphpoint {}'.format(gr1_name, gp1_name))
                 continue
-            gp2 = [i for i in gr2_points if i['id'] == gp1['id']][0]
+            gp2 = [i for i in gr2_points if i['id'] == gp1['id']]
+            if not gp2:
+                continue
+            gp2 = gp2[0]
             for k, v in gp1.iteritems():
                 if k in ['uid', 'rrdVariables']:
                     continue
@@ -315,12 +318,11 @@ def get_template_uid(router, template_name, device_class=None, device_name=None,
             for c in result['data']:
                 if component == c['name']:
                     comp_list.append(c['uid'])
-            # print('comp_list: {}'.format(comp_list))
             if len(comp_list) != 1:
                 # TODO: check for same template. If there's another component with the same name, it won't find it.
                 # TODO: Template may not exist yet...
                 # If needed, filter on relationship name which is close to template name in most cases. Not nice...
-                comp_list = [c for c in comp_list if template_name.lower()  in c.split('/')[-2].lower()]
+                comp_list = [c for c in comp_list if template_name.lower() in c.split('/')[-2].lower()]
                 if len(comp_list) != 1:
                     print('{} Row {}: Multiple components: {}: {}'.format(object_type, index, component, comp_list))
                     return None, None
