@@ -13,11 +13,14 @@ if __name__ == '__main__':
     # Routers
     mr = zenAPI.zenApiLib.zenConnector(section=environ, routerName='ManufacturersRouter')
 
-    # "getManufacturerList": {}
-    # "getManufacturerList": {params: {}, uid: "/zport/dmd/Manufacturers/Adaptec"}
-    # "getProductData": {uid: "/zport/dmd/Manufacturers/Adaptec", prodname: "Adaptec AHA-39160 _AIC-7899A_ Ultra160 SCSI Host Adapter"}
-    # "getProductInstances": {params: {}, id: "Adaptec AHA-39160 _AIC-7899A_ Ultra160 SCSI Host Adapter", uid: "/zport/dmd/Manufacturers/Adaptec"}
-
+    # "getTriggers": {}
+    # "getRecipientOptions": {}
+    # "updateTrigger": {uuid: "c42ca88b-d5d9-4253-b875-6c35aae53915", enabled: true, name: "ActiveMQ_Delivery", rule: {,…},…}
+    # "getNotifications": {}
+    # "getWindows": {uid: "/zport/dmd/NotificationSubscriptions/ActiveMQ_Delivery"}
+    # "getTriggerList": {}
+    # "getRecipientOptions": {}
+    # "updateNotification": [{uid: "/zport/dmd/NotificationSubscriptions/ActiveMQ_Delivery", enabled: true, send_clear: true,…}]
 
     result = mr.callMethod('getManufacturers')['result']    #dict (data, success)
     print(result)

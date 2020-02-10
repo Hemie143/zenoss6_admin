@@ -13,10 +13,6 @@ if __name__ == '__main__':
     # Routers
     mr = zenAPI.zenApiLib.zenConnector(section=environ, routerName='ManufacturersRouter')
 
-    # "getManufacturerList": {}
-    # "getManufacturerList": {params: {}, uid: "/zport/dmd/Manufacturers/Adaptec"}
-    # "getProductData": {uid: "/zport/dmd/Manufacturers/Adaptec", prodname: "Adaptec AHA-39160 _AIC-7899A_ Ultra160 SCSI Host Adapter"}
-    # "getProductInstances": {params: {}, id: "Adaptec AHA-39160 _AIC-7899A_ Ultra160 SCSI Host Adapter", uid: "/zport/dmd/Manufacturers/Adaptec"}
 
 
     result = mr.callMethod('getManufacturers')['result']    #dict (data, success)
