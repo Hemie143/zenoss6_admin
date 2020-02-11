@@ -1,65 +1,91 @@
 import zenAPI.zenApiLib
 import argparse
+from tools import yaml_print, get_properties
+
+def get_servicezprop(process, indent):
+    zprop_keys = sorted([k for k in process if k.startswith('z')])
+    header = False
+    for k in zprop_keys:
+        prop = process[k]
+        if not prop['isAcquired']:
+            if not header:
+                yaml_print(key='zProperties', indent=indent)
+                header = True
+            yaml_print(key=k, value=prop['localValue'], indent=indent+2)
+
+def get_serviceinstances(routers, uid, indent):
+    service_router = routers['Service']
+    response = service_router.callMethod('query', uid=uid, sort='name', dir='ASC')
+    # print(response)
+    service_list = response['result']['services']
+    # print('services: {}'.format(len(service_list)))
+    service_list = [s for s in service_list if s['uid'].startswith('{}/serviceclasses/'.format(uid))]
+    # service_list = sorted(service_list, key=lambda i: i['name'])
+    fields = ['port', 'serviceKeys', 'sendString', 'expectRegex', 'monitoredStartModes']
+    header = False
+
+    for service in service_list:
+        # print(service)
+        if not header:
+            yaml_print(key='service_class', indent=indent)
+            header = True
+        yaml_print(key=service['name'], indent=indent+2)
+        p_desc = service.get('description', '')
+        if p_desc:
+            yaml_print(key='description', value=p_desc, indent=indent+4)
+        response = service_router.callMethod('getInfo', uid=service['uid'])
+        service_info = response['result']['data']
+        get_servicezprop(service_info, indent=indent+4)
+        for k in fields:
+            v = service_info.get(k, '')
+            if v:
+                yaml_print(key=k, value=v, indent=indent+4)
+
+
+def parse_manufacturertree(routers, tree):
+    tree = sorted(tree, key=lambda i: i['uid'])
+    for branch in tree:
+        # print(branch)
+        branch_path = '/' + branch['path']
+        branch_leaf = branch['leaf']
+        branch_uid = branch['uid']
+        yaml_print(key=branch_path, indent=2)
+
+        # Properties
+        get_properties(routers, branch_uid, 4)
+        # Instances
+        get_serviceinstances(routers, branch_uid, 4)
+
+        children = branch.get('children', [])
+        parse_ipservicetree(routers, children)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Manage Manufacturers')
-    parser.add_argument('-s', dest='environ', action='store', default='z6_prod')
+    parser.add_argument('-s', dest='environ', action='store', default='z6_test')
     # parser.add_argument('-f', dest='filename', action='store', default='local_templates.xlsx')
     options = parser.parse_args()
     environ = options.environ
     # filename = options.filename
 
     # Routers
-    mr = zenAPI.zenApiLib.zenConnector(section=environ, routerName='ManufacturersRouter')
+    manufacturer_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='ManufacturersRouter')
+    properties_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='PropertiesRouter')
+
+    routers = {
+        'Manufacturers': manufacturer_router,
+        'Properties': properties_router,
+    }
 
     # "getManufacturerList": {}
     # "getManufacturerList": {params: {}, uid: "/zport/dmd/Manufacturers/Adaptec"}
     # "getProductData": {uid: "/zport/dmd/Manufacturers/Adaptec", prodname: "Adaptec AHA-39160 _AIC-7899A_ Ultra160 SCSI Host Adapter"}
     # "getProductInstances": {params: {}, id: "Adaptec AHA-39160 _AIC-7899A_ Ultra160 SCSI Host Adapter", uid: "/zport/dmd/Manufacturers/Adaptec"}
 
-
-    result = mr.callMethod('getManufacturers')['result']    #dict (data, success)
-    print(result)
-    print(type(result))
+    response = manufacturer_router.callMethod('getManufacturerList')
+    result = response['result']
     print(len(result))
     data = result['data']
     print(len(data))
-
-    # id = data[1]['id']
-    # response = mr.callMethod('getManufacturerData', uid=id)
-    # print(response)
-    result = mr.callMethod('getManufacturerList')['result']
-    print(result)
-    print(type(result))
-    print(len(result))
-    data = result['data']
-    print(len(data))
-    '''
-    m = data[1]
-    print(m)
-    '''
-    for m in data:
-        if 'Check' in m['id']:
-            print(m)
-            result = mr.callMethod('getProductsByManufacturer', uid=m['uid'])['result']
-            print(result)
-            data = result['data']
-            for p in data:
-                if '.1.3.6.1.4.1.2620.1.6.123.1.69' in p['key']:
-                    print(p)
-                    params = {
-                              # u'count': 4,
-                              u'type': u'Hardware',
-                              # u'id': u'.1.3.6.1.4.1.2620.1.6.123.1.69',
-                              # u'key': [u'.1.3.6.1.4.1.2620.1.6.123.1.69'],     # Optional
-                              u'oldname': 'Check Point 5800',
-                              u'prodname': 'Check Point 5800',
-                              u'prodkeys': '.1.3.6.1.4.1.2620.1.6.123.1.69',
-                              u'partno': '',
-                              u'description': '',
-                              u'uid': u'/zport/dmd/Manufacturers/Check Point Software Technologies Ltd/products/Check Point 5800'
-                              }
-                    result = mr.callMethod('editProduct', params=params)
-                    print(result)
-                    print(result['result']['success'])
+    yaml_print(key='manufacturers', indent=0)
+    # parse_manufacturertree(routers, result)

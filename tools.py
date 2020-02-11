@@ -2,10 +2,17 @@
 
 def yaml_print(key='', value='', indent=0):
     head = indent*' '
+    debug_stop = False
     if key:
         key = '{}: '.format(key)
     if isinstance(value, list):
-        value = str(value)      # To enhance...
+        if len(value) == 0:
+            print('{}{}: []'.format(head, key))
+        else:
+            print('{}{}'.format(head, key))
+            for i in value:
+                print('{}  - {}'.format(head, i))
+        return
     elif isinstance(value, int):
         value = str(value).decode('utf-8')
     elif isinstance(value, str):
@@ -26,9 +33,10 @@ def yaml_print(key='', value='', indent=0):
         if ':' in value or '%' in value or '#' in value:
             print('{}{}{!r}'.format(head, key, value))
         elif value.startswith("'") or value.startswith("["):
+            print('case2')
             print('{}{}{!r}'.format(head, key, value))
         else:
-            print('{}{}{}'.format(head, key, value))
+            print('{}{}{}'.format(head, key, value.encode('utf-8')))
 
 def get_properties(routers, uid, indent):
     properties_router = routers['Properties']

@@ -69,7 +69,6 @@ if __name__ == '__main__':
     process_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='ProcessRouter')
     properties_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='PropertiesRouter')
 
-
     routers = {
         'Process': process_router,
         'Properties': properties_router,
