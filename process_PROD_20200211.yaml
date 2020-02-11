@@ -1,0 +1,348 @@
+Checking Zenoss
+process_class_organizers: 
+  /Processes: 
+    description: instances
+    zProperties: 
+      zAlertOnRestart: False
+      zCountProcs: False
+      zFailSeverity: 4
+      zModelerLock: 0
+      zMonitor: True
+      zSendEventWhenBlockedFlag: False
+    process_class: 
+      ntp: 
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: /usr/sbin/ntpd
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Apache: 
+    description: instances
+    process_class: 
+      apache2: 
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: httpd2-prefork
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      httpd: 
+        description: Apache httpd web server process
+        includeRegex: ^[^ $\[]*httpd[^ \/]*( |$)
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^([^ ]*httpd[^ /]*)( .*|$)
+        replacement: \1\2
+  /Processes/Linux: 
+    description: instances
+    process_class: 
+      cron: 
+        includeRegex: /usr/sbin/cron
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      hardserver: 
+        includeRegex: /sbin/hardserver
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/AMQ: 
+    description: instances
+    process_class: 
+      amq_instance: 
+        zProperties: 
+          zAlertOnRestart: True
+          zFailSeverity: 5
+        includeRegex: ^.*(-Dactivemq.base=\/opt\/credoc\/amqinstances\/)([a-zA-Z0-9]*).*$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^.*(-Dactivemq.base=\/opt\/credoc\/amqinstances\/)([a-zA-Z0-9]*).*$
+        replacement: \2
+      amq_instance_2018: 
+        includeRegex: ^.*(-Dactivemq.base=\/opt\/credoc\/activemq\/apache-activemq-[^\/]*\/)([a-zA-Z0-9]*).*$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^.*(-Dactivemq.base=\/opt\/credoc\/activemq\/apache-activemq-[^\/]*\/)([a-zA-Z0-9]*).*$
+        replacement: \2
+      amq_instance_test: 
+        zProperties: 
+          zFailSeverity: 1
+        includeRegex: activemq
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      jolokia: 
+        zProperties: 
+          zFailSeverity: 1
+        includeRegex: jolokia
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/AppDynamics: 
+    description: instances
+    process_class: 
+      AppDynamics: 
+        description: AppDynamics Controller
+        includeRegex: \/opt\/AppDynamics\/Controller\/jre\/bin\/java
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: .*
+        replacement: AppDynamics Controller
+  /Processes/Linux/Atlassian: 
+    description: instances
+    process_class: 
+      Confluence: 
+        includeRegex: /opt/atlassian/confluence/jre//bin/java
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^(/opt/atlassian/confluence/jre//bin/java).*
+        replacement: \1
+      JIRA: 
+        includeRegex: /opt/atlassian/jira/jre/+bin/java
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^(/opt/atlassian/jira/jre/+bin/java).*
+        replacement: \1
+      Sonar: 
+        includeRegex: java -jar lib\/sonar-application-.*.jar .*databaseName=([a-zA-Z0-9]*).*$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: java -jar lib\/sonar-application-.*.jar .*databaseName=([a-zA-Z0-9]*).*$
+        replacement: sonar databaseName=\1
+      bamboo: 
+        includeRegex: ./java.*logging.config.file=/opt/atlassian/bamboo.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/DNS: 
+    description: instances
+    process_class: 
+      named: 
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: ^(/usr/sbin/named)(.*)$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^(/usr/sbin/named)(.*)$
+        replacement: \1
+  /Processes/Linux/Kaazing: 
+    description: instances
+    process_class: 
+      Kaazing: 
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: \w*java\s-X\w*\s-DGATEWAY_HOME=/opt/kaazing
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/LDAP: 
+    description: instances
+    process_class: 
+      ibmslapd: 
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: ^\/opt\/ibm\/ldap\/.*\/sbin\/64\/ibmslapd$
+        excludeRegex: \b(vi|less|vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/Puppet: 
+    description: instances
+    process_class: 
+      puppetd: 
+        includeRegex: ^(/usr/bin/ruby /usr/sbin/puppetd)(.*)$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^(/usr/bin/ruby /usr/sbin/puppetd)(.*)$
+        replacement: \1
+  /Processes/Linux/SOLR: 
+    description: instances
+    process_class: 
+      openoffice: 
+        zProperties: 
+          zFailSeverity: 3
+        includeRegex: /opt/openoffice4/program/soffice.bin
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      solr: 
+        description: solr_portal
+        zProperties: 
+          zFailSeverity: 5
+          zModelerLock: 1
+        includeRegex: /opt/java/vm/sun/1.7.0_latest/bin/java -Djava.util.logging.config.file=/opt/credoc/tcinstances/solr/conf/logging.properties
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      solr2: 
+        description: solr_old
+        zProperties: 
+          zAlertOnRestart: True
+          zFailSeverity: 5
+          zModelerLock: 1
+        includeRegex: u'(-XX:SurvivorRatio=\\d* -XX:TargetSurvivorRatio=\\d*)'
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      zookeeper: 
+        zProperties: 
+          zAlertOnRestart: True
+          zFailSeverity: 5
+          zModelerLock: 1
+        includeRegex: ^.*-Dzookeeper.log.dir=\/opt\/credoc\/zkinstances\/(zookeeper-*\d*)\/log.*$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^.*-Dzookeeper.log.dir=\/opt\/credoc\/zkinstances\/(zookeeper-*\d*)\/log.*$
+        replacement: \1
+  /Processes/Linux/Syslog: 
+    description: instances
+    process_class: 
+      rsyslog: 
+        includeRegex: ^(/sbin/rsyslogd)(.*)$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^(/sbin/rsyslogd)(.*)$
+        replacement: \1
+      syslog: 
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: ^(syslog-ng)(.*)$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^(syslog-ng)(.*)$
+        replacement: \1
+  /Processes/Linux/TSM: 
+    description: instances
+    process_class: 
+      dsmserv: 
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: ^/opt/tivoli/tsm/server/bin/dsmserv
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      tsmagent: 
+        description: TSM Backup Agent
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: ^(/opt/tivoli/tsm/client/ba/bin/dsmc)(.*)$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^(/opt/tivoli/tsm/client/ba/bin/dsmc)(.*)$
+        replacement: \1
+  /Processes/Linux/Tomcat: 
+    description: instances
+    process_class: 
+      Tomcat6: 
+        includeRegex: Tomcat6.exe
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      tcinstances: 
+        description: contains the java tomcat processes
+        zProperties: 
+          zAlertOnRestart: True
+          zFailSeverity: 5
+        includeRegex: ^.*(-Djava.util.logging.config.file=\/opt\/credoc\/tcinstances\/)([a-zA-Z0-9_-]*).*$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^.*(-Djava.util.logging.config.file=\/opt\/credoc\/tcinstances\/)([a-zA-Z0-9_-]*).*$
+        replacement: \2
+  /Processes/Linux/TrustBuilder: 
+    description: instances
+    process_class: 
+      Tomcat: 
+        includeRegex: ^.*(java-x86)([a-zA-Z0-9]*).*$
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/Web: 
+    description: instances
+    process_class: 
+      nginx: 
+        includeRegex: u'nginx:'
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/Webseal: 
+    description: instances
+    process_class: 
+      Webseal: 
+        description: Contains Webseal daemons
+        zProperties: 
+          zFailSeverity: 5
+        includeRegex: ^/opt/pdweb/bin/webseald -config.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/Zookeeper: 
+    description: instances
+    process_class: 
+      zookeeper: 
+        includeRegex: zookeeper
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Linux/squid: 
+    description: instances
+    process_class: 
+      squid: 
+        zProperties: 
+          zAlertOnRestart: True
+        includeRegex: /usr/sbin/squid.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/MySQL: 
+    description: instances
+    process_class: 
+      mysqld: 
+        description: MySQL Server Process
+        includeRegex: sbin\/mysqld
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: .*
+        replacement: mysqld
+  /Processes/Windows: 
+    description: instances
+    process_class: 
+      IIS Worker: 
+        includeRegex: w3wp.exe
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Zenoss: 
+    description: instances
+    zProperties: 
+      zAlertOnRestart: False
+      zFailSeverity: 4
+    process_class: 
+      Zope: 
+        description: Zope is the web front end for Zenoss
+        includeRegex: .*runzope.*zenoss.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenactiond: 
+        description: Sends out notifications based on triggers
+        includeRegex: .*zenactiond.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zencommand: 
+        description: Using protocols such as Telnet and SSH, runs a command on the remote machine and parses the results into events and performance metrics.
+        includeRegex: .*zencommand.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zeneventd: 
+        includeRegex: .*zeneventd.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zeneventserver: 
+        description: The Zenoss event processor.
+        includeRegex: .*zeneventserver.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenhub: 
+        description: This daemon provides a stable interface to ZODB, via services that are requested by daemons.
+        includeRegex: .*zenhub.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenjmx: 
+        description: Provides monitoring for remote JMX agents.
+        includeRegex: .*zenjmx.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      zenjobs: 
+        description: An 'at'-style scheduler for running long-running commands.
+        includeRegex: .*zenjobs.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenjserver: 
+        description: Provides capability to render 'Dynamic View' pages within the UI
+        includeRegex: .*zenjserver.py.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      zenmail: 
+        description: Listen on the SMTP port (default 25) and convert e-mails into Zenoss events.
+        includeRegex: .*zenmail.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+        replaceRegex: .*
+        replacement: zenmail
+      zenmodeler: 
+        description: Model a device using protocols such as WMI, SNMP, SSH.
+        includeRegex: .*zenmodeler.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenperfsnmp: 
+        description: SNMP performance metric poller daemon
+        includeRegex: .*zenperfsnmp.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenping: 
+        description: IPv4 and IPv6 ICMP ECHO sending daemon
+        includeRegex: .*zenping.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenpop3: 
+        description: Connect to a POP3 server and convert any messages into Zenoss events.
+        includeRegex: .*zenpop3.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenprocess: 
+        description: SNMP based daemon that gathers process information, and based on what has been modeled, reports on process metrics such as memory and CPU utilization.
+        includeRegex: .*zenprocess.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenpython: 
+        includeRegex: zenpython
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      zenstatus: 
+        description: A daemon that opens a TCP connection to the remote service to determine if it is available.
+        includeRegex: .*zenstatus.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zensyslog: 
+        description: Daemon that runs on the syslog ports and converts syslog messages to Zenoss events.
+        includeRegex: .*zensyslog.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+        replaceRegex: .*
+        replacement: zensyslog
+      zentrap: 
+        description: Receive SNMP v1/2c/3 traps, convert using MIB definitions, and turn into Zenoss events.
+        includeRegex: .*zentrap.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+        replaceRegex: .*
+        replacement: zentrap
+      zenwebtx: 
+        description: Provides Web site monitoring with synthetic web transactions.
+        includeRegex: .*zenwebtx.py.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b

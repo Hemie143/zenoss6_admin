@@ -23,7 +23,6 @@ def yaml_print(key='', value='', indent=0):
     if multiline:
         print('{}{}|+'.format(head, key))
         for l in value.splitlines():
-            # print('l: {}'.format(type(l)))
             print('  {}{}'.format(head, l.encode('utf-8')))
     else:
         if ':' in value or '%' in value or '#' in value:

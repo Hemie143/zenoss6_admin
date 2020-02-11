@@ -1,6 +1,63 @@
 import zenAPI.zenApiLib
 import argparse
+from tools import yaml_print, get_properties
 
+
+def get_processzprop(process, indent):
+    zprop_keys = sorted([k for k in process if k.startswith('z')])
+    header = False
+    for k in zprop_keys:
+        prop = process[k]
+        if not prop['isAcquired']:
+            if not header:
+                yaml_print(key='zProperties', indent=indent)
+                header = True
+            yaml_print(key=k, value=prop['localValue'], indent=indent+2)
+
+def get_processinstances(routers, uid, indent):
+    process_router = routers['Process']
+    response = process_router.callMethod('query', uid=uid)
+    process_list = response['result']['processes']
+    process_list = sorted(process_list, key=lambda i: i['name'])
+    fields = ['includeRegex', 'excludeRegex', 'replaceRegex', 'replacement']
+    header = False
+
+    for process in process_list:
+        if not process['uid'].startswith('{}/osProcessClasses/'.format(uid)):
+            continue
+        if not header:
+            yaml_print(key='process_class', indent=indent)
+            header = True
+        yaml_print(key=process['name'], indent=indent+2)
+        p_desc = process.get('description', '')
+        if p_desc:
+            yaml_print(key='description', value=p_desc, indent=indent+4)
+        get_processzprop(process, indent=indent+4)
+        for k in fields:
+            v = process[k]
+            if v:
+                yaml_print(key=k, value=v, indent=indent+4)
+
+
+def parse_processtree(routers, tree):
+    tree = sorted(tree, key=lambda i: i['uid'])
+    process_router = routers['Process']
+    for branch in tree:
+        branch_path = '/' + branch['path']
+        branch_leaf = branch['leaf']
+        branch_uid = branch['uid']
+        yaml_print(key=branch_path, indent=2)
+
+        branch_desc = branch['text']['description']
+        yaml_print(key='description', value=branch_desc, indent=4)
+
+        # Properties
+        get_properties(routers, branch_uid, 4)
+        # Instances
+        get_processinstances(routers, branch_uid, 4)
+
+        children = branch.get('children', [])
+        parse_processtree(routers, children)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='List processes definition')
@@ -10,13 +67,15 @@ if __name__ == '__main__':
     environ = options.environ
 
     process_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='ProcessRouter')
-    up_count = 0
-    temp_count = 0
+    properties_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='PropertiesRouter')
+
+
+    routers = {
+        'Process': process_router,
+        'Properties': properties_router,
+    }
 
     print('Checking Zenoss')
-
-    # Get all templates. Result length: 485 on Z6_test
-    # Does not list all templates, but is fast
 
     # getTree: /zport/dmd/Processes
     # getInstances: {uid: "/zport/dmd/Processes", page: 1, start: 0, limit: 50, sort: "name", dir: "ASC"}
@@ -30,79 +89,7 @@ if __name__ == '__main__':
     process_tree = process_router.callMethod('getTree', id='/zport/dmd/Processes')
     # print(process_tree)
     result = process_tree['result']
-    print(result)
-    print(len(result))
-
-
-    process_list = process_router.callMethod('getInstances', uid='/zport/dmd/Processes/Zenoss')
-    print(process_list)
-
-    process_list = process_router.callMethod('query', uid='/zport/dmd/Processes/Zenoss')
-    print(process_list)
-
-
-
-    exit()
-
-    root_tree = template_router.callMethod('getTemplates', id='/zport/dmd/Devices')     # dict
-    result = root_tree['result']                                                        # list of many items
-
-    i = 0
-    templates_count = 0
-    for r in result:
-        t_uid = r['uid']
-        # print(r['name'])
-        templates = template_router.callMethod('getTemplates', id=t_uid)['result']
-        templates_count += len(templates)
-        for t in templates:
-            # print('    {}'.format(t['text']))
-            print('{}\t{}\t{}'.format(r['name'], t['text'], t['uid']))
-    print(templates_count)
-
-    print(len(result))
-    t = list(filter(lambda r: 'backup' in r['uid'], result))
-    print(t)
-    print(len(t))       # 39
-
-
-
-    # Get all templates by Device Class. 626 on Z6_test
-    # Returns a tree where nodes are device classes and leaves are templates
-    # Dicts and lists are nested
-    # Each lower layer is found in a 'children' key
-
-    '''
-    root_tree = template_router.callMethod('getDeviceClassTemplates', id='/zport/dmd/Devices')     # dict
-    result = root_tree['result']                                                                   # list of 1 item (root)
-
-    def list_templates(tree_branch, known_templates=None):
-        if not known_templates:
-            known_templates = set()
-        for n in tree_branch:
-            if n['leaf'] and (n['uid'] not in known_templates):
-                # print(n['uid'])
-                known_templates.add(n['uid'])
-            elif not n['leaf']:
-                known_templates = known_templates.union(list_templates(n['children'], known_templates))
-            else:
-                pass
-        return known_templates
-
-    templates = list_templates(result)
-    for t in templates:
-        print(t)
-    print(len(templates))
-    tt = list(filter(lambda t: 'backup' in t, templates))
-    print(tt)
-    print(len(tt))  # 39
-    '''
-
-    '''
-    # Get templates. Result length: 31 on Z6_test
-    # Gets the templates defined just under the given uid, not deeper
-    root_tree = template_router.callMethod('getObjTemplates', uid='/zport/dmd/Devices')     # dict of 6
-    result = root_tree['result']                                                            # dict of 2
-    data = result['data']                                                                   # list of 31
-    for d in data:
-        print(d['name'])
-    '''
+    # print(result)
+    # print(len(result))
+    yaml_print(key='process_class_organizers', indent=0)
+    parse_processtree(routers, result)
