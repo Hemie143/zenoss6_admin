@@ -11,7 +11,7 @@ def yaml_print(key='', value='', indent=0):
         else:
             print('{}{}'.format(head, key))
             for i in value:
-                print('{}  - {}'.format(head, i))
+                print('{}  - {}'.format(head, i.encode('utf-8')))
         return
     elif isinstance(value, int):
         value = str(value).decode('utf-8')
@@ -33,7 +33,6 @@ def yaml_print(key='', value='', indent=0):
         if ':' in value or '%' in value or '#' in value:
             print('{}{}{!r}'.format(head, key, value))
         elif value.startswith("'") or value.startswith("["):
-            print('case2')
             print('{}{}{!r}'.format(head, key, value))
         else:
             print('{}{}{}'.format(head, key, value.encode('utf-8')))

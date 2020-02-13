@@ -1,63 +1,52 @@
 import zenAPI.zenApiLib
 import argparse
-from tools import yaml_print, get_properties
+from tools import yaml_print
 
-def get_servicezprop(process, indent):
-    zprop_keys = sorted([k for k in process if k.startswith('z')])
+
+def get_manufacturerdata(routers, uid, indent):
+    manufacturer_router = routers['Manufacturers']
+    response = manufacturer_router.callMethod('getManufacturerData', uid=uid)
+    data = response['result']['data'][0]
+    fields = ['phone', 'url', 'address1', 'address2', 'city', 'state', 'zip', 'country', 'regexes']
+    for k in fields:
+        v = data.get(k, '')
+        if v:
+            yaml_print(key=k, value=v, indent=indent)
+
+
+def get_manufacturerproducts(routers, uid, indent):
+    manufacturer_router = routers['Manufacturers']
+    response = manufacturer_router.callMethod('getProductsByManufacturer', uid=uid)
+    data = response['result']['data']
+    data = sorted(data, key=lambda i: i['id'])
     header = False
-    for k in zprop_keys:
-        prop = process[k]
-        if not prop['isAcquired']:
-            if not header:
-                yaml_print(key='zProperties', indent=indent)
-                header = True
-            yaml_print(key=k, value=prop['localValue'], indent=indent+2)
-
-def get_serviceinstances(routers, uid, indent):
-    service_router = routers['Service']
-    response = service_router.callMethod('query', uid=uid, sort='name', dir='ASC')
-    # print(response)
-    service_list = response['result']['services']
-    # print('services: {}'.format(len(service_list)))
-    service_list = [s for s in service_list if s['uid'].startswith('{}/serviceclasses/'.format(uid))]
-    # service_list = sorted(service_list, key=lambda i: i['name'])
-    fields = ['port', 'serviceKeys', 'sendString', 'expectRegex', 'monitoredStartModes']
-    header = False
-
-    for service in service_list:
-        # print(service)
+    for product in data:
         if not header:
-            yaml_print(key='service_class', indent=indent)
+            yaml_print(key='products', indent=indent)
             header = True
-        yaml_print(key=service['name'], indent=indent+2)
-        p_desc = service.get('description', '')
-        if p_desc:
-            yaml_print(key='description', value=p_desc, indent=indent+4)
-        response = service_router.callMethod('getInfo', uid=service['uid'])
-        service_info = response['result']['data']
-        get_servicezprop(service_info, indent=indent+4)
-        for k in fields:
-            v = service_info.get(k, '')
-            if v:
-                yaml_print(key=k, value=v, indent=indent+4)
+        yaml_print(key=product['id'], indent=indent+2)
+        yaml_print(key='type', value=product['type'], indent=indent+4)
+        get_productdata(routers, uid, product['id'], indent+4)
 
 
-def parse_manufacturertree(routers, tree):
-    tree = sorted(tree, key=lambda i: i['uid'])
-    for branch in tree:
-        # print(branch)
-        branch_path = '/' + branch['path']
-        branch_leaf = branch['leaf']
-        branch_uid = branch['uid']
-        yaml_print(key=branch_path, indent=2)
+def get_productdata(routers, uid, name, indent):
+    manufacturer_router = routers['Manufacturers']
+    response = manufacturer_router.callMethod('getProductData', uid=uid, prodname=name)
+    data = response['result']['data'][0]
+    fields = ['name', 'partno', 'prodKeys', 'desc', 'os']
+    for k in fields:
+        v = data.get(k, '')
+        if v:
+            yaml_print(key=k, value=v, indent=indent)
 
-        # Properties
-        get_properties(routers, branch_uid, 4)
-        # Instances
-        get_serviceinstances(routers, branch_uid, 4)
 
-        children = branch.get('children', [])
-        parse_ipservicetree(routers, children)
+def parse_manufacturerlist(routers, list):
+    list = sorted(list, key=lambda i: i['uid'])
+    for manufacturer in list:
+        manufacturer_path = '/' + manufacturer['path']
+        manufacturer_uid = manufacturer['uid']
+        yaml_print(key=manufacturer_path, indent=2)
+        get_manufacturerproducts(routers, manufacturer_uid, indent=4)
 
 
 if __name__ == '__main__':
@@ -83,9 +72,6 @@ if __name__ == '__main__':
     # "getProductInstances": {params: {}, id: "Adaptec AHA-39160 _AIC-7899A_ Ultra160 SCSI Host Adapter", uid: "/zport/dmd/Manufacturers/Adaptec"}
 
     response = manufacturer_router.callMethod('getManufacturerList')
-    result = response['result']
-    print(len(result))
-    data = result['data']
-    print(len(data))
+    data = response['result']['data']
     yaml_print(key='manufacturers', indent=0)
-    # parse_manufacturertree(routers, result)
+    parse_manufacturerlist(routers, data)
