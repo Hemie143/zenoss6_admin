@@ -11,54 +11,18 @@ if __name__ == '__main__':
     # filename = options.filename
 
     # Routers
-    mr = zenAPI.zenApiLib.zenConnector(section=environ, routerName='ManufacturersRouter')
+    mib_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='MibRouter')
+    properties_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='PropertiesRouter')
+
+    routers = {
+        'Mib': mib_router,
+        'Properties': properties_router,
+    }
 
     # "getOrganizerTree": "/zport/dmd/Mibs"
     # "getInfo": [{uid: "/zport/dmd/Mibs/mibs/ACLMGMT-MIB", useFieldSets: false}]
     # "getOidMappings": [{uid: "/zport/dmd/Mibs/mibs/ACLMGMT-MIB", page: 1, start: 0, limit: 50, sort: "name", dir: "ASC"}]
 
 
-    result = mr.callMethod('getManufacturers')['result']    #dict (data, success)
-    print(result)
-    print(type(result))
-    print(len(result))
-    data = result['data']
-    print(len(data))
-
-    # id = data[1]['id']
-    # response = mr.callMethod('getManufacturerData', uid=id)
-    # print(response)
-    result = mr.callMethod('getManufacturerList')['result']
-    print(result)
-    print(type(result))
-    print(len(result))
-    data = result['data']
-    print(len(data))
-    '''
-    m = data[1]
-    print(m)
-    '''
-    for m in data:
-        if 'Check' in m['id']:
-            print(m)
-            result = mr.callMethod('getProductsByManufacturer', uid=m['uid'])['result']
-            print(result)
-            data = result['data']
-            for p in data:
-                if '.1.3.6.1.4.1.2620.1.6.123.1.69' in p['key']:
-                    print(p)
-                    params = {
-                              # u'count': 4,
-                              u'type': u'Hardware',
-                              # u'id': u'.1.3.6.1.4.1.2620.1.6.123.1.69',
-                              # u'key': [u'.1.3.6.1.4.1.2620.1.6.123.1.69'],     # Optional
-                              u'oldname': 'Check Point 5800',
-                              u'prodname': 'Check Point 5800',
-                              u'prodkeys': '.1.3.6.1.4.1.2620.1.6.123.1.69',
-                              u'partno': '',
-                              u'description': '',
-                              u'uid': u'/zport/dmd/Manufacturers/Check Point Software Technologies Ltd/products/Check Point 5800'
-                              }
-                    result = mr.callMethod('editProduct', params=params)
-                    print(result)
-                    print(result['result']['success'])
+    response = mib_router.callMethod('getOrganizerTree')
+    print(response)
