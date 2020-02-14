@@ -1,0 +1,292 @@
+groups: 
+  /Dashboard: 
+    name: Dashboard
+  /Dashboard/Production: 
+    name: Production
+device_classes: 
+  /: 
+    name: Devices
+  /Cisco Ironport ESA: 
+    name: Cisco Ironport ESA
+  /Cluster: 
+    name: Cluster
+  /Cluster/Linux: 
+    name: Linux
+  /Cluster/Linux/CRM: 
+    name: CRM
+  /Cluster/Linux/CRM/AMQ: 
+    name: AMQ
+  /Cluster/Linux/CRM/DVSDB: 
+    name: DVSDB
+  /ControlCenter: 
+    name: ControlCenter
+    devices: 
+      st-monlogcol-s01.staging.credoc.be: 
+        zProperties: 
+          zControlCenterUser: ccadmin
+        name: st-monlogcol-s01.staging.credoc.be
+        collector: localhost
+        ipAddressString: 10.5.90.52
+        productionState: 1000
+        priority: 3
+        templates: 
+          - ControlCenter
+  /Datacenter: 
+    name: Datacenter
+  /Datacenter/Raritan: 
+    name: Raritan
+  /Discovered: 
+    name: Discovered
+  /KVM: 
+    name: KVM
+  /NWS: 
+    name: NWS
+  /Network: 
+    name: Network
+  /Network/BIG-IP: 
+    name: BIG-IP
+  /Network/BIG-IP/BIG-IP: 
+    name: BIG-IP
+  /Network/BIG-IP/BIG-IP 2600: 
+    name: BIG-IP 2600
+  /Network/Check Point: 
+    name: Check Point
+  /Network/Check Point/Gaia: 
+    name: Gaia
+  /Network/Check Point/SPLAT: 
+    name: SPLAT
+  /Network/Cisco: 
+    name: Cisco
+  /Network/Cisco APIC: 
+    name: Cisco APIC
+  /Network/Cisco/6500: 
+    name: 6500
+  /Network/Cisco/6500/VSS: 
+    name: VSS
+  /Network/Cisco/ACE: 
+    name: ACE
+  /Network/Cisco/ASA: 
+    name: ASA
+  /Network/Cisco/ASR: 
+    name: ASR
+  /Network/Cisco/ASR/1000: 
+    name: 1000
+  /Network/Cisco/ASR/9000: 
+    name: 9000
+  /Network/Cisco/CSR: 
+    name: CSR
+  /Network/Cisco/CatOS: 
+    name: CatOS
+  /Network/Cisco/Codec: 
+    name: Codec
+  /Network/Cisco/FWSM: 
+    name: FWSM
+  /Network/Cisco/IDS: 
+    name: IDS
+  /Network/Cisco/MDS: 
+    name: MDS
+  /Network/Cisco/MDS/9000: 
+    name: 9000
+  /Network/Cisco/Nexus: 
+    name: Nexus
+  /Network/Cisco/Nexus/1000V: 
+    name: 1000V
+  /Network/Cisco/Nexus/1010: 
+    name: 1010
+  /Network/Cisco/Nexus/3000: 
+    name: 3000
+  /Network/Cisco/Nexus/5000: 
+    name: 5000
+  /Network/Cisco/Nexus/6000: 
+    name: 6000
+  /Network/Cisco/Nexus/7000: 
+    name: 7000
+  /Network/Cisco/Nexus/9000: 
+    name: 9000
+  /Network/Cisco/VSG: 
+    name: VSG
+  /Network/Cisco/WLC: 
+    name: WLC
+  /Network/Juniper: 
+    name: Juniper
+  /Network/Juniper/M10i: 
+    name: M10i
+  /Network/Router: 
+    name: Router
+  /Network/Router/Cisco: 
+    name: Cisco
+  /Network/Router/Firewall: 
+    name: Firewall
+  /Network/Router/RSM: 
+    name: RSM
+  /Network/Router/TerminalServer: 
+    name: TerminalServer
+  /Network/Switch: 
+    name: Switch
+  /Ping: 
+    name: Ping
+    devices: 
+      api.weather.gov: 
+        name: api.weather.gov
+        collector: localhost
+        ipAddressString: 2.23.104.18
+        productionState: 1000
+        priority: 3
+        templates: 
+          - Device
+  /Power: 
+    name: Power
+  /Power/UPS: 
+    name: UPS
+  /Power/UPS/APC: 
+    name: APC
+  /Power/UPS/PowerNet: 
+    name: PowerNet
+  /Power/UPS/StandardUPS: 
+    name: StandardUPS
+  /Printer: 
+    name: Printer
+  /Printer/InkJet: 
+    name: InkJet
+  /Printer/Laser: 
+    name: Laser
+  /Security: 
+    name: Security
+  /Security/ISAM: 
+    name: ISAM
+  /Server: 
+    name: Server
+  /Server/CIM: 
+    name: CIM
+  /Server/CIM/Linux: 
+    name: Linux
+  /Server/Cmd: 
+    name: Cmd
+  /Server/Darwin: 
+    name: Darwin
+  /Server/DataPower: 
+    name: DataPower
+    devices: 
+      st-dpwrapi-l01.staging.credoc.be: 
+        zProperties: 
+          zDomainObjectIgnoreNames: (default-gateway-peering|gateway-peering-manager)
+        name: st-dpwrapi-l01.staging.credoc.be
+        collector: localhost
+        ipAddressString: 10.5.100.161
+        productionState: 1000
+        priority: 3
+        templates: 
+          - Device
+  /Server/HP: 
+    name: HP
+  /Server/HP/ILO: 
+    name: ILO
+  /Server/HP/ILO/SNMP: 
+    name: SNMP
+  /Server/HP/OnboardAdministrator: 
+    name: OnboardAdministrator
+  /Server/HP/Proliant: 
+    name: Proliant
+  /Server/IBM: 
+    name: IBM
+  /Server/IBM/Power: 
+    name: Power
+  /Server/IBM/Power/HMC: 
+    name: HMC
+  /Server/Linux: 
+    name: Linux
+  /Server/Linux/AMQ: 
+    name: AMQ
+  /Server/Linux/APP: 
+    name: APP
+  /Server/Linux/APP/Prod: 
+    name: Prod
+  /Server/Linux/Applications: 
+    name: Applications
+  /Server/Linux/Applications/Prod: 
+    name: Prod
+  /Server/Linux/CCC: 
+    name: CCC
+  /Server/Linux/DVSDB: 
+    name: DVSDB
+  /Server/Linux/Development: 
+    name: Development
+  /Server/Linux/EUMON: 
+    name: EUMON
+  /Server/Linux/IPAD: 
+    name: IPAD
+  /Server/Linux/KAZ: 
+    name: KAZ
+  /Server/Linux/LDAP: 
+    name: LDAP
+  /Server/Linux/LOG: 
+    name: LOG
+  /Server/Linux/Management: 
+    name: Management
+  /Server/Linux/SEAL: 
+    name: SEAL
+  /Server/Linux/SOLR: 
+    name: SOLR
+  /Server/Linux/TSM: 
+    name: TSM
+  /Server/Linux/WEB: 
+    name: WEB
+  /Server/Microsoft: 
+    name: Microsoft
+  /Server/Microsoft/Cluster: 
+    name: Cluster
+  /Server/Microsoft/Windows: 
+    name: Windows
+  /Server/Remote: 
+    name: Remote
+  /Server/SSH: 
+    name: SSH
+  /Server/SSH/AIX: 
+    name: AIX
+  /Server/SSH/AIX/IBM_PowerVM: 
+    name: IBM_PowerVM
+  /Server/SSH/Linux: 
+    name: Linux
+  /Server/SSH/Linux/Applications: 
+    name: Applications
+  /Server/Scan: 
+    name: Scan
+  /Server/VMware: 
+    name: VMware
+  /Server/VMware/ESXi: 
+    name: ESXi
+  /Server/VMware/ESXi/HP: 
+    name: HP
+  /Server/Windows: 
+    name: Windows
+  /Server/Windows/CIM: 
+    name: CIM
+  /Storage: 
+    name: Storage
+  /Storage/SMI-S: 
+    name: SMI-S
+  /Web: 
+    name: Web
+  /WebTransactions: 
+    name: WebTransactions
+  /Websites: 
+    name: Websites
+  /ZenossRM: 
+    name: ZenossRM
+    devices: 
+      ResourceManager: 
+        zProperties: 
+          zDeviceTemplates: ZenossRMDevice
+          zRMMonCCHost: st-monlogcol-s01.staging.credoc.be
+          zRMMonCCUser: ccadmin
+          zRMMonTenantHost: zenoss6-test.fednot.be
+          zRMMonTenantUser: zenoss_system
+        name: ResourceManager
+        collector: localhost
+        productionState: 1000
+        priority: 3
+        templates: 
+          - ZenossRMDevice
+  /vSphere: 
+    name: vSphere
+# Device count: 4

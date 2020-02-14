@@ -1,36 +1,6 @@
 import zenAPI.zenApiLib
 import argparse
-
-
-def yaml_print(key='', value='', indent=0):
-    head = indent*' '
-    if key:
-        key = '{}: '.format(key)
-    if isinstance(value, list):
-        value = str(value)      # To enhance...
-    elif isinstance(value, int):
-        value = str(value).decode('utf-8')
-    elif isinstance(value, str):
-        value = value.decode('utf-8')
-    elif isinstance(value, unicode):
-        pass
-    else:
-        print('value is of type: {}'.format(type(value)))
-        exit()
-    # value = value.decode('utf-8')
-
-    multiline = len(value.splitlines()) > 1
-    if multiline:
-        print('{}{}|+'.format(head, key))
-        for l in value.splitlines():
-            print('  {}{}'.format(head, l.encode('utf-8')))
-    else:
-        if ':' in value or '%' in value or '#' in value:
-            print('{}{}{!r}'.format(head, key, value))
-        elif value.startswith("'") or value.startswith("["):
-            print('{}{}{!r}'.format(head, key, value))
-        else:
-            print('{}{}{}'.format(head, key, value))
+from tools import yaml_print
 
 
 def get_properties(routers, uid, indent):
