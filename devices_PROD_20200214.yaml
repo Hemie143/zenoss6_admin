@@ -195,8 +195,159 @@ locations:
 device_classes: 
   /: 
     name: Devices
+    cProperties: 
+      cDateTest: u'1900/01/01 00:00:00 US/Central'
+      cJmxBroker: edepot
+      cJmxPort: 1111
+    zProperties: 
+      zAggregatorCollectionInterval: 300
+      zBambooPort: 443
+      zBambooUsername: admin
+      zCIMConnectionString: u"'pywbemdb',scheme='https',host='${here/manageIp}',port=5989,user='${here/zWinUser}',password='${here/zWinPassword}',namespace='root/cimv2'"
+      zCIMHWConnectionString: u"'pywbemdb',scheme='https',host='${here/manageIp}',port=5989,user='${here/zWinUser}',password='${here/zWinPassword}',namespace='root/cimv2'"
+      zCiscoACEUseSSL: True
+      zCiscoAPICHealthInterval: 300
+      zCiscoAPICMgmtInterface: out-of-band
+      zCiscoAPICPort: 443
+      zCiscoAPICSSL: True
+      zCiscoAPICUsername: admin
+      zCiscoNXAPIInterval: 300
+      zCiscoNXAPIPort: 443
+      zCiscoNXAPIUseSSL: True
+      zCollectorClientTimeout: 180
+      zCollectorDecoding: utf-8
+      zCommandCollectionInterval: 300
+      zCommandCommandTimeout: 15.0
+      zCommandExistanceTest: u'test -f %s'
+      zCommandLoginTimeout: 10.0
+      zCommandLoginTries: 1
+      zCommandPath: $ZENHOME/libexec
+      zCommandPort: 22
+      zCommandProtocol: ssh
+      zCommandUserCommandTimeout: 15.0
+      zControlCenterHost: ${here/manageIp}
+      zControlCenterModelCycle: 3600
+      zControlCenterPerfCycle: 300
+      zControlCenterPort: 443
+      zDeviceTemplates: Device
+      zDockerMonitorContainerStats: True
+      zFileSystemMapIgnoreTypes: |+
+        other
+        ram
+        virtualMemory
+        removableDisk
+        floppyDisk
+        compactDisk
+        ramDisk
+        flashMemory
+        networkDisk
+      zFileSystemSizeOffset: 1.0
+      zILOPort: 443
+      zILOUseSSL: True
+      zILOUserName: Administrator
+      zIcon: /zport/dmd/img/icons/noicon.png
+      zIpServiceMapMaxPort: 1024
+      zJmxManagementPort: 12345
+      zJmxUsername: admin
+      zJolokiaPort: 8161
+      zJolokiaUsername: admin
+      zKeyPath: ~/.ssh/id_dsa
+      zKubernetesContainerNamesModeled: kube-system/.*/.*
+      zKubernetesEventInterval: 60
+      zKubernetesGuestUseExternalIP: True
+      zKubernetesMonitoringInterval: 300
+      zKubernetesPort: 443
+      zKubernetesStatusInterval: 300
+      zLDAPBaseDN: dc=zenoss,dc=com
+      zLinuxServicesModeled: .*
+      zLocalInterfaceNames: ^lo|^vmnet
+      zLocalIpAddresses: u'^127|^0\\.0|^169\\.254|^224|^fe80::'
+      zMaxOIDPerRequest: 40
+      zMySqlTimeout: 30
+      zNmapPortscanOptions: -p 1-1024 -sT --open -oG -
+      zProdStateThreshold: 300
+      zPropertyMonitorInterval: 300
+      zRMMonCCPort: 443
+      zRMMonRabbitUser: zenoss
+      zRMMonServicesToIgnoreCollectorMetricsFor: |+
+        zendotnet
+        RabbitMQ-Ceilometer
+      zRMMonTenantPerfCycle: 30
+      zRMMonTenantPort: 443
+      zRMMonTenantUseSsl: True
+      zRouteMapMaxRoutes: 500
+      zSnmpCollectionInterval: 300
+      zSnmpCommunities: |+
+        public
+        private
+      zSnmpCommunity: public
+      zSnmpPort: 161
+      zSnmpTimeout: 1
+      zSnmpTries: 6
+      zSnmpVer: v2c
+      zSshConcurrentSessions: 10
+      zStatusConnectTimeout: 15.0
+      zStatusEventClass: /Status/
+      zTelnetEnableRegex: u'assword:'
+      zTelnetLoginRegex: u'ogin:.$'
+      zTelnetPasswordRegex: u'assword:'
+      zTelnetPromptTimeout: 10.0
+      zTelnetSuccessRegexList: |+
+        \$.$
+        \#.$
+      zTelnetTermLength: True
+      zTomcatJ2EEApplicationName: none
+      zTomcatJ2EEServerName: none
+      zTomcatJmxManagementPort: 12346
+      zTomcatJmxManagementUsername: admin
+      zTomcatListenHost: localhost
+      zTomcatListenPort: 8888
+      zTomcatServletName: Manager
+      zTomcatServletUri: /manager
+      zTomcatWebAppUri: /
+      zUsesManageIp: True
+      zUsesStandardDeviceCreationJob: True
+      zVSphereAutoChangeProdState: True
+      zVSphereAutoChangeProdStateRunning: 1000
+      zVSphereAutoChangeProdStateStopped: -1
+      zVSphereEndpointPort: 443
+      zVSphereEndpointUseSsl: True
+      zVSphereEndpointUser: admin
+      zVSphereModelMpIndexObjs: 50
+      zVSphereModelMpObjs: 250
+      zVSphereModelVSAN: True
+      zVSpherePerfHealthFailsThreshold: 10
+      zVSpherePerfHealthTimeoutsThreshold: 50
+      zVSpherePerfMaxAgeMinutes: 28
+      zVSpherePerfParallelQueries: 6
+      zVSpherePerfQueryChunkSize: 250
+      zVSpherePerfQueryRaw20: True
+      zVSpherePerfQueryTimeout: 200
+      zVSpherePerfQueryVcChunkSize: 64
+      zVSpherePerfRecoveryMinutes: 240
+      zVSpherePerfTimeoutRecoveryMinutes: 60
+      zVSphereVSANRetriggerAlarms: all
+      zWBEMPort: 5989
+      zWBEMRequestTimeout: 290
+      zWBEMUseSSL: True
+      zWSMANCollectionInterval: 300
+      zWSMANMaxObjectCount: 50
+      zWSMANPort: 443
+      zWSMANUseSSL: True
+      zWebTxAgent: ZenWebTx
+      zWinPerfmonInterval: 300
+      zWinRMClusterNodeClass: /Devices/Server/Microsoft/Windows
+      zWinRMConnectTimeout: 60
+      zWinRMEnvelopeSize: 512000
+      zWinRMKRBErrorThreshold: 1
+      zWinRMLocale: en-US
+      zWinRMPort: 5985
+      zWinRSCodePage: 65001
+      zWinScheme: http
   /Captor: 
     name: Captor
+    zProperties: 
+      zSnmpMonitorIgnore: True
     devices: 
       pra-captime-s01.fednot.be: 
         name: pra-captime-s01.fednot.be
@@ -254,10 +405,19 @@ device_classes:
     name: Cluster
   /Cluster/Linux: 
     name: Linux
+    zProperties: 
+      zCommandUsername: cs_monitoring
+      zKeyPath: ~/.ssh/id_rsa
+      zSnmpMonitorIgnore: True
   /Cluster/Linux/CRM: 
     name: CRM
   /Cluster/Linux/CRM/AMQ: 
     name: AMQ
+    zProperties: 
+      zDeviceTemplates: |+
+        CRM_AMQ_OpenFiles
+        Device
+        CRM_ActiveMQ
     devices: 
       caamq-c00.acc.credoc.be: 
         zProperties: 
@@ -298,6 +458,8 @@ device_classes:
           - OpenFiles_AMQ
   /Cluster/Linux/CRM/AMQ/AMQService: 
     name: AMQService
+    zProperties: 
+      zNmapPortscanOptions: -p 61616 -sT --open -P0
   /Cluster/Linux/CRM/DVSDB: 
     name: DVSDB
     devices: 
@@ -328,6 +490,12 @@ device_classes:
           - CRM_DVSDBRemote
   /ControlCenter: 
     name: ControlCenter
+    zProperties: 
+      zCollectorClientTimeout: 1800
+      zDeviceTemplates: ControlCenter
+      zPingMonitorIgnore: True
+      zPythonClass: ZenPacks.zenoss.ControlCenter.ControlCenter
+      zSnmpMonitorIgnore: True
     devices: 
       pr-moncc-s01.in.credoc.be: 
         zProperties: 
@@ -345,6 +513,14 @@ device_classes:
     name: Datacenter
   /Datacenter/Raritan: 
     name: Raritan
+    zProperties: 
+      zDeviceTemplates: Device
+      zPythonClass: ZenPacks.community.Raritan.RaritanDevice
+      zSnmpAuthType: SHA
+      zSnmpPrivType: AES
+      zSnmpSecurityName: cs_monitoring
+      zSnmpTimeout: 60.0
+      zSnmpVer: v3
     devices: 
       dc1-n12r-pdua.mgmt.credoc.be: 
         name: dc1-n12r-pdua.mgmt.credoc.be
@@ -601,16 +777,41 @@ device_classes:
           - Device
   /Discovered: 
     name: Discovered
+    zProperties: 
+      zLinks: u'http://www.zenoss.com'
+      zMaxOIDPerRequest: 10
   /HTTP: 
     name: HTTP
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        HttpMonitor
+      zSnmpMonitorIgnore: True
   /KVM: 
     name: KVM
   /Kubernetes: 
     name: Kubernetes
+    zProperties: 
+      zDeviceTemplates: K8sCluster
+      zPythonClass: ZenPacks.zenoss.Kubernetes.K8sCluster
+      zSnmpMonitorIgnore: True
   /Network: 
     name: Network
+    zProperties: 
+      zIfDescription: True
   /Network/BIG-IP: 
     name: BIG-IP
+    zProperties: 
+      zCommandUsername: cs_monitoring
+      zDeviceTemplates: |+
+        Device
+        BigIpDevice
+      zMaxOIDPerRequest: 250
+      zPythonClass: ZenPacks.zenoss.BigIpMonitor.BigIpDevice
+      zSnmpAuthType: MD5
+      zSnmpPrivType: DES
+      zSnmpSecurityName: cs_monitoring
+      zSnmpTimeout: 10.0
     devices: 
       bigip1.ini.be: 
         name: bigip1.ini.be
@@ -743,6 +944,15 @@ device_classes:
           - Device
   /Network/Check Point: 
     name: Check Point
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        CheckPointDevice
+      zPythonClass: ZenPacks.zenoss.CheckPointMonitor.CheckPointDevice
+      zSnmpAuthType: MD5
+      zSnmpPrivType: DES
+      zSnmpSecurityName: cs_monitoring
+      zSnmpVer: v3
     devices: 
       dc1-fwch-n01.mgmt.credoc.be: 
         zProperties: 
@@ -816,6 +1026,9 @@ device_classes:
           - Device
   /Network/Check Point/Gaia: 
     name: Gaia
+    zProperties: 
+      zSnmpAuthType: SHA
+      zSnmpPrivType: AES
     devices: 
       dc3-fw-n01.fednot.be: 
         name: dc3-fw-n01.fednot.be
@@ -886,8 +1099,39 @@ device_classes:
           - Device
   /Network/Cisco: 
     name: Cisco
+    zProperties: 
+      zCiscoRemodelEventClassKeys: |+
+        ccmCLIRunningConfigChanged
+        cefcFRUInserted
+        cefcFRURemoved
+        cefcModuleOperStatus
+        cefcModuleStatusChange
+        ceSensorExtThresholdNotification
+        cesRealServerStateChangeRev1
+        ciscoSlbExtMIBConform
+        ciscoSlbVServerStateChange
+        entConfigChange
+        vtpVlanCreated
+        vtpVlanDeleted
+      zCollectorClientTimeout: 600
+      zDeviceTemplates: Device
+      zIcon: /++resource++cisco/img/cisco-router.png
+      zInterfaceMapIgnoreNames: ^(lo\d*|sit\d*)$
+      zMaxOIDPerRequest: 40
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.CiscoDevice
+      zSnmpAuthType: SHA
+      zSnmpPrivType: AES
+      zSnmpSecurityName: cs_monitoring
+      zSnmpTimeout: 4.0
+      zSnmpTries: 2
+      zSnmpVer: v3
   /Network/Cisco APIC: 
     name: Cisco APIC
+    zProperties: 
+      zCiscoAPICUsername: zenoss
+      zDeviceTemplates: APIC
+      zPythonClass: ZenPacks.zenoss.CiscoAPIC.APIC
+      zSnmpMonitorIgnore: True
     devices: 
       dc2-apic-n01.fednot.be: 
         name: dc2-apic-n01.fednot.be
@@ -901,6 +1145,8 @@ device_classes:
           - APIC
   /Network/Cisco/2960: 
     name: 2960
+    zProperties: 
+      zSnmpTimeout: 90.0
     devices: 
       ccasw-s01.fednot.be: 
         name: ccasw-s01.fednot.be
@@ -1173,12 +1419,36 @@ device_classes:
           - Device
   /Network/Cisco/6500: 
     name: 6500
+    zProperties: 
+      zIcon: /++resource++cisco/img/catalyst-6500.png
   /Network/Cisco/6500/VSS: 
     name: VSS
+    zProperties: 
+      zSnmpTimeout: 1.0
+      zSnmpTries: 6
   /Network/Cisco/ACE: 
     name: ACE
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        ACEContext
+      zIcon: /++resource++cisco/img/cisco-ace.png
+      zMaxOIDPerRequest: 10
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.ACE
   /Network/Cisco/ASA: 
     name: ASA
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        Connections
+        Device-Legacy
+        Device-Modern
+        Sessions
+      zIcon: /++resource++cisco/img/cisco-asa.png
+      zMaxOIDPerRequest: 10
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.ASA
+      zSnmpTimeout: 15.0
+      zSnmpTries: 3
     devices: 
       prb-vpn-n01.in.credoc.be: 
         zProperties: 
@@ -1230,22 +1500,53 @@ device_classes:
           - Device
   /Network/Cisco/ASR: 
     name: ASR
+    zProperties: 
+      zCommandPort: 23
+      zCommandProtocol: telnet
   /Network/Cisco/ASR/1000: 
     name: 1000
+    zProperties: 
+      zIcon: /++resource++cisco/img/asr-1000.png
   /Network/Cisco/ASR/9000: 
     name: 9000
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        DeviceMemoryUsage32Bit
+      zIcon: /++resource++cisco/img/asr-9000.png
+      zTelnetLoginRegex: u'sername:.$'
   /Network/Cisco/CSR: 
     name: CSR
+    zProperties: 
+      zCommandPort: 23
+      zCommandProtocol: telnet
+      zIcon: /++resource++cisco/img/asr-1000.png
   /Network/Cisco/CatOS: 
     name: CatOS
   /Network/Cisco/Codec: 
     name: Codec
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        CiscoCodec
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.CiscoCodec
   /Network/Cisco/FWSM: 
     name: FWSM
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        FWSMContext
+      zIcon: /++resource++cisco/img/cisco-fwsm.png
+      zMaxOIDPerRequest: 10
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.FWSM
   /Network/Cisco/IDS: 
     name: IDS
+    zProperties: 
+      zSnmpMonitorIgnore: True
   /Network/Cisco/MDS: 
     name: MDS
+    zProperties: 
+      zIcon: /++resource++cisco/img/cisco-mds.png
   /Network/Cisco/MDS/9000: 
     name: 9000
   /Network/Cisco/MPLS: 
@@ -1254,12 +1555,20 @@ device_classes:
     name: Nexus
   /Network/Cisco/Nexus/1000V: 
     name: 1000V
+    zProperties: 
+      zIcon: /++resource++cisco/img/nexus-1000.png
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.VSM
   /Network/Cisco/Nexus/1010: 
     name: 1010
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.VirtualServicesAppliance
   /Network/Cisco/Nexus/3000: 
     name: 3000
   /Network/Cisco/Nexus/5000: 
     name: 5000
+    zProperties: 
+      zCommandUsername: admin
+      zIcon: /++resource++cisco/img/nexus-5000.png
     devices: 
       cccsw-s01.fednot.be: 
         zProperties: 
@@ -1321,10 +1630,23 @@ device_classes:
           - Device
   /Network/Cisco/Nexus/6000: 
     name: 6000
+    zProperties: 
+      zIcon: /++resource++cisco/img/nexus-7000.png
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.Nexus7K
   /Network/Cisco/Nexus/7000: 
     name: 7000
+    zProperties: 
+      zIcon: /++resource++cisco/img/nexus-7000.png
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.Nexus7K
   /Network/Cisco/Nexus/9000: 
     name: 9000
+    zProperties: 
+      zCommandCommandTimeout: 120.0
+      zCommandLoginTimeout: 60.0
+      zCommandUsername: zenoss
+      zIcon: /++resource++cisco/img/nexus-9000.png
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.Nexus7K
+      zSnmpMonitorIgnore: True
     devices: 
       dc1-icdcsw-s01.fednot.be: 
         zProperties: 
@@ -1371,8 +1693,12 @@ device_classes:
           - Device
   /Network/Cisco/VSG: 
     name: VSG
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.VSG
   /Network/Cisco/WLC: 
     name: WLC
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.CiscoWLC
     devices: 
       pra-wctrl-s01.fednot.be: 
         name: pra-wctrl-s01.fednot.be
@@ -1402,14 +1728,26 @@ device_classes:
           - Device
   /Network/Juniper: 
     name: Juniper
+    zProperties: 
+      zCollectorClientTimeout: 240
   /Network/Juniper/M10i: 
     name: M10i
   /Network/NetScreen: 
     name: NetScreen
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        NetScreenDevice
+      zPythonClass: ZenPacks.zenoss.NetScreenMonitor.NetScreenDevice
   /Network/Router: 
     name: Router
+    zProperties: 
+      zIcon: /zport/dmd/img/icons/router.png
+      zLinks: u"<a href='http://${here/manageIp}' target='_'>Console: ${here/id}</a>"
   /Network/Router/Cisco: 
     name: Cisco
+    zProperties: 
+      zLinks: <a href="${here/zRancidUrl}/${here/zRancidGroup}/configs/${here/manageIp}?root=CVS&view=markup" target="_">RANCID</a>
   /Network/Router/Firewall: 
     name: Firewall
   /Network/Router/RSM: 
@@ -1418,6 +1756,12 @@ device_classes:
     name: TerminalServer
   /Network/Switch: 
     name: Switch
+    zProperties: 
+      zDeviceTemplates: Device
+      zSnmpAuthType: SHA
+      zSnmpPrivType: AES
+      zSnmpSecurityName: cs_monitoring
+      zSnmpVer: v3
     devices: 
       dc1-blch3vc-n01.in.credoc.be: 
         zProperties: 
@@ -1481,6 +1825,8 @@ device_classes:
           - Device
   /Network/Switch/HP: 
     name: HP
+    zProperties: 
+      zSnmpVer: v2c
     devices: 
       dc1-blch1vc-c00.mgmt.credoc.be: 
         name: dc1-blch1vc-c00.mgmt.credoc.be
@@ -1554,12 +1900,25 @@ device_classes:
     name: Passport
   /Ping: 
     name: Ping
+    zProperties: 
+      zSnmpMonitorIgnore: True
   /Power: 
     name: Power
   /Power/UPS: 
     name: UPS
+    zProperties: 
+      zSnmpTimeout: 60.0
+      zSnmpVer: v1
   /Power/UPS/PowerNet: 
     name: PowerNet
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        PowerNetDevice
+      zPythonClass: ZenPacks.community.PowerNet.PowerNetDevice
+      zSnmpAuthType: SHA
+      zSnmpPrivType: AES
+      zSnmpSecurityName: cs_monitoring
     devices: 
       dc3-ups-s01.fednot.be: 
         zProperties: 
@@ -1577,8 +1936,17 @@ device_classes:
           - PowerNetDevice
   /Power/UPS/Powerware: 
     name: Powerware
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        powerware
   /Power/UPS/StandardUPS: 
     name: StandardUPS
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        UPSDevice
+      zPythonClass: ZenPacks.community.StandardUPS.UPSDevice
     devices: 
       dc4-ups-s02.fednot.be: 
         name: dc4-ups-s02.fednot.be
@@ -1617,6 +1985,13 @@ device_classes:
     name: Security
   /Security/ISAM: 
     name: ISAM
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        ISAMDevice
+      zISAMUsername: cs_monitoring
+      zPythonClass: ZenPacks.community.ISAM.ISAMDevice
+      zSnmpMonitorIgnore: True
     devices: 
       acb-pol-l01.acc.credoc.be: 
         zProperties: 
@@ -1810,14 +2185,24 @@ device_classes:
           - ISAMDevice
   /Server: 
     name: Server
+    zProperties: 
+      zIcon: /zport/dmd/img/icons/server.png
   /Server/CIM: 
     name: CIM
   /Server/CIM/Linux: 
     name: Linux
   /Server/Cmd: 
     name: Cmd
+    zProperties: 
+      zCommandUsername: cs_monitoring
+      zKeyPath: ~/.ssh/id_rsa
+      zSnmpMonitorIgnore: True
   /Server/DNS: 
     name: DNS
+    zProperties: 
+      zDeviceTemplates: DnsMonitor
+      zPingMonitorIgnore: True
+      zSnmpMonitorIgnore: True
     devices: 
       prn-dc-l101.prd.ictnotary.be: 
         name: prn-dc-l101.prd.ictnotary.be
@@ -1894,6 +2279,8 @@ device_classes:
           - DnsMonitor
   /Server/Darwin: 
     name: Darwin
+    zProperties: 
+      zFileSystemMapIgnoreNames: ^\/dev
   /Server/Datapower: 
     name: Datapower
     devices: 
@@ -1936,6 +2323,10 @@ device_classes:
           - DataPower
   /Server/Datapower/Datapower_MPG: 
     name: Datapower_MPG
+    zProperties: 
+      zDeviceTemplates: Datapower_MPG
+      zWinRMServerName: prb-dpwr-l01-mgt.in.credoc.be
+      zWinRMUser: admin
     devices: 
       AG-1.00.01-OUT-SUPPLIER: 
         zProperties: 
@@ -2222,8 +2613,14 @@ device_classes:
     name: Fax
   /Server/HP: 
     name: HP
+    zProperties: 
+      zDeviceTemplates: HPDeviceSNMP
+      zIcon: /++resource++ZenPacks.zenoss.HP.Proliant/icon/HPDevice.png
   /Server/HP/ILO: 
     name: ILO
+    zProperties: 
+      zILOUserName: ilomon
+      zSnmpMonitorIgnore: True
   /Server/HP/ILO/ILO2: 
     name: ILO2
   /Server/HP/ILO/ILO2/Blade: 
@@ -2702,6 +3099,8 @@ device_classes:
           - /Groups/ALL
   /Server/HP/ILO/SNMP: 
     name: SNMP
+    zProperties: 
+      zDeviceTemplates: HPDeviceSNMP
   /Server/HP/OnboardAdministrator: 
     name: OnboardAdministrator
     devices: 
@@ -2839,10 +3238,40 @@ device_classes:
     name: Power
   /Server/IBM/Power/HMC: 
     name: HMC
+    zProperties: 
+      zCommandUsername: hscroot
+      zLinks: u'<a href="http://www-304.ibm.com/webapp/set2/sas/f/hmc/resources.html" target="_blank">HMC Information Center</a>'
+      zPythonClass: ZenPacks.zenoss.IBM.Power.IBMHMCServer
+      zSnmpMonitorIgnore: True
   /Server/JBoss: 
     name: JBoss
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        JBoss Core
+        JBoss JCA Connection Pool
+        JBoss JGroups Channel
+        JBoss JMS Cache
+        JBoss JMS Destination
+        JBoss JMS Topic
+        JBoss Message Driven EJB
   /Server/Linux: 
     name: Linux
+    zProperties: 
+      zCommandUsername: cs_monitoring
+      zDeviceTemplates: |+
+        Device
+        MailQueueRemote
+        BufCacheMemRemote
+      zHardDiskMapMatch: ^[hs]d[a-z]\d+$|c\d+t\d+d\d+s\d+$|^cciss\/c\dd\dp\d$|^dm\-\d$
+      zIcon: /zport/dmd/img/icons/server-linux.png
+      zInterfaceMapIgnoreNames: ^(lo\d*|sit\d*)$
+      zIpServiceMapMaxPort: 8090
+      zKeyPath: ~/.ssh/id_rsa
+      zSnmpAuthType: SHA
+      zSnmpPrivType: AES
+      zSnmpSecurityName: cs_monitoring
+      zSnmpVer: v3
     devices: 
       ccrealca-s01.fednot.be: 
         zProperties: 
@@ -2872,6 +3301,19 @@ device_classes:
           - MailQueue
   /Server/Linux/APP: 
     name: APP
+    zProperties: 
+      zDeviceTemplates: |+
+        BufCacheMemRemote
+        Device
+        MailQueueRemote
+        NtpMonitor
+        Tomcat Cache
+        Tomcat Core
+        Tomcat Global Request Processor
+        Tomcat JSPs
+        Tomcat Servlet
+        Tomcat Thread Pool
+        Tomcat Web Module
     devices: 
       eRegistration_Queues: 
         zProperties: 
@@ -2888,8 +3330,27 @@ device_classes:
           - ERegistrationQueues
   /Server/Linux/APP/Non-Prod: 
     name: Non-Prod
+    zProperties: 
+      zDeviceTemplates: |+
+        BufCacheMem
+        Device
+        MailQueue
+        NtpMonitor
   /Server/Linux/APP/Prod: 
     name: Prod
+    zProperties: 
+      zDeviceTemplates: |+
+        BufCacheMem
+        Device
+        MailQueueRemote
+        NtpMonitor
+        Tomcat Cache
+        Tomcat Core
+        Tomcat Global Request Processor
+        Tomcat JSPs
+        Tomcat Servlet
+        Tomcat Thread Pool
+        Tomcat Web Module
   /Server/Linux/Commissioning: 
     name: Commissioning
     devices: 
@@ -3080,12 +3541,45 @@ device_classes:
     name: Wiki
   /Server/Microsoft: 
     name: Microsoft
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        Cluster
+        Active Directory
+        IIS
+        MSExchange2010IS
+      zIcon: /++resource++mswindows/img/server-windows.png
+      zSnmpMonitorIgnore: True
+      zWindowsRemodelEventClassKeys: clusterOwnerChange
   /Server/Microsoft/Cluster: 
     name: Cluster
+    zProperties: 
+      zDeviceTemplates: |+
+        Cluster
+        Active Directory
+        IIS
+        MSExchange2010IS
+      zPythonClass: ZenPacks.zenoss.Microsoft.Windows.ClusterDevice
   /Server/Microsoft/Windows: 
     name: Windows
+    zProperties: 
+      zDeviceTemplates: Device
+      zPythonClass: ZenPacks.zenoss.Microsoft.Windows.Device
+      zWinKDC: 192.168.17.157
+      zWinRMPort: 5986
+      zWinRMServerName: ${here/titleOrId}
+      zWinRMUser: Zenoss@FEDNOT.BE
+      zWinScheme: https
   /Server/Microsoft/Windows/realm_fednot.be: 
     name: realm_fednot.be
+    zProperties: 
+      zDeviceTemplates: |+
+        Active Directory
+        Device
+        IIS
+        MSExchange2010IS
+        EventLog
+      zWinRMUser: gen_monitoring@FEDNOT.BE
     devices: 
       aspprod.fednot.be: 
         zProperties: 
@@ -3897,6 +4391,9 @@ device_classes:
           - EventLog
   /Server/Microsoft/Windows/realm_in.credoc.be: 
     name: realm_in.credoc.be
+    zProperties: 
+      zWinKDC: 10.4.50.51
+      zWinRMUser: gen_monitoring@credoc.local
     devices: 
       prb-prdprsm-s01.in.credoc.be: 
         zProperties: 
@@ -3945,6 +4442,17 @@ device_classes:
           - IIS
   /Server/Microsoft/Windows/realm_in.credoc.be/Rendition: 
     name: Rendition
+    cProperties: 
+      cJavaHome: u'D:\\RenditionServer-PRB\\jre'
+      cJmxClient: u'D:\\Monitoring-Tools\\Jmx-Client\\cmdline-jmxclient-0.10.3.jar'
+      cJmxPort: 8686
+    zProperties: 
+      zDeviceTemplates: |+
+        Active Directory
+        Device
+        IIS
+        MSExchange2010IS
+        Rendition3
     devices: 
       prb-pdfr-s01.in.credoc.be: 
         zProperties: 
@@ -4025,6 +4533,9 @@ device_classes:
           - Rendition3
   /Server/Microsoft/Windows/realm_pra-data.fednot.be: 
     name: realm_pra-data.fednot.be
+    zProperties: 
+      zWinKDC: 10.131.202.51
+      zWinRMUser: gen_monitoring@PRA-DATA.FEDNOT.BE
     devices: 
       pra-archsql-s01.pra-data.fednot.be: 
         name: pra-archsql-s01.pra-data.fednot.be
@@ -4065,6 +4576,15 @@ device_classes:
           - Device
   /Server/Microsoft/Windows/realm_staging.credoc.be: 
     name: realm_staging.credoc.be
+    zProperties: 
+      zDeviceTemplates: |+
+        Active Directory
+        Device
+        IIS
+        MSExchange2010IS
+        EventLog
+      zWinKDC: 10.5.50.55
+      zWinRMUser: gen_monitoring@MGT.STAGING.LOCAL
     devices: 
       cadc-s01.acc.credoc.be: 
         zProperties: 
@@ -4209,6 +4729,11 @@ device_classes:
           - EventLog
   /Server/Microsoft/Windows/realm_staging.credoc.be/Rendition: 
     name: Rendition
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        MSExchange2010IS
+        Rendition3
     devices: 
       stb-pdfr-s01.staging.credoc.be: 
         cProperties: 
@@ -4336,16 +4861,79 @@ device_classes:
     name: Remote
   /Server/SSH: 
     name: SSH
+    zProperties: 
+      zSnmpMonitorIgnore: True
   /Server/SSH/AIX: 
     name: AIX
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.AixMonitor.Device
+      zSshConcurrentSessions: 2
   /Server/SSH/AIX/IBM_PowerVM: 
     name: IBM_PowerVM
+    zProperties: 
+      zDeviceTemplates: |+
+        AIXExt
+        Device
+      zLinks: ${here/getLparLink}
   /Server/SSH/HP-UX: 
     name: HP-UX
+    zProperties: 
+      zSshConcurrentSessions: 5
   /Server/SSH/HP-UX/Itanium: 
     name: Itanium
   /Server/SSH/Linux: 
     name: Linux
+    zProperties: 
+      zCommandUsername: zenoss
+      zDeviceTemplates: Device
+      zFileSystemMapIgnoreTypes: |+
+        other
+        ram
+        virtualMemory
+        removableDisk
+        floppyDisk
+        compactDisk
+        ramDisk
+        flashMemory
+        networkDisk
+        overlay
+        tmpfs
+      zHardDiskMapMatch: ^[hs]d[a-z]\d+$|c\d+t\d+d\d+s\d+$|^cciss\/c\dd\dp\d$|^dm\-\d$
+      zIcon: /zport/dmd/img/icons/server-linux.png
+      zIpServiceMapMaxPort: 8090
+      zKeyPath: ~/.ssh/id_rsa
+      zLinuxServicesNotModeled: |+
+        addhostname
+        anacron
+        bluetooth
+        cpuspeed
+        firstboot
+        irqbalance
+        irq_balancer
+        isdn
+        lvm2-monitor
+        mcstrans
+        mdmonitor
+        nfs
+        ondemand
+        portreserve
+        pppd-dns
+        rpcgssd
+        rsync
+        smartd
+        smbfs
+        splash
+        splash_early
+        sudo
+        sysstat
+        service_splash_early
+        service_splash
+        service_smartd
+        service_smbfs
+        ahslog
+        mr_cpqScsi
+      zPythonClass: ZenPacks.zenoss.LinuxMonitor.LinuxDevice
+      zSshConcurrentSessions: 5
     devices: 
       aca-app-l01.acc.credoc.be: 
         name: aca-app-l01.acc.credoc.be
@@ -5255,6 +5843,8 @@ device_classes:
           - Device
   /Server/SSH/Linux/AMQ Clusters: 
     name: AMQ Clusters
+    zProperties: 
+      zNmapPortscanOptions: -p 61616 -sS --open -P0
     devices: 
       caamq-c01.acc.credoc.be: 
         zProperties: 
@@ -5452,3459 +6042,3 @@ device_classes:
         templates: 
           - AMQ_DLQ_kaazingprivate
       cpamq-c06.in.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: AMQ_DLQ_asf
-        name: cpamq-c06.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.88
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/AMQ
-          - /Groups/ALL
-        templates: 
-          - AMQ_DLQ_asf
-      cpamq-c07.in.credoc.be: 
-        cProperties: 
-          cJmxBroker: signature
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: AMQ_JMX
-          zJmxManagementPort: 10069
-        name: cpamq-c07.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.89
-        productionState: 1000
-        priority: 3
-        templates: 
-          - AMQ_JMX
-  /Server/SSH/Linux/API: 
-    name: API
-    devices: 
-      acb-apiana-s01-clt.acc.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: Device
-          zLinuxServicesModeled: |+
-            appliance-manager
-            cron
-            docker
-            kubelet
-            pure-ftpd
-        name: acb-apiana-s01-clt.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.30.161
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-apimgr-s01.acc.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: |+
-            Device
-            HttpMonitor
-            HttpMonitor2
-        name: acb-apimgr-s01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.30.162
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-          - HttpMonitor
-      acb-apiportal-s01.acc.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: |+
-            Device
-            HttpMonitor
-        name: acb-apiportal-s01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.30.163
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-          - HttpMonitor
-      pr-dpwrapi-l01.in.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: HttpMonitor
-        name: pr-dpwrapi-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.161
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-      pr-dpwrapi-l02.in.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: HttpMonitor
-        name: pr-dpwrapi-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.162
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-      pr-dpwrapi-l03.in.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: HttpMonitor
-        name: pr-dpwrapi-l03.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.163
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-      prb-apiana-s01.in.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-          zLinuxServicesModeled: |+
-            appliance-manager
-            cron
-            docker
-            kubelet
-            pure-ftpd
-        name: prb-apiana-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.30.161
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-      prb-apimgr-s01.in.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: |+
-            Device
-            HttpMonitor
-        name: prb-apimgr-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.30.162
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-          - HttpMonitor
-      prb-apiportal-s01.in.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: |+
-            Device
-            HttpMonitor
-        name: prb-apiportal-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.30.163
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-          - HttpMonitor
-      st-dpwrapi-l01.staging.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: HttpMonitor
-        name: st-dpwrapi-l01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.161
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-      st-dpwrapi-l02.staging.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: HttpMonitor
-        name: st-dpwrapi-l02.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.162
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-      st-dpwrapi-l03.staging.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: HttpMonitor
-        name: st-dpwrapi-l03.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.163
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-  /Server/SSH/Linux/APP: 
-    name: APP
-    devices: 
-      acb-app-l12.acc.credoc.be: 
-        zProperties: 
-          zIpServiceMapMaxPort: 9999
-        name: acb-app-l12.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.32
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-app-l31.acc.credoc.be: 
-        name: acb-app-l31.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.71
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-app-l32.acc.credoc.be: 
-        name: acb-app-l32.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.72
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-portal-l01.acc.credoc.be: 
-        name: acb-portal-l01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.51
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-portal-l02.acc.credoc.be: 
-        name: acb-portal-l02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.52
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-portal-l31.acc.credoc.be: 
-        name: acb-portal-l31.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.91
-        productionState: 900
-        priority: 3
-        templates: 
-          - Device
-      dvb-app-l13.dev.credoc.be: 
-        name: dvb-app-l13.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.63
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-app-l14.dev.credoc.be: 
-        name: dvb-app-l14.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.64
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-app-l15.dev.credoc.be: 
-        name: dvb-app-l15.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.65
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-app-l16.dev.credoc.be: 
-        name: dvb-app-l16.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.66
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-appstable-l02.dev.credoc.be: 
-        name: dvb-appstable-l02.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.42
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-appunstable-l01.dev.credoc.be: 
-        name: dvb-appunstable-l01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.31
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-appunstable-l02.dev.credoc.be: 
-        name: dvb-appunstable-l02.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.32
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-immonfs-s01.dev.credoc.be: 
-        name: dvb-immonfs-s01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.83
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-portal-l01.dev.credoc.be: 
-        name: dvb-portal-l01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.51
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-portal-l02.dev.credoc.be: 
-        name: dvb-portal-l02.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.52
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvc-immonfs-s01.dev.credoc.be: 
-        name: dvc-immonfs-s01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.46.83
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-portal-l01.in.credoc.be: 
-        zProperties: 
-          zIpServiceMapMaxPort: 10000
-        name: prb-portal-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.51
-        productionState: 1000
-        priority: 3
-        comments: I-1808265 to fix SNMP
-        groups: 
-          - /Groups/APP
-          - /Groups/APP/Prod
-          - /Groups/Linux PRD
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-portal-l02.in.credoc.be: 
-        zProperties: 
-          zIpServiceMapMaxPort: 10000
-        name: prb-portal-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.52
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/APP/Prod
-          - /Groups/Linux PRD
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttb-app-l12.tst.credoc.be: 
-        name: ttb-app-l12.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.32
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttb-portal-l01.tst.credoc.be: 
-        name: ttb-portal-l01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.51
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttb-portal-l02.tst.credoc.be: 
-        name: ttb-portal-l02.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.52
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/APP/Prod: 
-    name: Prod
-    devices: 
-      prb-app-l02.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            MailQueueRemote
-            OpenFiles
-            Tomcat_JMX
-          zIpServiceMapMaxPort: 9999
-          zJmxManagementPort: 6972
-          zJmxUsername: cs_monitoring
-          zSshConcurrentSessions: 5
-          zTomcatJmxManagementPort: 6972
-          zTomcatJmxManagementUsername: cs_monitoring
-          zTomcatListenPort: 8083
-          zTomcatServletName: default
-          zTomcatServletUri: /crt-crh
-          zTomcatWebAppUri: /crt-crh
-        name: prb-app-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.32
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/APP/Prod
-          - /Groups/Dashboard/Production
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - MailQueueRemote
-          - OpenFiles
-          - Tomcat_JMX
-      prb-app-l03.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            MailQueueRemote
-            OpenFiles
-        name: prb-app-l03.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.33
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/APP/Prod
-          - /Groups/Dashboard/Production
-          - /Groups/Linux PRD
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - MailQueueRemote
-          - OpenFiles
-      prb-app-l04.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            MailQueueRemote
-            OpenFiles
-        name: prb-app-l04.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.34
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/APP/Prod
-          - /Groups/Dashboard/Production
-          - /Groups/Linux PRD
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - MailQueueRemote
-          - OpenFiles
-      prb-app-l05.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            MailQueueRemote
-            OpenFiles
-        name: prb-app-l05.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.35
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/APP/Prod
-          - /Groups/Dashboard/Production
-          - /Groups/Linux PRD
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - MailQueueRemote
-          - OpenFiles
-      prb-app-l11.in.credoc.be: 
-        zProperties: 
-          zSnmpTimeout: 2.0
-        name: prb-app-l11.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.61
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/Dashboard/Production
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-app-l12.in.credoc.be: 
-        zProperties: 
-          zSnmpTimeout: 2.0
-        name: prb-app-l12.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.62
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/Dashboard/Production
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-immonfs-s01.in.credoc.be: 
-        name: prb-immonfs-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.83
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRB - Production Hosted/PRB - APP
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-solr-s11.in.credoc.be: 
-        name: prb-solr-s11.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.55
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-solr-s12.in.credoc.be: 
-        name: prb-solr-s12.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.56
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-webfed-l11.in.credoc.be: 
-        name: prb-webfed-l11.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.110.52
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-webfed-l12.in.credoc.be: 
-        name: prb-webfed-l12.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.110.53
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-webvln-l01.in.credoc.be: 
-        name: prb-webvln-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.110.61
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/WEBVLN
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-webvln-l11.in.credoc.be: 
-        name: prb-webvln-l11.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.110.63
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prc-app-l01.in.credoc.be: 
-        name: prc-app-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.46.31
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRC - Production Hosted Citizen/PRC - APP
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prc-app-l02.in.credoc.be: 
-        name: prc-app-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.46.32
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRC - Production Hosted Citizen/PRC - APP
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prc-immonfs-s01.in.credoc.be: 
-        name: prc-immonfs-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.46.83
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRC - Production Hosted Citizen/PRC - APP
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prc-web-l01.in.credoc.be: 
-        name: prc-web-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.36.31
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRC - Production Hosted Citizen/PRC - APP
-        groups: 
-          - /Groups/Linux PRD
-          - /Groups/ALL
-        templates: 
-          - Device
-      prc-web-l02.in.credoc.be: 
-        name: prc-web-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.36.32
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRC - Production Hosted Citizen/PRC - APP
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/APPMON: 
-    name: APPMON
-    devices: 
-      csappmon-s01.staging.credoc.be: 
-        name: csappmon-s01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.90.81
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-appmon-s01.in.credoc.be: 
-        name: prb-appmon-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.90.81
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/ActiveMQ: 
-    name: ActiveMQ
-    devices: 
-      acb-amq-l01.acc.credoc.be: 
-        zProperties: 
-          zJolokiaUsername: zenoss
-        name: acb-amq-l01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.15
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-amq-l02.acc.credoc.be: 
-        name: acb-amq-l02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.16
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-amq-l01.dev.credoc.be: 
-        name: dvb-amq-l01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.15
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-amq-l02.dev.credoc.be: 
-        zProperties: 
-          zCollectorClientTimeout: 300
-          zSshConcurrentSessions: 1
-        name: dvb-amq-l02.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.16
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-amq-l01.in.credoc.be: 
-        name: prb-amq-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.15
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-amq-l02.in.credoc.be: 
-        name: prb-amq-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.16
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttb-amq-l01.tst.credoc.be: 
-        name: ttb-amq-l01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.15
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttb-amq-l02.tst.credoc.be: 
-        name: ttb-amq-l02.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.16
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/App: 
-    name: App
-  /Server/SSH/Linux/Applications: 
-    name: Applications
-  /Server/SSH/Linux/Applications/ACC: 
-    name: ACC
-    devices: 
-      acb-app-l11.acc.credoc.be: 
-        name: acb-app-l11.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.31
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/Applications/DEV: 
-    name: DEV
-    devices: 
-      dvb-appstable-l01.dev.credoc.be: 
-        name: dvb-appstable-l01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.41
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/Applications/Prod: 
-    name: Prod
-    devices: 
-      prb-app-l01.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            MailQueueRemote
-            OpenFiles
-            Tomcat_JMX
-          zIpServiceMapMaxPort: 9999
-          zJmxManagementPort: 6972
-          zJmxUsername: cs_monitoring
-          zSshConcurrentSessions: 5
-          zTomcatJmxManagementPort: 6972
-          zTomcatJmxManagementUsername: cs_monitoring
-          zTomcatListenPort: 8083
-          zTomcatServletName: default
-          zTomcatServletUri: /crt-crh
-          zTomcatWebAppUri: /crt-crh
-        name: prb-app-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.31
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/APP/Prod
-          - /Groups/Dashboard/Production
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - MailQueueRemote
-          - OpenFiles
-          - Tomcat_JMX
-      prb-appnaban-s01.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: prb-appnaban-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.70
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      prb-appnaban-s02.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: prb-appnaban-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.73
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      prb-appnaban-s03.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: prb-appnaban-s03.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.76
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      prb-appnaban-s04.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: prb-appnaban-s04.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.77
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-  /Server/SSH/Linux/Applications/TST: 
-    name: TST
-    devices: 
-      ttb-app-l11.tst.credoc.be: 
-        zProperties: 
-          zTomcatJmxManagementPort: 6983
-        name: ttb-app-l11.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.31
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/APP
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/Commissioning: 
-    name: Commissioning
-  /Server/SSH/Linux/DNS: 
-    name: DNS
-    devices: 
-      prb-dns-s01.in.credoc.be: 
-        name: prb-dns-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.90.21
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/DNS
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-dns-s02.in.credoc.be: 
-        name: prb-dns-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.90.22
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/DNS
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      st-dns-s01.staging.credoc.be: 
-        name: st-dns-s01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.90.21
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      st-dns-s02.staging.credoc.be: 
-        name: st-dns-s02.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.90.22
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/DVS: 
-    name: DVS
-    devices: 
-      prb-dvs-l01.in.credoc.be: 
-        name: prb-dvs-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.61
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/DVS
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-dvs-l02.in.credoc.be: 
-        name: prb-dvs-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.62
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/DVS
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/DVSDB: 
-    name: DVSDB
-    devices: 
-      csdvsdb-n01.staging.credoc.be: 
-        name: csdvsdb-n01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.50.71
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      csdvsdb-n02.staging.credoc.be: 
-        name: csdvsdb-n02.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.50.72
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-dvsdb-n01.in.credoc.be: 
-        zProperties: 
-          zLocalIpAddresses: u'^127|^0\\.0|^169\\.254|^224|^fe80::|^10\\.[0-6]\\.50\\.70'
-        name: prb-dvsdb-n01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.71
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/DVSDB
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-dvsdb-n02.in.credoc.be: 
-        zProperties: 
-          zLocalIpAddresses: u'^127|^0\\.0|^169\\.254|^224|^fe80::|^10\\.[0-6]\\.50\\.70'
-        name: prb-dvsdb-n02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.72
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/DVSDB
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/Development: 
-    name: Development
-    devices: 
-      cdbamboo-s01.dev.credoc.be: 
-        name: cdbamboo-s01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.26
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Development
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      pra-atlassian-s02.fednot.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            Connections_HTTPS
-          zTomcatJmxManagementPort: 1581
-        name: pra-atlassian-s02.fednot.be
-        collector: DC1
-        ipAddressString: 10.102.0.18
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/Development
-          - /Groups/ALL
-        templates: 
-          - Connections_HTTPS
-          - Device
-      pra-git-s01.fednot.be: 
-        name: pra-git-s01.fednot.be
-        collector: DC1
-        ipAddressString: 10.4.43.51
-        productionState: 1000
-        priority: 3
-        comments: u'I-1906948: SSH connection'
-        groups: 
-          - /Groups/Development
-          - /Groups/ALL
-        templates: 
-          - Device
-      tta-atlassian-s01.tst.credoc.be: 
-        name: tta-atlassian-s01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.43.27
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/Docker: 
-    name: Docker
-    devices: 
-      pra-forty-s01.fednot.be: 
-        zProperties: 
-          zBambooServerAlias: bamboo.fednot.be
-          zBambooUsername: monitoring
-          zLinuxServicesNotModeled: .*
-        name: pra-forty-s01.fednot.be
-        collector: DC1
-        ipAddressString: 10.4.43.54
-        productionState: 1000
-        priority: 3
-        comments: bamboo.fednot.be - SR-1712022
-        groups: 
-          - /Groups/Development
-          - /Groups/ALL
-        templates: 
-          - Device
-      pra-forty-s02.fednot.be: 
-        name: pra-forty-s02.fednot.be
-        collector: DC1
-        ipAddressString: 10.4.43.58
-        productionState: 400
-        priority: 3
-        templates: 
-          - Device
-  /Server/SSH/Linux/EUMON: 
-    name: EUMON
-    devices: 
-      stb-eumon-s01.staging.credoc.be: 
-        name: stb-eumon-s01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.90.50
-        productionState: -1
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/HSM: 
-    name: HSM
-    devices: 
-      cshsmrfs-s01.staging.credoc.be: 
-        name: cshsmrfs-s01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.90.66
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      pr-hsmrfs-s01.in.credoc.be: 
-        name: pr-hsmrfs-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.90.67
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-hsmrfs-s01.in.credoc.be: 
-        name: prb-hsmrfs-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.90.66
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/HSM
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      st-hsmrfs-s01.staging.credoc.be: 
-        name: st-hsmrfs-s01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.90.67
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/LDAP: 
-    name: LDAP
-    devices: 
-      acb-ldap-l01.acc.credoc.be: 
-        name: acb-ldap-l01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.50.33
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - LDAPServer
-          - MailQueueRemote
-      acb-ldap-l02.acc.credoc.be: 
-        name: acb-ldap-l02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.50.34
-        productionState: 900
-        priority: 3
-        comments: SR-1712011
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - LDAPServer
-          - MailQueueRemote
-      cpldap-l01.in.credoc.be: 
-        zProperties: 
-          zCommandCommandTimeout: 60.0
-          zCommandUserCommandTimeout: 60.0
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            MailQueueRemote
-            Certificates_3rdPartiesRemote
-            Certificates_CredocCARemote
-            Certificates_ExRemote
-          zLDAPBaseDN: ou=cert,ou=extranet,ou=auth,O=CREDOC,C=BE
-          zLDAPBindDN: cn=cs_monitoring,ou=users,ou=admin,O=CREDOC,C=BE
-        name: cpldap-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.31
-        productionState: 1000
-        priority: 3
-        comments: champagne
-        groups: 
-          - /Groups/LDAP
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Certificates_3rdPartiesRemote
-          - Certificates_CredocCARemote
-          - Certificates_ExRemote
-          - Device
-          - MailQueueRemote
-      dvb-ldap-l01.dev.credoc.be: 
-        name: dvb-ldap-l01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.50.33
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - LDAPServer
-          - MailQueueRemote
-      dvb-ldap-l02.dev.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            LDAPServer
-            MailQueueRemote
-            NtpMonitor
-        name: dvb-ldap-l02.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.50.34
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - LDAPServer
-          - MailQueueRemote
-          - NtpMonitor
-      prb-ldap-l01.in.credoc.be: 
-        zProperties: 
-          zCommandCommandTimeout: 60.0
-          zCommandUserCommandTimeout: 60.0
-          zLDAPBaseDN: ou=cert,ou=extranet,ou=auth,O=CREDOC,C=BE
-          zLDAPBindDN: cn=cs_monitoring,ou=users,ou=admin,O=CREDOC,C=BE
-        name: prb-ldap-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.33
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/LDAP
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - LDAPServer
-          - MailQueueRemote
-      prb-ldap-l02.in.credoc.be: 
-        zProperties: 
-          zLDAPBaseDN: ou=cert,ou=extranet,ou=auth,O=CREDOC,C=BE
-          zLDAPBindDN: cn=cs_monitoring,ou=users,ou=admin,O=CREDOC,C=BE
-          zSnmpTimeout: 10.0
-        name: prb-ldap-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.34
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/LDAP
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - LDAPServer
-          - MailQueueRemote
-      ttb-ldap-l01.tst.credoc.be: 
-        name: ttb-ldap-l01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.50.33
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - LDAPServer
-          - MailQueueRemote
-      ttb-ldap-l02.tst.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            MailQueueRemote
-            LDAPServer
-            NtpMonitor
-        name: ttb-ldap-l02.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.50.34
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - LDAPServer
-          - MailQueueRemote
-          - NtpMonitor
-  /Server/SSH/Linux/LOG: 
-    name: LOG
-    devices: 
-      prb-log-s01.in.credoc.be: 
-        name: prb-log-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.51
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/LOG
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-log-s02.in.credoc.be: 
-        name: prb-log-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.52
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/LOG
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      st-log-s01.staging.credoc.be: 
-        name: st-log-s01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.51
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      st-log-s02.staging.credoc.be: 
-        name: st-log-s02.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.52
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/Management: 
-    name: Management
-    devices: 
-      ccmgt-s01.fednot.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            OpenFiles
-        name: ccmgt-s01.fednot.be
-        collector: DC1
-        ipAddressString: 10.102.0.40
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-          - OpenFiles
-      ccmgt-s02.fednot.be: 
-        name: ccmgt-s02.fednot.be
-        collector: DC1
-        ipAddressString: 10.102.0.44
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      dc1-mgt-s01.mgmt.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Device
-            BufCacheMemRemote
-            MailQueueRemote
-            DnsMonitor
-            NtpMonitor
-        name: dc1-mgt-s01.mgmt.credoc.be
-        collector: DC1
-        ipAddressString: 10.251.100.10
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        location: /DC2 - IBM
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - DnsMonitor
-          - MailQueueRemote
-          - NtpMonitor
-      dc2-mgt-s01.mgmt.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            BufCacheMemRemote
-            Device
-            DnsMonitor
-            MailQueueRemote
-            NtpMonitor
-        name: dc2-mgt-s01.mgmt.credoc.be
-        collector: DC2
-        ipAddressString: 10.252.100.10
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - BufCacheMemRemote
-          - Device
-          - DnsMonitor
-          - MailQueueRemote
-          - NtpMonitor
-      prb-mgt-s01.in.credoc.be: 
-        zProperties: 
-          zCommandCommandTimeout: 90.0
-          zCommandUserCommandTimeout: 90.0
-        name: prb-mgt-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.31
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/Probes: 
-    name: Probes
-  /Server/SSH/Linux/SEAL: 
-    name: SEAL
-  /Server/SSH/Linux/SMT: 
-    name: SMT
-    devices: 
-      prb-smt-s01.in.credoc.be: 
-        name: prb-smt-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.90.31
-        productionState: 400
-        priority: 3
-        groups: 
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/SMT
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/SOLR: 
-    name: SOLR
-    devices: 
-      acb-solr-s01.acc.credoc.be: 
-        zProperties: 
-          zCommandCommandTimeout: 30.0
-          zCommandLoginTimeout: 15.0
-          zCommandUserCommandTimeout: 30.0
-        name: acb-solr-s01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.41
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/SOLR
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-solr-s02.acc.credoc.be: 
-        name: acb-solr-s02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.42
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/SOLR
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-solr-s11.acc.credoc.be: 
-        name: acb-solr-s11.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.65
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-solr-s12.acc.credoc.be: 
-        name: acb-solr-s12.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.66
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      acc-solr-s01.acc.credoc.be: 
-        name: acc-solr-s01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.46.41
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      acc-solr-s02.acc.credoc.be: 
-        name: acc-solr-s02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.46.42
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctsolr-s01.tst.credoc.be: 
-        name: ctsolr-s01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.41
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctsolr-s02.tst.credoc.be: 
-        name: ctsolr-s02.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.42
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-solr-s01.dev.credoc.be: 
-        name: dvb-solr-s01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.38
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvb-solr-s02.dev.credoc.be: 
-        name: dvb-solr-s02.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.39
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvc-solr-s01.dev.credoc.be: 
-        name: dvc-solr-s01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.46.41
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      dvc-solr-s02.dev.credoc.be: 
-        name: dvc-solr-s02.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.46.42
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-solr-s01.in.credoc.be: 
-        zProperties: 
-          zIpServiceMapMaxPort: 9997
-          zNmapPortscanOptions: -p 1-1024,9996 -sT --open -oG - ${here/manageIp}
-        name: prb-solr-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.41
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-solr-s02.in.credoc.be: 
-        zProperties: 
-          zNmapPortscanOptions: -p 1-1024,9996 -sT --open -oG - ${here/manageIp}
-        name: prb-solr-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.42
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prc-solr-s01.in.credoc.be: 
-        name: prc-solr-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.46.41
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRC - Production Hosted Citizen/PRC - APP
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prc-solr-s02.in.credoc.be: 
-        name: prc-solr-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.46.42
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRC - Production Hosted Citizen/PRC - APP
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttb-solr-s11.tst.credoc.be: 
-        name: ttb-solr-s11.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.55
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttb-solr-s12.tst.credoc.be: 
-        name: ttb-solr-s12.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.56
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttc-solr-s01.tst.credoc.be: 
-        name: ttc-solr-s01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.46.41
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttc-solr-s02.tst.credoc.be: 
-        name: ttc-solr-s02.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.46.42
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/TrustBuilders: 
-    name: TrustBuilders
-    devices: 
-      acb-trstbdr-l11.acc.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: acb-trstbdr-l11.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.211
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      acb-trstbdr-l12.acc.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: acb-trstbdr-l12.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.212
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      acb-trstbdr-l13.acc.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: acb-trstbdr-l13.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.40.213
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      acb-trstbdrdb-l11.acc.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-        name: acb-trstbdrdb-l11.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.50.211
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-      acb-trstbdrdb-l12.acc.credoc.be: 
-        zProperties: 
-        name: acb-trstbdrdb-l12.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.50.212
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-      acc-trstbdr-s01.acc.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: acc-trstbdr-s01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.26.10
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      acc-trstbdr-s02.acc.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: acc-trstbdr-s02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.26.11
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      acc-trstbdr-s03.acc.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: acc-trstbdr-s03.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.26.12
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      dvb-trstbdr-l11.dev.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: |+
-            Device
-            nginx_status
-            HttpMonitor
-        name: dvb-trstbdr-l11.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.211
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-          - /Groups/TrustBuilder
-        templates: 
-          - Device
-          - HttpMonitor
-          - nginx_status
-      dvb-trstbdr-l12.dev.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-          zDeviceTemplates: |+
-            Device
-            HttpMonitor
-        name: dvb-trstbdr-l12.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.40.212
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-          - /Groups/TrustBuilder
-        templates: 
-          - Device
-          - HttpMonitor
-      prb-trstbdr-l11.in.credoc.be: 
-        zProperties: 
-          zCommandUsername: cs_monitoring
-        name: prb-trstbdr-l11.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.211
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - Device
-          - HttpMonitor
-      prb-trstbdr-l12.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: prb-trstbdr-l12.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.212
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      prb-trstbdr-l13.in.credoc.be: 
-        zProperties: 
-        name: prb-trstbdr-l13.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.213
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-      prc-trstbdr-s01.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: prc-trstbdr-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.26.10
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      prc-trstbdr-s02.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: prc-trstbdr-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.26.11
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      ttb-trstbdr-l11.tst.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: ttb-trstbdr-l11.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.211
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      ttb-trstbdr-l12.tst.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: ttb-trstbdr-l12.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.40.212
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-      ttc-trstbdr-s01.tst.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: ttc-trstbdr-s01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.26.10
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/TrustBuilder
-        templates: 
-          - HttpMonitor
-  /Server/SSH/Linux/WEB: 
-    name: WEB
-    devices: 
-      acc-web-l01.acc.credoc.be: 
-        name: acc-web-l01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.36.31
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      acc-web-l02.acc.credoc.be: 
-        name: acc-web-l02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.36.32
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      caweb-l01.acc.credoc.be: 
-        name: caweb-l01.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.30.31
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      caweb-l02.acc.credoc.be: 
-        name: caweb-l02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.30.32
-        productionState: 900
-        priority: 3
-        comments: swan
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      cdweb-l01.dev.credoc.be: 
-        name: cdweb-l01.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.30.31
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      cdweb-l02.dev.credoc.be: 
-        name: cdweb-l02.dev.credoc.be
-        collector: DC2
-        ipAddressString: 10.0.30.32
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctweb-l01.tst.credoc.be: 
-        name: ctweb-l01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.30.31
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctweb-l02.tst.credoc.be: 
-        name: ctweb-l02.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.30.32
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/Linux STG
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-web-l01.in.credoc.be: 
-        name: prb-web-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.30.31
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/WEB
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-web-l02.in.credoc.be: 
-        name: prb-web-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.30.32
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/Linux PRD
-          - /Groups/OnCall
-          - /Groups/WEB
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttc-web-l01.tst.credoc.be: 
-        name: ttc-web-l01.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.36.31
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ttc-web-l02.tst.credoc.be: 
-        name: ttc-web-l02.tst.credoc.be
-        collector: DC2
-        ipAddressString: 10.1.36.32
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/WEBFED: 
-    name: WEBFED
-    devices: 
-      acb-webfed-l13.acc.credoc.be: 
-        name: acb-webfed-l13.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.110.54
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      acb-webfed-l14.acc.credoc.be: 
-        name: acb-webfed-l14.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.110.55
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-webfed-l01.in.credoc.be: 
-        name: prb-webfed-l01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.110.54
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-webfed-l02.in.credoc.be: 
-        name: prb-webfed-l02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.110.55
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/WEBVLN: 
-    name: WEBVLN
-    devices: 
-      acb-webvln-l02.acc.credoc.be: 
-        name: acb-webvln-l02.acc.credoc.be
-        collector: DC2
-        ipAddressString: 10.2.110.62
-        productionState: 900
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/SSH/Linux/Wiki: 
-    name: Wiki
-    devices: 
-      pra-ccwiki-s01.in.credoc.be: 
-        name: pra-ccwiki-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.43.72
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-  /Server/SSH/Linux/Zenoss: 
-    name: Zenoss
-  /Server/SSH/Solaris: 
-    name: Solaris
-  /Server/SSH/Solaris/Solaris10: 
-    name: Solaris10
-  /Server/Scan: 
-    name: Scan
-  /Server/Timeserver: 
-    name: Timeserver
-    devices: 
-      timeserver.fednot.be: 
-        name: timeserver.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.17.50
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/PR Production/PRA - Production Corporate
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/Tomcat: 
-    name: Tomcat
-  /Server/VMware: 
-    name: VMware
-  /Server/VMware/ESXi: 
-    name: ESXi
-  /Server/VMware/ESXi/HP: 
-    name: HP
-  /Server/WebLogic: 
-    name: WebLogic
-  /Server/Windows: 
-    name: Windows
-  /Server/Windows/CIM: 
-    name: CIM
-  /Server/Windows/SNMP: 
-    name: SNMP
-    devices: 
-      cddc-s01.dev.credoc.be: 
-        name: cddc-s01.dev.credoc.be
-        collector: DC1
-        ipAddressString: 10.0.50.51
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      cddc-s02.dev.credoc.be: 
-        name: cddc-s02.dev.credoc.be
-        collector: DC1
-        ipAddressString: 10.0.50.52
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      cdrep-s01.dev.credoc.be: 
-        name: cdrep-s01.dev.credoc.be
-        collector: DC1
-        ipAddressString: 10.0.50.41
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      cdsql-s01.dev.credoc.be: 
-        name: cdsql-s01.dev.credoc.be
-        collector: DC1
-        ipAddressString: 10.0.50.21
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/MSSQL
-          - /Groups/ALL
-        templates: 
-          - Device
-      codc-s01.pre.credoc.be: 
-        name: codc-s01.pre.credoc.be
-        collector: DC1
-        ipAddressString: 10.3.50.51
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      codc-s02.pre.credoc.be: 
-        name: codc-s02.pre.credoc.be
-        collector: DC1
-        ipAddressString: 10.3.50.52
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      corep-l01.pre.credoc.be: 
-        name: corep-l01.pre.credoc.be
-        collector: DC1
-        ipAddressString: 10.3.50.41
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      corep-l02.pre.credoc.be: 
-        name: corep-l02.pre.credoc.be
-        collector: DC1
-        ipAddressString: 10.3.50.42
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      cpdc-s01.in.credoc.be: 
-        name: cpdc-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.51
-        productionState: 1000
-        priority: 3
-        comments: condrieu
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      cpdc-s02.in.credoc.be: 
-        name: cpdc-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.52
-        productionState: 1000
-        priority: 3
-        comments: grappa
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      cpsqlmon-s01.in.credoc.be: 
-        name: cpsqlmon-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.50.91
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/MSSQL
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctdc-s01.tst.credoc.be: 
-        name: ctdc-s01.tst.credoc.be
-        collector: DC1
-        ipAddressString: 10.1.50.51
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctdc-s02.tst.credoc.be: 
-        name: ctdc-s02.tst.credoc.be
-        collector: DC1
-        ipAddressString: 10.1.50.52
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctrep-l01.tst.credoc.be: 
-        name: ctrep-l01.tst.credoc.be
-        collector: DC1
-        ipAddressString: 10.1.50.41
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctrep-l02.tst.credoc.be: 
-        name: ctrep-l02.tst.credoc.be
-        collector: DC1
-        ipAddressString: 10.1.50.42
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctsql-n01.tst.credoc.be: 
-        name: ctsql-n01.tst.credoc.be
-        collector: DC1
-        ipAddressString: 10.1.50.21
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/MSSQL
-          - /Groups/ALL
-        templates: 
-          - Device
-      ctsql-n02.tst.credoc.be: 
-        name: ctsql-n02.tst.credoc.be
-        collector: DC1
-        ipAddressString: 10.1.50.22
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/MSSQL
-          - /Groups/ALL
-        templates: 
-          - Device
-      inforprod.fednot.be: 
-        zProperties: 
-          zSnmpMonitorIgnore: True
-        name: inforprod.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.17.30
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        location: /Bergstraat
-        templates: 
-          - Device
-      javaprod.fednot.be: 
-        name: javaprod.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.13.82
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        location: /Bergstraat
-        templates: 
-          - Device
-      pra-exmbs-s01.fednot.be: 
-        zProperties: 
-          zSnmpMonitorIgnore: True
-        name: pra-exmbs-s01.fednot.be
-        collector: DC1
-        ipAddressString: 10.4.123.179
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/MAIL/Mail FedNot
-          - /Groups/ALL
-        templates: 
-          - Device
-      pra-vivaldi-s01.fednot.be: 
-        name: pra-vivaldi-s01.fednot.be
-        collector: DC1
-        ipAddressString: 10.102.0.36
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prd8por0.ini.be: 
-        name: prd8por0.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.60.32
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prd8por1.ini.be: 
-        name: prd8por1.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.60.31
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prd8wap1asfweb.ini.be: 
-        name: prd8wap1asfweb.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.60.81
-        productionState: -1
-        priority: 3
-        comments: Decom'd on 5/2/2020
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prd8wap1asp.ini.be: 
-        name: prd8wap1asp.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.60.41
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prd9fls0node1.ini.be: 
-        name: prd9fls0node1.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.70.22
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      prd9fls1node1.ini.be: 
-        name: prd9fls1node1.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.70.21
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      servase.fednot.be: 
-        name: servase.fednot.be
-        collector: DC1
-        ipAddressString: 10.102.0.26
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      sys2dmc0.ini.be: 
-        name: sys2dmc0.ini.be
-        collector: DC1
-        ipAddressString: 10.102.0.8
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      sys2dmc1.ini.be: 
-        name: sys2dmc1.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.80.30
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Server/Windows/SQL: 
-    name: SQL
-  /Storage: 
-    name: Storage
-  /Storage/Brocade: 
-    name: Brocade
-    devices: 
-      dc1-blch1sansw-s01.mgmt.credoc.be: 
-        name: dc1-blch1sansw-s01.mgmt.credoc.be
-        collector: DC1
-        ipAddressString: 10.253.11.215
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/SAN Switches
-        groups: 
-          - /Groups/ALL
-        location: /DC2 - IBM
-        templates: 
-          - Device
-      dc1-blch1sansw-s02.mgmt.credoc.be: 
-        name: dc1-blch1sansw-s02.mgmt.credoc.be
-        collector: DC1
-        ipAddressString: 10.253.11.216
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/SAN Switches
-        groups: 
-          - /Groups/ALL
-        location: /DC2 - IBM
-        templates: 
-          - Device
-      dc1-blch2sansw-s01.in.credoc.be: 
-        name: dc1-blch2sansw-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.253.12.215
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      dc1-blch2sansw-s02.in.credoc.be: 
-        name: dc1-blch2sansw-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.253.12.216
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      dc1-blch3sansw-s01.in.credoc.be: 
-        name: dc1-blch3sansw-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.253.13.215
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/SAN Switches
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      dc1-blch3sansw-s02.in.credoc.be: 
-        name: dc1-blch3sansw-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.253.13.216
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/SAN Switches
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      dc1-blch4sansw-s01.in.credoc.be: 
-        name: dc1-blch4sansw-s01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.253.14.215
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/SAN Switches
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      dc1-blch4sansw-s02.in.credoc.be: 
-        name: dc1-blch4sansw-s02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.253.14.216
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/SAN Switches
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      dc2-blch1sansw-s01.in.credoc.be: 
-        name: dc2-blch1sansw-s01.in.credoc.be
-        collector: DC2
-        ipAddressString: 10.253.21.215
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      dc2-blch1sansw-s02.in.credoc.be: 
-        name: dc2-blch1sansw-s02.in.credoc.be
-        collector: DC2
-        ipAddressString: 10.253.21.216
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      dc2-blch2sansw-s01.in.credoc.be: 
-        name: dc2-blch2sansw-s01.in.credoc.be
-        collector: DC2
-        ipAddressString: 10.253.22.215
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      dc2-blch2sansw-s02.in.credoc.be: 
-        name: dc2-blch2sansw-s02.in.credoc.be
-        collector: DC2
-        ipAddressString: 10.253.22.216
-        productionState: 1000
-        priority: 3
-        templates: 
-          - Device
-      pra-tsmfbsw-s01.fednot.be: 
-        name: pra-tsmfbsw-s01.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.42.170
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/SAN Switches
-          - /Systems/PR Production/PRA - Production Corporate
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      pra-tsmfbsw-s02.fednot.be: 
-        name: pra-tsmfbsw-s02.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.42.171
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/SAN Switches
-          - /Systems/PR Production/PRA - Production Corporate
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Storage/Fibre: 
-    name: Fibre
-    devices: 
-      prdfibresw_1a.ini.be: 
-        name: prdfibresw_1a.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.90.20
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/Fibre
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prdfibresw_1b.ini.be: 
-        name: prdfibresw_1b.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.90.21
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/Fibre
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      swfiber2a-berg.fednot.be: 
-        name: swfiber2a-berg.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.12.51
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/Fibre
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      swfiber2b-berg.fednot.be: 
-        name: swfiber2b-berg.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.12.52
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/Fibre
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Storage/IBM Storwize: 
-    name: IBM Storwize
-    devices: 
-      prb-v7ku-n02.in.credoc.be: 
-        zProperties: 
-        name: prb-v7ku-n02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.242
-        productionState: 400
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/Issues
-          - /Groups/ALL
-        templates: 
-          - Device
-          - IBMStorwizeHealth
-  /Storage/IBM Storwize/Devices: 
-    name: Devices
-    devices: 
-      prb-v7k-n01.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: prb-v7k-n01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.231
-        productionState: 400
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-v7k-n02.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: prb-v7k-n02.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.232
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-v7ku-c00.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: prb-v7ku-c00.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.240
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-v7ku-n01.in.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: prb-v7ku-n01.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.100.241
-        productionState: 400
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      stb-v7k-c00.staging.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: stb-v7k-c00.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.230
-        productionState: 900
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      stb-v7k-n01.staging.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: stb-v7k-n01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.231
-        productionState: 900
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      stb-v7k-n02.staging.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: stb-v7k-n02.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.232
-        productionState: 900
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      stb-v7ku-c00.staging.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: stb-v7ku-c00.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.240
-        productionState: 900
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      stb-v7ku-n01.staging.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: stb-v7ku-n01.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.241
-        productionState: 900
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-      stb-v7ku-n02.staging.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Device
-        name: stb-v7ku-n02.staging.credoc.be
-        collector: DC2
-        ipAddressString: 10.5.100.242
-        productionState: 900
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Storage/SMI-S: 
-    name: SMI-S
-    devices: 
-      evamgt-bergstraat.fednot.be: 
-        name: evamgt-bergstraat.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.12.54
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prb-v7k-c00.in.credoc.be: 
-        zProperties: 
-          zCIMConnectionString: u"'pywbemdb',scheme='https',host='${here/manageIp}',port=5989,user='zenoss',password='pJPK6cE4hbXtT4pypJPK6cE4hbXtT4py',namespace='root/ibm'"
-          zCIMHWConnectionString: u"'pywbemdb',scheme='https',host='${here/manageIp}',port=5989,user='zenoss',password='pJPK6cE4hbXtT4pypJPK6cE4hbXtT4py',namespace='root/ibm'"
-        name: prb-v7k-c00.in.credoc.be
-        collector: Legacy
-        ipAddressString: 10.4.100.230
-        productionState: 400
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-          - /Systems/PR Production/PRB - Production Hosted
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-      prd8sys0san.fednot.be: 
-        zProperties: 
-          zCIMConnectionString: u"'pywbemdb',scheme='https',host='${here/manageIp}',port=5989,user='fednot\\gen_monitoring',password='nkNqSIj5XV',namespace='root/eva'"
-          zCIMHWConnectionString: u"'pywbemdb',scheme='https',host='${here/manageIp}',port=5989,user='fednot\\gen_monitoring',password='nkNqSIj5XV',namespace='root/eva'"
-          zDeviceTemplates: |+
-            Device
-            CIM_Device
-        name: prd8sys0san.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.17.24
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - CIM_Device
-          - Device
-      prd8sys1san.ini.be: 
-        zProperties: 
-          zCIMConnectionString: u"'pywbemdb',scheme='https',host='192.168.90.32',port=5989,user='ini\\gen_monitoring',password='nkNqSIj5XV',namespace='root/eva'"
-          zCIMHWConnectionString: u"'pywbemdb',scheme='https',host='192.168.90.32',port=5989,user='ini\\gen_monitoring',password='nkNqSIj5XV',namespace='root/eva'"
-          zSnmpVer: v1
-        name: prd8sys1san.ini.be
-        collector: Legacy
-        ipAddressString: 192.168.90.32
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Storage/TSM: 
-    name: TSM
-  /Storage/Tape: 
-    name: Tape
-    devices: 
-      pra-tsmlib-s01.fednot.be: 
-        name: pra-tsmlib-s01.fednot.be
-        collector: DC1
-        ipAddressString: 192.168.42.175
-        productionState: 1000
-        priority: 3
-        systems: 
-          - /Systems/Infrastructure/Storage/Tape
-          - /Systems/PR Production/PRA - Production Corporate
-        groups: 
-          - /Groups/OnCall
-          - /Groups/ALL
-        templates: 
-          - Device
-  /Virtual IP Addresses: 
-    name: Virtual IP Addresses
-    devices: 
-      credocpki.wsproxy.in.credoc.be: 
-        name: credocpki.wsproxy.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.60.102
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      fsb.wsproxy.in.credoc.be: 
-        name: fsb.wsproxy.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.60.100
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      google.wsproxy.in.credoc.be: 
-        name: google.wsproxy.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.60.101
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      LEG-PRD_FSB.WSPROXY.CREDOC.BE: 
-        name: LEG-PRD_FSB.WSPROXY.CREDOC.BE
-        collector: Legacy
-        ipAddressString: 192.168.60.240
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      LEG-PRD_NKCN-CIA.WSPROXY.CREDOC.BE: 
-        name: LEG-PRD_NKCN-CIA.WSPROXY.CREDOC.BE
-        collector: Legacy
-        ipAddressString: 192.168.60.242
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      LEG-PRD_PRISMA-SSN_VIP: 
-        name: LEG-PRD_PRISMA-SSN_VIP
-        collector: Legacy
-        ipAddressString: 192.168.50.205
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      LEG-PRD_VIRTUAL_ENOTARIAT_VIP: 
-        name: LEG-PRD_VIRTUAL_ENOTARIAT_VIP
-        collector: Legacy
-        ipAddressString: 192.168.50.210
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      LEG-PRD_WS.CREDOC.BE_VIP: 
-        name: LEG-PRD_WS.CREDOC.BE_VIP
-        collector: Legacy
-        ipAddressString: 192.168.50.202
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      prd-appservers-vip-local.in.credoc.be: 
-        name: prd-appservers-vip-local.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.101
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      prd-appservers-vip.in.credoc.be: 
-        name: prd-appservers-vip.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.30.101
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      prd-ldap-sec-vip.in.credoc.be: 
-        name: prd-ldap-sec-vip.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.20.100
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      prd-ldap-vip.in.credoc.be: 
-        name: prd-ldap-vip.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.100
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      prd-sqlreport-vip.in.credoc.be: 
-        name: prd-sqlreport-vip.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.40.102
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      prd-vas-vip.in.credoc.be: 
-        name: prd-vas-vip.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.20.102
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      prd-webservers-vip.in.credoc.be: 
-        name: prd-webservers-vip.in.credoc.be
-        collector: DC1
-        ipAddressString: 10.4.20.101
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-  /Web: 
-    name: Web
-  /Web/SugarCRM: 
-    name: SugarCRM
-  /WebTransactions: 
-    name: WebTransactions
-  /Websites: 
-    name: Websites
-  /Websites/Credoc: 
-    name: Credoc
-    devices: 
-      ipad-acc.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            Certificates_Website
-            DnsMonitor
-        name: ipad-acc.credoc.be
-        collector: DC2
-        ipAddressString: 213.246.197.146
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-          - DnsMonitor
-      mi.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Certificates_Website
-        name: mi.credoc.be
-        collector: DC2
-        ipAddressString: 213.246.197.139
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-      sentry.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Certificates_Website
-        name: sentry.credoc.be
-        collector: DC2
-        ipAddressString: 217.111.180.235
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-      statuts.notaire.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: statuts.notaire.be
-        collector: DC1
-        ipAddressString: 212.35.127.68
-        productionState: 1000
-        priority: 3
-        templates: 
-          - HttpMonitor
-      upload.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Certificates_Website
-        name: upload.credoc.be
-        collector: DC2
-        ipAddressString: 217.111.180.231
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-      ws-acc.credoc.be: 
-        name: ws-acc.credoc.be
-        collector: DC2
-        ipAddressString: 217.111.180.239
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      ws.credoc.be: 
-        zProperties: 
-          zDeviceTemplates: Certificates_Website
-        name: ws.credoc.be
-        collector: DC2
-        ipAddressString: 217.111.180.229
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-      www.e-notariaat.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            HttpMonitor
-            Certificates_Website
-        name: www.e-notariaat.be
-        collector: DC2
-        ipAddressString: 217.111.180.230
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-          - HttpMonitor
-      www.notaclick.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            HttpMonitor
-            Certificates_Website
-        name: www.notaclick.be
-        collector: DC2
-        ipAddressString: 217.111.180.232
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-          - HttpMonitor
-      www.notaris.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: www.notaris.be
-        collector: DC2
-        ipAddressString: 213.246.197.140
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-  /Websites/External: 
-    name: External
-    devices: 
-      certs.eid.belgium.be: 
-        zProperties: 
-          zDeviceTemplates: BelgianCertificates
-        name: certs.eid.belgium.be
-        collector: DC2
-        ipAddressString: 64.18.25.33
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - BelgianCertificates
-      WEBSITE_FSB.SERVICES.PR.BELGIUM.BE: 
-        name: WEBSITE_FSB.SERVICES.PR.BELGIUM.BE
-        collector: DC2
-        ipAddressString: 193.191.245.107
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-      www.nkcn-cia.be: 
-        zProperties: 
-          zDeviceTemplates: Certificates_Website
-        name: www.nkcn-cia.be
-        collector: DC2
-        ipAddressString: 195.144.75.11
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-  /Websites/OnCall: 
-    name: OnCall
-    devices: 
-      www.fednot.be: 
-        zProperties: 
-          zDeviceTemplates: |+
-            HttpMonitor
-            Certificates_Website
-        name: www.fednot.be
-        collector: DC2
-        ipAddressString: 37.97.216.92
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Certificates_Website
-          - HttpMonitor
-      www.google.be: 
-        zProperties: 
-          zDeviceTemplates: HttpMonitor
-        name: www.google.be
-        collector: DC2
-        ipAddressString: 172.217.19.195
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-  /Websites/SSN: 
-    name: SSN
-    devices: 
-      mod.ssn.be: 
-        zProperties: 
-          zCommandCommandTimeout: 60.0
-          zCommandUserCommandTimeout: 60.0
-          zDeviceTemplates: HttpMonitor
-        name: mod.ssn.be
-        collector: DC2
-        ipAddressString: 82.143.85.249
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - HttpMonitor
-  /ZenossRM: 
-    name: ZenossRM
-    devices: 
-      ResourceManager: 
-        zProperties: 
-          zRMMonTenantHost: zenoss6.fednot.be
-          zRMMonTenantUser: zenoss_system
-        name: ResourceManager
-        collector: localhost
-        productionState: 1000
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-          - ZenossRMDevice
-  /vSphere: 
-    name: vSphere
-    devices: 
-      pra-vcc-s01.fednot.be: 
-        zProperties: 
-          zVSphereEndpointHost: pra-vcc-s01.fednot.be
-          zVSphereEndpointUser: fednot\zenoss
-          zVSphereModelExcludePaths: .*
-        name: pra-vcc-s01.fednot.be
-        collector: DC1
-        productionState: 400
-        priority: 3
-        groups: 
-          - /Groups/ALL
-        templates: 
-          - Device
-          - Endpoint
-# Device count: 669

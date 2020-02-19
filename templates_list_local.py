@@ -7,8 +7,8 @@ from devices_tools import get_devices_uids
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='List local templates')
-    parser.add_argument('-s', dest='environ', action='store', default='z6_prod')
-    parser.add_argument('-d', dest='devclass', action='store', default='Devices/Datacenter', help='Device Class')
+    parser.add_argument('-s', dest='environ', action='store', default='z6_test')
+    parser.add_argument('-d', dest='devclass', action='store', default='Devices', help='Device Class')
     parser.add_argument('-n', dest='tname', action='store', default='', help='Template name')
 
     options = parser.parse_args()

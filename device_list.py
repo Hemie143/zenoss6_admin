@@ -157,7 +157,7 @@ def print_alldevices(routers):
         response = device_router.callMethod('getInfo', uid=dc_uid, keys=['name'])
         data = response['result']['data']
         yaml_print(key='name', value=data['name'], indent=4)
-        # print_properties(routers, dc_uid, indent=4)
+        print_properties(routers, dc_uid, indent=4)
         device_count += print_dcdevices(routers, dc_uid, indent=4)
 
     print('# Device count: {}'.format(device_count))
