@@ -44,6 +44,10 @@ def parse_manufacturerlist(routers, list):
     list = sorted(list, key=lambda i: i['uid'])
     for manufacturer in list:
         manufacturer_path = '/' + manufacturer['path']
+        '''
+        if manufacturer_path < '/Manufacturers/Intel':
+            continue
+        '''
         manufacturer_uid = manufacturer['uid']
         yaml_print(key=manufacturer_path, indent=2)
         get_manufacturerproducts(routers, manufacturer_uid, indent=4)
@@ -56,6 +60,7 @@ if __name__ == '__main__':
     options = parser.parse_args()
     environ = options.environ
     # filename = options.filename
+
 
     # Routers
     manufacturer_router = zenAPI.zenApiLib.zenConnector(section=environ, routerName='ManufacturersRouter')

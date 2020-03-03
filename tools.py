@@ -11,7 +11,8 @@ def yaml_print(key='', value='', indent=0):
         else:
             print('{}{}'.format(head, key))
             for i in value:
-                print('{}  - {}'.format(head, str(i).encode('utf-8')))
+                print(u'{}  - {}'.format(head, i))
+                # print('{}  - {}'.format(head, str(i).decode('ascii').encode('utf-8')))
         return
     elif isinstance(value, int):
         value = str(value).decode('utf-8')

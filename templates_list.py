@@ -36,7 +36,7 @@ dp_all_fields = set()
 th_all_fields = set()
 gr_all_fields = set()
 gp_all_fields = set()
-
+templates_devices = []
 
 def print_datasources(routers, uid, indent):
     template_router = routers['Template']
@@ -78,6 +78,7 @@ def print_datasources(routers, uid, indent):
      ]
     '''
 
+    # TODO : commandTemplate not collected ?
     ds_fields = OrderedDict([('type', None), ('enabled', True), ('plugin_classname', None), ('component', ''),
                              ('eventClass', ''), ('eventKey', ''), ('severity', 3), ('cycletime', 300), ('oid', None),
                              ('commandTemplate', None), ('usessh', False), ('parser', 'Auto'),
@@ -101,7 +102,7 @@ def print_datasources(routers, uid, indent):
                              ('namespace', None), ('usePowershell', True), ('instance', None),
                              ('expectedIpAddress', None), ('initialUser', None), ('chunk_size', None),
                              ('initialURL', None), ('counter', None), ('dbtype', None), ('command', None),
-                             ('attempts', 2), ('sampleSize', 1)])
+                             ('attempts', 2)])
 
     '''
     [
@@ -309,13 +310,17 @@ def parse_templates(routers):
             templates_uid_set.add(r['uid'])
     templates_uid = sorted(list(templates_uid_set))
 
+
     # Loop through templates
     while templates_uid:
         # POP ?
         uid = templates_uid[0]
-        if uid < '/zport/dmd/Devices/Server/Windows':
+
+        '''
+        if uid < '/zport/dmd/Devices/Server/HP/ILO':
             templates_uid.remove(uid)
             continue
+        '''
         # print(uid)
         if '/rrdTemplates/' in uid:
             r = re.match('((\/zport\/dmd\/Devices)(.*))(\/rrdTemplates\/)(.*)', uid)
@@ -340,11 +345,16 @@ def parse_templates(routers):
                 print_template(routers, t_uid, parent_uid, indent=6)
                 templates_uid.remove(t_uid)
         elif '/devices/' in uid:
+            if uid.startswith('/zport/dmd/Devices/ControlCenter/'):
+                templates_uid.remove(uid)
+                continue
+
             dc_name = uid[18:]
             yaml_print(key=dc_name, indent=2)
             yaml_print(key='templates', indent=4)
             parent_uid = get_parent_template(routers, uid)
             print_template(routers, uid, parent_uid, indent=6)
+            templates_devices.append(uid)
             templates_uid.remove(uid)
         else:
             print('No analysis for {}'.format(uid))
@@ -380,5 +390,6 @@ if __name__ == '__main__':
     print('Graphpoint fields')
     print(gp_all_fields)
 
+    print(templates_devices)
 
 
