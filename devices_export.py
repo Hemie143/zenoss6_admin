@@ -2,41 +2,75 @@ import zenAPI.zenApiLib
 import argparse
 import re
 import yaml
+import sys
 from tqdm import tqdm
 
 def get_properties(routers, uid):
     properties_router = routers['Properties']
+    # TODO: take into account the type of the values (string, int...)
+    # TODO: for cProperties, also export the type, label and description
     # cProperties
     response = properties_router.callMethod('query', uid=uid, constraints={'idPrefix': 'c'})
     data = sorted(response['result']['data'], key=lambda i: i['id'])
     prop_data = {}
     for prop in data:
         if prop['islocal']:
-            v = prop.get('valueAsString', '')
+            if prop['type'] == 'date':
+                v = prop.get('valueAsString', '')
+            elif prop['type'] == 'string' or prop['type'] is None:
+                v = prop.get('value', '')
+                prop['type'] = 'string'
+            elif prop['type'] == 'int':
+                v = prop.get('value', None)
+            else:
+                print(prop)
+                exit()
             if v:
                 if 'cProperties' not in prop_data:
                     prop_data['cProperties'] = {}
-                prop_data['cProperties'][prop['id']] = v
+                prop_data['cProperties'][prop['id']] = {}
+                prop_data['cProperties'][prop['id']]['value'] = v
+                prop_data['cProperties'][prop['id']]['type'] = prop.get('type', 'string')
     # zProperties
     response = properties_router.callMethod('query', uid=uid, constraints={'idPrefix': 'z'})
     data = sorted(response['result']['data'], key=lambda i: i['id'])
-    header = False
     for prop in data:
-        if prop['islocal'] and prop['id'] not in ['zSnmpEngineId']:
-            v = prop.get('valueAsString', '')
-            if v:
+        if prop['islocal'] and prop['uid'] == uid and prop['id'] not in ['zSnmpEngineId']:
+            # print(prop)
+            if prop['type'] == 'boolean':
+                v = bool(prop['value'])
+            elif prop['type'] == 'int':
+                if prop['value'] is None:
+                    v = None
+                else:
+                    v = int(prop['value'])
+            elif prop['type'] == 'float':
+                v = float(prop['value'])
+            elif prop['type'] in ['password', 'instancecredentials', 'multilinecredentials']:
+                v = None
+            elif prop['type'] == 'string':
+                v = str(prop['value'])
+            elif prop['type'] == 'lines':
+                v = prop['value']           # List
+            else:
+                print(prop)
+                exit()
+            # v = prop.get('valueAsString', '')
+            # What if v is boolean False ?
+            # TODO: next condition to enhance
+            if not v is None:
                 if 'zProperties' not in prop_data:
                     prop_data['zProperties'] = {}
                 prop_data['zProperties'][prop['id']] = v
     return prop_data
 
 
-def get_groups(routers, output):
+def get_groups(routers, output, full_data):
     device_router = routers['Device']
     response = device_router.callMethod('getGroups', uid='/zport/dmd/Devices')
     groups = sorted(response['result']['groups'], key=lambda i: i['name'])
     groups_data = {'groups': {}}
-    for group in tqdm(groups, desc='Groups         '):
+    for group in tqdm(groups, desc='Groups         ', ascii=True):
         g_uid = '/zport/dmd/Groups{}'.format(group['name'])
         response = device_router.callMethod('getInfo', uid=g_uid)
         data = response['result']['data']
@@ -46,16 +80,17 @@ def get_groups(routers, output):
         desc = data.get('description', '')
         if desc:
             groups_data['groups'][group_name]['description'] = desc
-    yaml.safe_dump(groups_data, file(output, 'w'), encoding='utf-8', allow_unicode=True)
+    full_data.update(groups_data)
+    yaml.safe_dump(full_data, file(output, 'w'), encoding='utf-8', allow_unicode=True)
     return
 
 
-def get_systems(routers, output):
+def get_systems(routers, output, full_data):
     device_router = routers['Device']
     response = device_router.callMethod('getSystems', uid='/zport/dmd/Devices')
     systems = sorted(response['result']['systems'], key=lambda i: i['name'])
     systems_data = {'systems': {}}
-    for system in tqdm(systems,desc='Systems        '):
+    for system in tqdm(systems,desc='Systems        ', ascii=True):
         g_uid = '/zport/dmd/Systems{}'.format(system['name'])
         response = device_router.callMethod('getInfo', uid=g_uid)
         data = response['result']['data']
@@ -65,16 +100,17 @@ def get_systems(routers, output):
         desc = data.get('description', '')
         if desc:
             systems_data['systems'][system_name]['description'] = desc
-    yaml.safe_dump(systems_data, file(output, 'a'), encoding='utf-8', allow_unicode=True)
+    full_data.update(systems_data)
+    yaml.safe_dump(full_data, file(output, 'w'), encoding='utf-8', allow_unicode=True)
     return
 
 
-def get_locations(routers, output):
+def get_locations(routers, output, full_data):
     device_router = routers['Device']
     response = device_router.callMethod('getLocations', uid='/zport/dmd/Devices')
     locations = sorted(response['result']['locations'], key=lambda i: i['name'])
     locations_data = {'locations': {}}
-    for location in tqdm(locations, desc='Locations      '):
+    for location in tqdm(locations, desc='Locations      ', ascii=True):
         g_uid = '/zport/dmd/Locations{}'.format(location['name'])
         response = device_router.callMethod('getInfo', uid=g_uid)
         data = response['result']['data']
@@ -84,11 +120,12 @@ def get_locations(routers, output):
         desc = data.get('description', '')
         if desc:
             locations_data['locations'][location_name]['name'] = desc
-    yaml.safe_dump(locations_data, file(output, 'a'), encoding='utf-8', allow_unicode=True)
+    full_data.update(locations_data)
+    yaml.safe_dump(full_data, file(output, 'w'), encoding='utf-8', allow_unicode=True)
     return
 
 
-def get_dcdevices(routers, uid, indent):
+def get_dcdevices(routers, uid):
     device_router = routers['Device']
 
     # tag
@@ -116,7 +153,7 @@ def get_dcdevices(routers, uid, indent):
         devices_data['devices'][device_id].update(device_prop)
         for k in device_fields:
             if k in ['systems', 'groups']:
-                v = [g['path'] for g in data[k]]
+                v = sorted([g['path'] for g in data[k]])
             elif k in ['location']:
                 if data[k]:
                     v = data[k]['name']
@@ -141,19 +178,29 @@ def get_dcdevices(routers, uid, indent):
     return devices_data
 
 
-def get_alldevices(routers, output):
+def get_alldevices(routers, output, full_data):
     device_router = routers['Device']
     response = device_router.callMethod('getDeviceClasses', uid='/zport/dmd/Devices')
     device_classes = sorted(response['result']['deviceClasses'], key=lambda i: i['name'])
+    # device_classes = device_classes[:10]
     devices_data = {'device_classes': {}}
     # with open(output, 'a') as f:
     #     f.write('device_classes:\r\n')
-    for device_class in tqdm(device_classes, desc='Device Classes '):
+
+    dc_loop = tqdm(device_classes, desc='Device Class', ascii=True, file=sys.stdout)
+    for device_class in dc_loop:
         dc_name = device_class['name']
         if not dc_name:
             continue
+        desc = 'Device Class ({})'.format(dc_name)
+        dc_loop.set_description(desc)
+        dc_loop.refresh()
+
         devices_data['device_classes'][dc_name] = {}
-        dc_uid = '/zport/dmd/Devices{}'.format(device_class['name'])
+        if dc_name == '/':
+            dc_uid = '/zport/dmd/Devices'
+        else:
+            dc_uid = '/zport/dmd/Devices{}'.format(dc_name)
         response = device_router.callMethod('getInfo', uid=dc_uid, keys=['name'])
         data = response['result']['data']
         # dc_data = {dc_name: {}}
@@ -162,13 +209,16 @@ def get_alldevices(routers, output):
         dc_props = get_properties(routers, dc_uid)
         devices_data['device_classes'][dc_name].update(dc_props)
         # dc_data[dc_name].update(dc_props)
-        devices = get_dcdevices(routers, dc_uid, indent=4)
+
+        devices = get_dcdevices(routers, dc_uid)
         devices_data['device_classes'][dc_name].update(devices)
+
         # dc_data[dc_name].update(devices)
         # Can't find a way do dump yaml info with an original indent.
         # If possible, dump for each class when it's completed
         # yaml.safe_dump(dc_data, file(output, 'a'), encoding='utf-8', allow_unicode=True, indent=2, sort_keys=True)
-    yaml.safe_dump(devices_data, file(output, 'a'), encoding='utf-8', allow_unicode=True, sort_keys=True)
+        full_data.update(devices_data)
+        yaml.safe_dump(full_data, file(output, 'w'), encoding='utf-8', allow_unicode=True, sort_keys=True)
     return
 
 
@@ -188,8 +238,19 @@ if __name__ == '__main__':
         'Properties': properties_router,
     }
 
-    data = get_groups(routers, output)
-    data = get_systems(routers, output)
-    data = get_locations(routers, output)
-    data = get_alldevices(routers, output)
+    '''
+    response = properties_router.callMethod('query', uid='zport/dmd/Devices/Network/Switch',
+                                            constraints={'idPrefix': 'z'})
+    data = [p for p in response['result']['data'] if p['id'] == 'zDeviceTemplates']
+    print(data)
+    exit()
+    '''
+
+    # TODO: dump into file after each file or device class. Keep all data in one place and dump (write, not append)
+    #  after each iteration ?
+    data = {}
+    get_groups(routers, output, data)
+    get_systems(routers, output, data)
+    get_locations(routers, output, data)
+    get_alldevices(routers, output, data)
 

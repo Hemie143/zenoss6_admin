@@ -1,0 +1,708 @@
+device_classes: 
+  /: 
+    name: Devices
+    cProperties: 
+      cDateTest: '1900/01/01 00:00:00 US/Central'
+    zProperties: 
+      zAWSAutoChangeProdState: True
+      zAWSAutoChangeProdStateRunning: 1000
+      zAWSAutoChangeProdStateStopped: -1
+      zAWSBillingAthenaRegion: us-east-1
+      zAWSBillingCostThreshold: 1000
+      zAWSCloudFormationEventsAutoClear: True
+      zAWSCloudWatchCollectionInterval: 300
+      zAWSCloudWatchMaxParallel: 128
+      zAWSCloudWatchMaxRetries: 2
+      zAWSCloudWatchSSL: True
+      zAWSEnableSnapshotCollection: True
+      zAWSSQSQueues: [{"name_re": ".*", "parser": "simple", "event_class_key": "", "delete": false}]
+      zAggregatorCollectionInterval: 300
+      zAzureCollectionInterval: 300
+      zAzureEABillingCostThreshold: {}
+      zCiscoACEUseSSL: True
+      zCiscoNXAPIInterval: 300
+      zCiscoNXAPIPort: 443
+      zCiscoNXAPIUseSSL: True
+      zCiscoUCSCIMCEventsInterval: 60
+      zCiscoUCSCIMCPerfInterval: 300
+      zCiscoUCSCIMCReuseSessions: True
+      zCiscoUCSCIMCSSLProtocol: SSLv23
+      zCiscoUCSManagerPerfInterval: 300
+      zCiscoUCSManagerPort: 443
+      zCiscoUCSManagerUseSSL: True
+      zCiscoUCSManagerUser: admin
+      zCollectorClientTimeout: 180
+      zCollectorDecoding: utf-8
+      zCommandCollectionInterval: 300
+      zCommandCommandTimeout: 15.0
+      zCommandExistanceTest: 'test -f %s'
+      zCommandLoginTimeout: 10.0
+      zCommandLoginTries: 1
+      zCommandPath: $ZENHOME/libexec
+      zCommandPort: 22
+      zCommandProtocol: ssh
+      zCommandUserCommandTimeout: 15.0
+      zControlCenterHost: ${here/manageIp}
+      zControlCenterModelCycle: 3600
+      zControlCenterPerfCycle: 300
+      zControlCenterPort: 443
+      zDeviceTemplates: Device
+      zDockerMonitorContainerStats: True
+      zEMCModelComponents: 
+        - Array
+        - StoragePool
+        - SP
+        - SPPort
+        - Enclosure
+        - HardDisk
+        - LUN
+        - LCC
+        - Battery
+        - PowerSupply
+      zFileSystemMapIgnoreTypes: |+
+        other
+        ram
+        virtualMemory
+        removableDisk
+        floppyDisk
+        compactDisk
+        ramDisk
+        flashMemory
+        networkDisk
+      zFileSystemSizeOffset: 1.0
+      zILOPort: 443
+      zILOUseSSL: True
+      zILOUserName: Administrator
+      zIcon: /zport/dmd/img/icons/noicon.png
+      zIpServiceMapMaxPort: 1024
+      zJmxManagementPort: 12345
+      zJmxUsername: admin
+      zKeyPath: ~/.ssh/id_dsa
+      zLDAPBaseDN: dc=zenoss,dc=com
+      zLocalInterfaceNames: ^lo|^vmnet
+      zLocalIpAddresses: ^127|^0\.0|^169\.254|^224
+      zMaxOIDPerRequest: 40
+      zMySqlTimeout: 30
+      zNetAppMonitoringInterval: 300
+      zNetAppNumRecordsPerRequest: 100
+      zNetAppOCUMEventFilter: {"triggeredTime":"168","limit":"0","impactArea":["Capacity","Configuration","Availability","Performance","Protection"],"impactLevel":["Event","Risk","Incident"],"eventSeverity":["Critical","Error","Warning"]}
+      zNmapPortscanOptions: -p 1-1024 -sT --open -oG -
+      zNodesAutodiscover: True
+      zPowerEdgeEventInterval: 180
+      zProdStateThreshold: 300
+      zPropertyMonitorInterval: 300
+      zRMMonCCPort: 443
+      zRMMonRabbitUser: zenoss
+      zRMMonServicesToIgnoreCollectorMetricsFor: |+
+        zendotnet
+        RabbitMQ-Ceilometer
+      zRMMonTenantPerfCycle: 30
+      zRMMonTenantPort: 443
+      zRMMonTenantUseSsl: True
+      zRouteMapMaxRoutes: 500
+      zSnmpCollectionInterval: 300
+      zSnmpCommunities: |+
+        public
+        private
+      zSnmpCommunity: public
+      zSnmpPort: 161
+      zSnmpTimeout: 1
+      zSnmpTries: 6
+      zSnmpVer: v2c
+      zSshConcurrentSessions: 10
+      zStatusConnectTimeout: 15.0
+      zStatusEventClass: /Status/
+      zTelnetEnableRegex: 'assword:'
+      zTelnetLoginRegex: 'ogin:.$'
+      zTelnetPasswordRegex: 'assword:'
+      zTelnetPromptTimeout: 10.0
+      zTelnetSuccessRegexList: |+
+        \$.$
+        \#.$
+      zTelnetTermLength: True
+      zUsesManageIp: True
+      zUsesStandardDeviceCreationJob: True
+      zVSphereAutoChangeProdState: True
+      zVSphereAutoChangeProdStateRunning: 1000
+      zVSphereAutoChangeProdStateStopped: -1
+      zVSphereEndpointPort: 443
+      zVSphereEndpointUseSsl: True
+      zVSphereEndpointUser: admin
+      zVSphereModelMpIndexObjs: 50
+      zVSphereModelMpObjs: 250
+      zVSphereModelVSAN: True
+      zVSpherePerfHealthFailsThreshold: 10
+      zVSpherePerfHealthTimeoutsThreshold: 50
+      zVSpherePerfMaxAgeMinutes: 28
+      zVSpherePerfParallelQueries: 8
+      zVSpherePerfQueryChunkSize: 250
+      zVSpherePerfQueryRaw20: True
+      zVSpherePerfQueryTimeout: 25
+      zVSpherePerfQueryVcChunkSize: 64
+      zVSpherePerfRecoveryMinutes: 20
+      zVSpherePerfTimeoutRecoveryMinutes: 60
+      zVSphereVSANRetriggerAlarms: all
+      zWBEMPort: 5989
+      zWBEMRequestTimeout: 290
+      zWBEMUseSSL: True
+      zWSMANCollectionInterval: 300
+      zWSMANMaxObjectCount: 50
+      zWSMANPort: 443
+      zWSMANUseSSL: True
+      zWebTxAgent: ZenWebTx
+      zWinPerfmonInterval: 300
+      zWinRMClusterNodeClass: /Devices/Server/Microsoft/Windows
+      zWinRMConnectTimeout: 60
+      zWinRMEnvelopeSize: 512000
+      zWinRMKRBErrorThreshold: 1
+      zWinRMLocale: en-US
+      zWinRMPort: 5985
+      zWinRSCodePage: 65001
+      zWinScheme: http
+  /AWS: 
+    name: AWS
+  /AWS/EC2: 
+    name: EC2
+    zProperties: 
+      zCollectorClientTimeout: 1200
+      zDeviceTemplates: EstimatedCharges
+      zPingMonitorIgnore: True
+      zPythonClass: ZenPacks.zenoss.AWS.EC2Account
+  /Azure: 
+    name: Azure
+    zProperties: 
+      zAzureCollectionInterval: 300
+      zDeviceTemplates: AzureSubscription
+      zPythonClass: ZenPacks.zenoss.Microsoft.Azure.AzureSubscription
+  /CiscoUCS: 
+    name: CiscoUCS
+    zProperties: 
+      zCollectorClientTimeout: 600
+      zIcon: /++resource++ciscoucs/img/server-ciscoucs.png
+      zPythonClass: ZenPacks.zenoss.CiscoUCS.Device
+  /CiscoUCS/CIMC: 
+    name: CIMC
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        Memory
+        PowerStats
+        TemperatureStats
+      zIcon: /++resource++ciscoucs/img/rackserver.64.png
+      zPythonClass: ZenPacks.zenoss.CiscoUCS.CIMCDevice
+  /CiscoUCS/CIMC/C-Series: 
+    name: C-Series
+  /CiscoUCS/CIMC/E-Series: 
+    name: E-Series
+    zProperties: 
+      zDeviceTemplates: Device
+  /CiscoUCS/UCS-Manager: 
+    name: UCS-Manager
+  /ControlCenter: 
+    name: ControlCenter
+    zProperties: 
+      zCollectorClientTimeout: 1800
+      zDeviceTemplates: ControlCenter
+      zPingMonitorIgnore: True
+      zPythonClass: ZenPacks.zenoss.ControlCenter.ControlCenter
+      zSnmpMonitorIgnore: True
+  /Discovered: 
+    name: Discovered
+    zProperties: 
+      zLinks: 'http://www.zenoss.com'
+      zMaxOIDPerRequest: 10
+  /HTTP: 
+    name: HTTP
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        HttpMonitor
+      zSnmpMonitorIgnore: True
+  /KVM: 
+    name: KVM
+  /Network: 
+    name: Network
+    zProperties: 
+      zIfDescription: True
+  /Network/Cisco: 
+    name: Cisco
+    zProperties: 
+      zCiscoRemodelEventClassKeys: |+
+        ccmCLIRunningConfigChanged
+        cefcFRUInserted
+        cefcFRURemoved
+        cefcModuleOperStatus
+        cefcModuleStatusChange
+        ceSensorExtThresholdNotification
+        cesRealServerStateChangeRev1
+        ciscoSlbExtMIBConform
+        ciscoSlbVServerStateChange
+        entConfigChange
+        vtpVlanCreated
+        vtpVlanDeleted
+      zCollectorClientTimeout: 600
+      zDeviceTemplates: Device
+      zIcon: /++resource++cisco/img/cisco-router.png
+      zMaxOIDPerRequest: 40
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.CiscoDevice
+      zSnmpTimeout: 4.0
+      zSnmpTries: 2
+  /Network/Cisco/6500: 
+    name: 6500
+    zProperties: 
+      zIcon: /++resource++cisco/img/catalyst-6500.png
+  /Network/Cisco/6500/VSS: 
+    name: VSS
+    zProperties: 
+      zSnmpTimeout: 1.0
+      zSnmpTries: 6
+  /Network/Cisco/ACE: 
+    name: ACE
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        ACEContext
+      zIcon: /++resource++cisco/img/cisco-ace.png
+      zMaxOIDPerRequest: 10
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.ACE
+  /Network/Cisco/ASA: 
+    name: ASA
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        Device-Legacy
+        Device-Modern
+        Connections
+        Sessions
+      zIcon: /++resource++cisco/img/cisco-asa.png
+      zMaxOIDPerRequest: 10
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.ASA
+  /Network/Cisco/ASR: 
+    name: ASR
+    zProperties: 
+      zCommandPort: 23
+      zCommandProtocol: telnet
+  /Network/Cisco/ASR/1000: 
+    name: 1000
+    zProperties: 
+      zIcon: /++resource++cisco/img/asr-1000.png
+  /Network/Cisco/ASR/9000: 
+    name: 9000
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        DeviceMemoryUsage32Bit
+      zIcon: /++resource++cisco/img/asr-9000.png
+      zTelnetLoginRegex: 'sername:.$'
+  /Network/Cisco/CSR: 
+    name: CSR
+    zProperties: 
+      zCommandPort: 23
+      zCommandProtocol: telnet
+      zIcon: /++resource++cisco/img/asr-1000.png
+  /Network/Cisco/CatOS: 
+    name: CatOS
+  /Network/Cisco/Codec: 
+    name: Codec
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        CiscoCodec
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.CiscoCodec
+  /Network/Cisco/FWSM: 
+    name: FWSM
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        FWSMContext
+      zIcon: /++resource++cisco/img/cisco-fwsm.png
+      zMaxOIDPerRequest: 10
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.FWSM
+  /Network/Cisco/IDS: 
+    name: IDS
+    zProperties: 
+      zSnmpMonitorIgnore: True
+  /Network/Cisco/MDS: 
+    name: MDS
+    zProperties: 
+      zIcon: /++resource++cisco/img/cisco-mds.png
+  /Network/Cisco/MDS/9000: 
+    name: 9000
+  /Network/Cisco/Nexus: 
+    name: Nexus
+  /Network/Cisco/Nexus/1000V: 
+    name: 1000V
+    zProperties: 
+      zIcon: /++resource++cisco/img/nexus-1000.png
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.VSM
+  /Network/Cisco/Nexus/1010: 
+    name: 1010
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.VirtualServicesAppliance
+  /Network/Cisco/Nexus/3000: 
+    name: 3000
+  /Network/Cisco/Nexus/5000: 
+    name: 5000
+    zProperties: 
+      zCommandUsername: admin
+      zIcon: /++resource++cisco/img/nexus-5000.png
+  /Network/Cisco/Nexus/6000: 
+    name: 6000
+    zProperties: 
+      zIcon: /++resource++cisco/img/nexus-7000.png
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.Nexus7K
+  /Network/Cisco/Nexus/7000: 
+    name: 7000
+    zProperties: 
+      zIcon: /++resource++cisco/img/nexus-7000.png
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.Nexus7K
+  /Network/Cisco/Nexus/9000: 
+    name: 9000
+    zProperties: 
+      zIcon: /++resource++cisco/img/nexus-9000.png
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.Nexus7K
+      zSnmpMonitorIgnore: True
+  /Network/Cisco/VSG: 
+    name: VSG
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.VSG
+  /Network/Cisco/WLC: 
+    name: WLC
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.CiscoMonitor.CiscoWLC
+  /Network/Juniper: 
+    name: Juniper
+    zProperties: 
+      zCollectorClientTimeout: 240
+  /Network/Juniper/M10i: 
+    name: M10i
+  /Network/Router: 
+    name: Router
+    zProperties: 
+      zIcon: /zport/dmd/img/icons/router.png
+      zLinks: "<a href='http://${here/manageIp}' target='_'>Console: ${here/id}</a>"
+  /Network/Router/Cisco: 
+    name: Cisco
+  /Network/Router/Firewall: 
+    name: Firewall
+  /Network/Router/RSM: 
+    name: RSM
+  /Network/Router/TerminalServer: 
+    name: TerminalServer
+  /Network/Switch: 
+    name: Switch
+  /Ping: 
+    name: Ping
+    zProperties: 
+      zSnmpMonitorIgnore: True
+  /Power: 
+    name: Power
+  /Power/UPS: 
+    name: UPS
+  /Power/UPS/APC: 
+    name: APC
+  /Printer: 
+    name: Printer
+  /Printer/InkJet: 
+    name: InkJet
+  /Printer/Laser: 
+    name: Laser
+  /Server: 
+    name: Server
+    zProperties: 
+      zIcon: /zport/dmd/img/icons/server.png
+  /Server/Cmd: 
+    name: Cmd
+    zProperties: 
+      zSnmpMonitorIgnore: True
+  /Server/Darwin: 
+    name: Darwin
+    zProperties: 
+      zFileSystemMapIgnoreNames: ^\/dev
+  /Server/Dell: 
+    name: Dell
+    zProperties: 
+      zDeviceTemplates: Device
+      zIcon: /++resource++ZenPacks.zenoss.Dell.PowerEdge/icon/PowerEdgeDevice.png
+      zSnmpMonitorIgnore: True
+      zWSMANUsername: root
+  /Server/Dell/ChassisController: 
+    name: ChassisController
+    zProperties: 
+      zIcon: /++resource++ZenPacks.zenoss.Dell.PowerEdge/icon/PowerEdgeDevice.png
+  /Server/Dell/iDRAC6: 
+    name: iDRAC6
+    zProperties: 
+      zSnmpMonitorIgnore: True
+      zWSMANUsername: root
+  /Server/Dell/iDRAC7: 
+    name: iDRAC7
+  /Server/Dell/iDRAC8: 
+    name: iDRAC8
+  /Server/Dell/iDRAC9: 
+    name: iDRAC9
+  /Server/HP: 
+    name: HP
+    zProperties: 
+      zDeviceTemplates: HPDeviceSNMP
+      zIcon: /++resource++ZenPacks.zenoss.HP.Proliant/icon/HPDevice.png
+  /Server/HP/ILO: 
+    name: ILO
+    zProperties: 
+      zSnmpMonitorIgnore: True
+  /Server/HP/ILO/SNMP: 
+    name: SNMP
+    zProperties: 
+      zDeviceTemplates: HPDeviceSNMP
+  /Server/HP/OnboardAdministrator: 
+    name: OnboardAdministrator
+  /Server/HP/Proliant: 
+    name: Proliant
+  /Server/IBM: 
+    name: IBM
+  /Server/IBM/Power: 
+    name: Power
+  /Server/IBM/Power/HMC: 
+    name: HMC
+    zProperties: 
+      zCommandUsername: hscroot
+      zLinks: '<a href="http://www-304.ibm.com/webapp/set2/sas/f/hmc/resources.html" target="_blank">HMC Information Center</a>'
+      zPythonClass: ZenPacks.zenoss.IBM.Power.IBMHMCServer
+      zSnmpMonitorIgnore: True
+  /Server/Linux: 
+    name: Linux
+    zProperties: 
+      zHardDiskMapMatch: ^[hs]d[a-z]\d+$|c\d+t\d+d\d+s\d+$|^cciss\/c\dd\dp\d$|^dm\-\d$
+      zIcon: /zport/dmd/img/icons/server-linux.png
+      zIpServiceMapMaxPort: 8090
+  /Server/Linux/Dell: 
+    name: Dell
+    zProperties: 
+      zIcon: /++resource++ZenPacks.zenoss.Dell.PowerEdge/icon/PowerEdgeDevice.png
+  /Server/Microsoft: 
+    name: Microsoft
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        Cluster
+        Active Directory
+        IIS
+        MSExchange2010IS
+      zIcon: /++resource++mswindows/img/server-windows.png
+      zSnmpMonitorIgnore: True
+  /Server/Microsoft/Cluster: 
+    name: Cluster
+    zProperties: 
+      zDeviceTemplates: |+
+        Cluster
+        Active Directory
+        IIS
+        MSExchange2010IS
+      zPythonClass: ZenPacks.zenoss.Microsoft.Windows.ClusterDevice
+      zWindowsRemodelEventClassKeys: clusterOwnerChange
+  /Server/Microsoft/Windows: 
+    name: Windows
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        Active Directory
+        IIS
+        MSExchange2010IS
+      zPythonClass: ZenPacks.zenoss.Microsoft.Windows.Device
+  /Server/Remote: 
+    name: Remote
+  /Server/SSH: 
+    name: SSH
+    zProperties: 
+      zSnmpMonitorIgnore: True
+  /Server/SSH/AIX: 
+    name: AIX
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.AixMonitor.Device
+      zSshConcurrentSessions: 2
+  /Server/SSH/AIX/IBM_PowerVM: 
+    name: IBM_PowerVM
+    zProperties: 
+      zDeviceTemplates: |+
+        AIXExt
+        Device
+      zLinks: ${here/getLparLink}
+  /Server/SSH/Linux: 
+    name: Linux
+    zProperties: 
+      zLinuxServicesNotModeled: |+
+        addhostname
+        anacron
+        bluetooth
+        cpuspeed
+        ondemand
+        firstboot
+        irqbalance
+        isdn
+        lvm2-monitor
+        mcstrans
+        mdmonitor
+        portreserve
+        pppd-dns
+        rpcgssd
+        rsync
+        sudo
+        sysstat
+      zPythonClass: ZenPacks.zenoss.LinuxMonitor.LinuxDevice
+      zSshConcurrentSessions: 5
+  /Server/SSH/Solaris: 
+    name: Solaris
+    zProperties: 
+      zCommandCommandTimeout: 30.0
+      zDeviceTemplates: Device
+      zFileSystemMapIgnoreNames: .*libc.so.*|.*libc.*so
+      zFileSystemMapIgnoreTypes: |+
+        tmpfs
+        sharefs
+        nfs
+        autofs
+        fd
+        proc
+        devfs
+        ctfs
+        mntfs
+        objfs
+      zInterfaceMapIgnoreTypes: Local
+  /Server/SSH/Solaris/Cluster: 
+    name: Cluster
+    zProperties: 
+      zCommandUsername: root
+      zDeviceTemplates: |+
+        Device
+        Cluster
+      zPythonClass: ZenPacks.zenoss.SolarisMonitor.ClusterDevice
+  /Server/SSH/Solaris/Solaris10: 
+    name: Solaris10
+    zProperties: 
+      zCommandUsername: root
+  /Server/SSH/Solaris/Solaris10/Cluster: 
+    name: Cluster
+    zProperties: 
+      zCommandUsername: root
+      zDeviceTemplates: |+
+        Device
+        Cluster
+      zPythonClass: ZenPacks.zenoss.SolarisMonitor.ClusterDevice
+  /Server/Scan: 
+    name: Scan
+    zProperties: 
+      zSnmpMonitorIgnore: True
+  /Server/Solaris: 
+    name: Solaris
+    zProperties: 
+      zInterfaceMapIgnoreTypes: Local
+  /Server/VMware: 
+    name: VMware
+  /Server/VMware/ESXi: 
+    name: ESXi
+  /Server/VMware/ESXi/HP: 
+    name: HP
+    zProperties: 
+      zIcon: /++resource++ZenPacks.zenoss.HP.Proliant/icon/HPDevice.png
+  /Server/Windows: 
+    name: Windows
+    zProperties: 
+      zHardDiskMapMatch: .*
+      zIcon: /zport/dmd/img/icons/server-windows.png
+  /Server/Windows/Dell: 
+    name: Dell
+    zProperties: 
+      zIcon: /++resource++ZenPacks.zenoss.Dell.PowerEdge/icon/PowerEdgeWindowsDevice.png
+  /Storage: 
+    name: Storage
+    zProperties: 
+      zIcon: storage-50x50.png
+      zInterfaceMapIgnoreNames: lo
+      zPythonClass: ZenPacks.zenoss.StorageBase.Device
+  /Storage/EMC: 
+    name: EMC
+    zProperties: 
+      zCollectorClientTimeout: 1200
+      zPythonClass: ZenPacks.zenoss.EMC.base.SMISProvider
+      zWBEMPort: 5989
+      zWBEMUseSSL: True
+  /Storage/EMC/VMAX: 
+    name: VMAX
+    zProperties: 
+      zSnmpMonitorIgnore: True
+  /Storage/EMC/VNX: 
+    name: VNX
+    zProperties: 
+      zSnmpMonitorIgnore: True
+  /Storage/EMC/VNXFile: 
+    name: VNXFile
+    zProperties: 
+      zDeviceTemplates: CelerraSystem
+      zPythonClass: ZenPacks.zenoss.EMC.base.CelerraSystem
+      zSnmpMonitorIgnore: True
+  /Storage/NetApp: 
+    name: NetApp
+    zProperties: 
+      zCommandCommandTimeout: 300
+      zDeviceTemplates: |+
+        Device
+        NetApp - NFSv3
+        NetApp - CIFS
+      zLinks: '<a href="http://now.netapp.com/" target="_blank">NetApp Support<a>'
+      zPythonClass: ZenPacks.zenoss.NetAppMonitor.Device
+  /Storage/NetApp/7-Mode: 
+    name: 7-Mode
+    zProperties: 
+      zNetAppSSL: True
+      zSnmpMonitorIgnore: True
+  /Storage/NetApp/C-Mode: 
+    name: C-Mode
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        NetAppEvents
+      zSnmpMonitorIgnore: True
+  /Storage/NetApp/SNMP: 
+    name: SNMP
+    zProperties: 
+  /Web: 
+    name: Web
+  /WebTransactions: 
+    name: WebTransactions
+    zProperties: 
+      zPythonClass: ZenPacks.zenoss.ZenWebTx.WebTxDevice
+  /ZenossRM: 
+    name: ZenossRM
+    zProperties: 
+      zDeviceTemplates: |+
+        Device
+        ZenossRMDevice
+      zPingMonitorIgnore: True
+      zPythonClass: ZenPacks.zenoss.RMMonitor.ZenossRM
+      zSnmpMonitorIgnore: True
+    devices: 
+      127.0.0.1: 
+        zProperties: 
+          zRMMonCCHost: 10.5.90.52
+          zRMMonTenantHost: 127.0.0.1
+          zRMMonTenantPort: 8080
+          zRMMonTenantUser: zenoss_system
+        name: 127.0.0.1
+        collector: localhost
+        productionState: 1000
+        priority: 3
+        templates: 
+          - Device
+          - ZenossRMDevice
+  /vSphere: 
+    name: vSphere
+    zProperties: 
+      zCollectorClientTimeout: 3600
+      zDeviceTemplates: |+
+        Device
+        Endpoint
+      zIcon: /++resource++ZenPacks.zenoss.vSphere/icon/Endpoint.png
+      zPythonClass: ZenPacks.zenoss.vSphere.Endpoint
+      zSnmpMonitorIgnore: True
+      zVSpherePerfQueryChunkSize: 250
+# Device count: 1

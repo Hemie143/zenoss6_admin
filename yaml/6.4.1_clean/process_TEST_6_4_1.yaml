@@ -1,0 +1,121 @@
+Checking Zenoss
+process_class_organizers: 
+  /Processes: 
+    description: instances
+    zProperties: 
+      zAlertOnRestart: False
+      zCountProcs: False
+      zFailSeverity: 4
+      zModelerLock: 0
+      zMonitor: True
+      zSendEventWhenBlockedFlag: False
+  /Processes/Apache: 
+    description: instances
+    process_class: 
+      httpd: 
+        description: Apache httpd web server process
+        includeRegex: ^[^ ]*httpd[^ /]*( |$)
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+        replaceRegex: ^([^ ]*httpd[^ /]*)( .*|$)
+        replacement: \1
+  /Processes/MySQL: 
+    description: instances
+    process_class: 
+      mysqld: 
+        description: MySQL Server Process
+        includeRegex: sbin\/mysqld
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+  /Processes/Zenoss: 
+    description: instances
+    zProperties: 
+      zAlertOnRestart: False
+      zFailSeverity: 4
+    process_class: 
+      Zope: 
+        description: Zope is the web front end for Zenoss
+        includeRegex: .*runzope.*zenoss.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenactiond: 
+        description: Sends out notifications based on triggers
+        includeRegex: .*zenactiond.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zencommand: 
+        description: Using protocols such as Telnet and SSH, runs a command on the remote machine and parses the results into events and performance metrics.
+        includeRegex: .*zencommand.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zeneventd: 
+        includeRegex: .*zeneventd.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zeneventserver: 
+        description: The Zenoss event processor.
+        includeRegex: .*zeneventserver.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenhub: 
+        description: This daemon provides a stable interface to ZODB, via services that are requested by daemons.
+        includeRegex: .*zenhub.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenjmx: 
+        description: Provides monitoring for remote JMX agents.
+        includeRegex: .*zenjmx.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      zenjobs: 
+        description: An 'at'-style scheduler for running long-running commands.
+        includeRegex: .*zenjobs.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenjserver: 
+        description: Provides capability to render 'Dynamic View' pages within the UI
+        includeRegex: .*zenjserver.py.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      zenmail: 
+        description: Listen on the SMTP port (default 25) and convert e-mails into Zenoss events.
+        includeRegex: .*zenmail.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+        replaceRegex: .*
+        replacement: zenmail
+      zenmodeler: 
+        description: Model a device using protocols such as WMI, SNMP, SSH.
+        includeRegex: .*zenmodeler.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenperfsnmp: 
+        description: SNMP performance metric poller daemon
+        includeRegex: .*zenperfsnmp.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenping: 
+        description: IPv4 and IPv6 ICMP ECHO sending daemon
+        includeRegex: .*zenping.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenpop3: 
+        description: Connect to a POP3 server and convert any messages into Zenoss events.
+        includeRegex: .*zenpop3.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenprocess: 
+        description: SNMP based daemon that gathers process information, and based on what has been modeled, reports on process metrics such as memory and CPU utilization.
+        includeRegex: .*zenprocess.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zenpython: 
+        includeRegex: zenpython
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      zenstatus: 
+        description: A daemon that opens a TCP connection to the remote service to determine if it is available.
+        includeRegex: .*zenstatus.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+      zensyslog: 
+        description: Daemon that runs on the syslog ports and converts syslog messages to Zenoss events.
+        includeRegex: .*zensyslog.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+        replaceRegex: .*
+        replacement: zensyslog
+      zentrap: 
+        description: Receive SNMP v1/2c/3 traps, convert using MIB definitions, and turn into Zenoss events.
+        includeRegex: .*zentrap.py.*
+        excludeRegex: .*(vim|tail|grep|tar|cat|bash).*
+        replaceRegex: .*
+        replacement: zentrap
+      zenucsevents: 
+        description: Forward Cisco UCS events to Zenoss.
+        includeRegex: .*zenucsevents.py.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
+      zenwebtx: 
+        description: Provides Web site monitoring with synthetic web transactions.
+        includeRegex: .*zenwebtx.py.*
+        excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b

@@ -1,0 +1,3558 @@
+triggers:
+  AMQ:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and ("/AMQ" in dev.groups) and (evt.severity
+        != 2) and ("ModelChange event state update request" not in evt.summary) and
+        (evt.event_class != "/Status/Snmp/SNMP_AgentStop") and (evt.event_class !=
+        "/Status/Snmp/SNMP_AgentStart") and ("Value changed from None" not in evt.summary)
+        and ("command timed out" not in evt.summary) and ("No output from COMMAND"
+        not in evt.summary)
+      type: 1
+  ActiveMQ_ASF:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and ((dev.production_state == 1000) or
+        (elem.name.startswith("acb-amq"))) and (evt.severity >= 3) and ("timed out"
+        not in evt.summary) and ("Collection" not in evt.summary) and (dev.device_class.startswith("/Server/SSH/Linux/ActiveMQ"))
+        and ((evt.event_class == "/Status/ActiveMQ/Broker") or (evt.event_class ==
+        "/Status/Jolokia") or (evt.event_class == "/Status/ActiveMQ/Queue") or (("/Status/ActiveMQ/Queue"
+        in evt.event_class) and (sub_elem.name.startswith("be.fednot.asf."))) or ((evt.event_class
+        == "/Status/ActiveMQ/DLQ") and (sub_elem.name.startswith("DLQ.be.fednot.asf."))))
+      type: 1
+  ActiveMQ_Delivery:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("timed out"
+        not in evt.summary) and ("Collection" not in evt.summary) and (dev.device_class.startswith("/Server/SSH/Linux/ActiveMQ"))
+        and ((evt.event_class == "/Status/ActiveMQ/Broker") or (evt.event_class ==
+        "/Status/Jolokia") or ("/Status/ActiveMQ/Queue" in evt.event_class) or ((evt.event_class
+        == "/Status/ActiveMQ/DLQ") and (sub_elem.name.startswith("DLQ."))))
+      type: 1
+  ActiveMQ_HeapMemory:
+    enabled: true
+    rule:
+      source: (dev.production_state >= 900) and (evt.severity >= 4) and (evt.event_class
+        == "/Status/ActiveMQ/Memory")
+      type: 1
+  ActiveMQ_HeapMemory_Test:
+    enabled: true
+    rule:
+      source: (dev.production_state == 900) and (evt.severity == 3) and (evt.event_class
+        == "/Status/ActiveMQ/Memory") and (elem.name.startswith("dvb-amq-l02"))
+      type: 1
+  ActiveMQ_Naban:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("timed out"
+        not in evt.summary) and ("Collection" not in evt.summary) and ("/Status/ActiveMQ/Queue"
+        in evt.event_class) and (sub_elem.name.startswith("be.fednot.naban")) and
+        (dev.device_class.startswith("/Server/SSH/Linux/ActiveMQ"))
+      type: 1
+  App_Portal_Log:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and ((dev.device_class.startswith("/Server/SSH/Linux/APP/Prod"))
+        or (dev.device_class.startswith("/Server/Linux/APP/Prod"))) and (elem.name.startswith("prb-portal-l0"))
+        and (sub_elem.name == "/opt") and (evt.severity >= 3) and ("ModelChange" not
+        in evt.summary) and ("Value changed from None" not in evt.summary) and ("Error
+        processing transform" not in evt.summary) and ("No output from" not in evt.summary)
+        and ("command timed out" not in evt.summary) and ("httpd" not in evt.summary)
+        and (evt.event_class == "/Perf/Filesystem")
+      type: 1
+  BIP:
+    enabled: true
+    rule:
+      source: ("/BIP" in dev.groups) and (evt.severity > 2) and (dev.production_state
+        == 1000) and (("Threshold of Pool" in evt.summary) and (evt.count >= 2))
+      type: 1
+  Belnot_DNS_F5:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("/BelNot/Belnot
+        DNS/F5 BIG-IPs" in dev.groups) and (evt.event_class == "/Status/DNS") and
+        ("Plugin timed out" not in evt.summary)
+      type: 1
+  Belnot_DNS_Windows:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("/BelNot/Belnot
+        DNS/Windows Servers" in dev.groups) and (evt.event_class == "/Status/DNS")
+        and ("Plugin timed out" not in evt.summary)
+      type: 1
+  Captor:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        (dev.device_class.startswith("/Captor"))
+      type: 1
+  Certificate_Expire:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and (evt.event_class.startswith("/Certificate"))
+        and (evt.summary.startswith("Certificate will expire in"))
+      type: 1
+  Certificates:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ((dev.device_class.startswith("/Server/Linux/LDAP"))
+        or (dev.device_class.startswith("/Server/SSH/Linux/LDAP"))) and (evt.event_class.startswith("/Certificate"))
+      type: 1
+  Cisco_Switch:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity > 2) and (evt.event_class
+        != "/App/Zenoss") and (("/Network/Cisco" in dev.device_class) or ("/Network/Switch"
+        in dev.device_class))
+      type: 1
+  Dev_Servers:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and (dev.production_state == 1000) and ("/Development"
+        in dev.groups) and ("timed out" not in evt.summary)
+      type: 1
+  DiskSpace:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and ("disk space" in evt.summary) and
+        (evt.severity != 2)
+      type: 1
+  Environment:
+    enabled: true
+    rule:
+      source: ((dev.device_class == "/Server/Linux/Probes") or (dev.device_class ==
+        "/Server/SSH/Linux/Probes")) and (evt.event_class == "/HW/Temperature") and
+        (evt.severity >= 4)
+      type: 1
+  Example Service Trigger:
+    rule:
+      source: (evt.event_class.startswith("/Service/State"))
+      type: 1
+  Firewall_Connections:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and (dev.device_class.startswith("/Network/Check
+        Point")) and ("vsx" in evt.event_key)
+      type: 1
+  Infra_APIMgmt:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and (evt.event_class
+        != "/Cmd/Fail") and ("ModelChange" not in evt.summary) and ("Value changed
+        from None" not in evt.summary) and (not evt.summary.startswith("Error processing
+        transform")) and (not evt.summary.startswith("No output from")) and ("command
+        timed out" not in evt.summary) and (dev.device_class.startswith("/Server/SSH/Linux/API"))
+      type: 1
+  Infra_Datacenter:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        (dev.device_class.startswith("/Datacenter/Raritan")) and (evt.event_class
+        != "/App/Zenoss") and ("OnCallSMS" not in evt.event_key)
+      type: 1
+  Infra_Hardware:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        ("timed out" not in evt.summary) and ("twisted" not in evt.summary) and (evt.event_class_key
+        != "ILOQueryError") and (evt.event_class_key != "ILOQueryFailed") and ((dev.device_class.startswith("/Server/HP"))
+        or (dev.device_class.startswith("/Storage")) or (dev.device_class.startswith("/Server/Timeserver"))
+        or (dev.device_class.startswith("/Power")))
+      type: 1
+  Infra_Hardware_Probes:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        ((dev.device_class.startswith("/Server/Linux/Probes")) or (dev.device_class.startswith("/Server/SSH/Linux/Probes")))
+        and (evt.event_class.startswith("/HW"))
+      type: 1
+  Infra_ISAM:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        (not evt.summary.startswith("Error processing transform")) and (not evt.summary.startswith("No
+        output from")) and ("command timed out" not in evt.summary) and (dev.device_class
+        == "/Security/ISAM")
+      type: 1
+  Infra_ISAM_Memory:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and (dev.device_class
+        == "/Security/ISAM") and (evt.event_class == "/Perf/Memory")
+      type: 1
+  Infra_Linux:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        (not evt.summary.startswith("Error processing transform")) and (not evt.summary.startswith("No
+        output from")) and ("command timed out" not in evt.summary) and ("httpd" not
+        in evt.summary) and ("monlogmas" not in elem.name) and ("forty" not in elem.name)
+        and (evt.event_class == "/Perf/Filesystem") and (dev.device_class != "/Server/Linux/TSM")
+        and ((dev.device_class.startswith("/Server/Linux")) or (dev.device_class.startswith("/Server/SSH/Linux"))
+        or (dev.device_class.startswith("/Cluster/Linux")) or (dev.device_class.startswith("/Websites")))
+      type: 1
+  Infra_Network:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        (dev.device_class.startswith("/Network")) and (dev.device_class != "/Network/BIG-IP")
+        and (hasattr(zp_det, "__meta___impact_relatedevids") and "aged out" not in
+        zp_det.__meta___impact_relatedevids)
+      type: 1
+  Infra_TSM:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        ("Error processing transform" not in evt.summary) and ("No output from" not
+        in evt.summary) and ("command timed out" not in evt.summary) and (evt.event_class
+        == "/Status/OSProcess") and ("TSM" in evt.event_key)
+      type: 1
+  Infra_TSM_Linux:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        (not evt.summary.startswith("Error processing transform")) and (not evt.summary.startswith("No
+        output from")) and ("command timed out" not in evt.summary) and ("httpd" not
+        in evt.summary) and (evt.event_class == "/Perf/Filesystem") and (dev.device_class
+        == "/Server/Linux/TSM")
+      type: 1
+  Infra_Windows:
+    enabled: true
+    rule:
+      source: (dev.production_state >= 900) and (evt.severity >= 3) and (dev.device_class.startswith("/Server/Microsoft/Windows"))
+        and ((evt.event_class == "/Perf/Filesystem") or ((evt.event_class == "/Status/Ping")
+        and (evt.count > 1)))
+      type: 1
+  IronPort:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (dev.device_class == "/Cisco Ironport
+        ESA") and ("ModelChange event" not in evt.summary) and ("Value changed from
+        None" not in evt.summary) and (evt.severity != 2) and ((("connectivityFailure"
+        in evt.summary) and (evt.count >= 2)) or ("connectivityFailure" not in evt.summary))
+      type: 1
+  Linux_disk_space:
+    enabled: true
+    rule:
+      source: (dev.production_state >= 900) and (evt.severity >= 3) and (dev.device_class
+        != "/Server/Linux/TSM") and ((dev.device_class.startswith("/Server/Linux"))
+        or (dev.device_class.startswith("/Server/SSH/Linux"))) and (evt.event_class.startswith("/Perf/Filesystem"))
+      type: 1
+  OnCall:
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 4) and ("ModelChange"
+        not in evt.summary) and ("Value changed from None" not in evt.summary) and
+        ("No data" not in evt.summary) and ("aging" not in evt.summary) and ("Modeler
+        plugin" not in evt.summary) and ("DCDiag" not in evt.summary) and ("ailed
+        collection" not in evt.summary) and ("timed out" not in evt.summary) and (evt.event_class
+        != "/Status/SystemEventLog") and (not evt.event_class.startswith("/Status/Winrm"))
+        and ("/OnCall" in dev.groups)
+      type: 1
+  OnCall_SMS_App:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 4) and ("/APP/Prod"
+        in dev.groups) and (((evt.event_class == "/Status/IpService") and (sub_elem.name.startswith("portal")))
+        or ((evt.event_class == "/Status/OSProcess") and ("restarted" not in evt.message)
+        and ((sub_elem.name.startswith("portal")) or (sub_elem.name.startswith("edossier"))
+        or (sub_elem.name.startswith("edepot")) or (sub_elem.name.startswith("asf")))))
+      type: 1
+  OnCall_SMS_LDAP:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and (evt.event_class.startswith("/Status/LDAP"))
+      type: 1
+  OnCall_SMS_Mail:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and ("/MAIL/Mail FedNot" in dev.groups)
+        and (evt.event_class == "/Status/IpService") and (sub_elem.name == "smtp")
+      type: 1
+  OnCall_SMS_PDU:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("OnCallSMS"
+        in evt.event_key) and (dev.device_class == "/Datacenter/Raritan") and (evt.event_class
+        == "/PDU/Inlet")
+      type: 1
+  OnCall_SMS_Temp:
+    enabled: true
+    rule:
+      source: (dev.device_class == "/Datacenter/Raritan") and ("OnCallSMS" in evt.event_key)
+        and ((evt.event_class == "/HW/Temperature") or (evt.event_class == "/HW/Humidity"))
+      type: 1
+  OnCall_SMS_Websites:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 4) and (dev.device_class
+        == "/Websites/OnCall") and (not evt.event_class.startswith("/Certificate"))
+      type: 1
+  Production_App_Servers:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (("/Server/Linux/APP/Prod" in dev.device_class)
+        or ("/Server/SSH/Linux/APP/Prod" in dev.device_class) or (dev.device_class
+        == "/Server/Linux/Applications/Prod") or (dev.device_class == "/Server/SSH/Linux/Applications/Prod")
+        or (dev.device_class.startswith("/Virtual IP Addresses")) or ("/PR Production/PRB
+        - Production Hosted/PRB - APP" in dev.systems) or ("/PR Production/PRC - Production
+        Hosted Citizen/PRC - APP" in dev.systems)) and (evt.severity != 2) and ("ModelChange
+        event" not in evt.summary) and (evt.event_class != "/Status/Snmp/SNMP_AgentStop")
+        and (evt.event_class != "/Status/Snmp/SNMP_AgentStart") and ("Value changed
+        from None" not in evt.summary) and ("command timed out" not in evt.summary)
+        and ("No output from" not in evt.summary) and ("httpd" not in evt.summary)
+      type: 1
+  RenditionQueue:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and ("Timeout" not in evt.message) and ("ShellDataSourcePlugin"
+        not in evt.summary) and ((elem.name == "eRegistration_Queues") or (dev.device_class
+        == "/Server/Microsoft/Windows/realm_in.credoc.be/Rendition")) and (("RenditionQueue
+        exceeded" in evt.summary) or (evt.event_class == "/Perf/Rendition"))
+      type: 1
+  RenditionWinRM:
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and (dev.device_class
+        == "/Server/Microsoft/Windows/realm_in.credoc.be/Rendition") and (evt.event_class.startswith("/Status"))
+        and ("WinRS" in evt.message)
+      type: 1
+  SP25Error:
+    rule:
+      source: (evt.severity >= 3) and (elem.name == "eRegistration_Queues") and ("SP25Error
+        exceeded" in evt.summary)
+      type: 1
+  SP25Out_Response_Time:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and ("SP25-2.02.03-OUT-SUPPLIER" in elem.name) and
+        ("SP25OUT high response time exceeded" in evt.summary)
+      type: 1
+  SP25Queue:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and (elem.name == "eRegistration_Queues") and ((evt.event_class
+        == "/App/SP25Error") or (evt.event_class == "/App/SP25Queue"))
+      type: 1
+  SQL_FileSystem:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and ("/MSSQL"
+        in dev.groups) and (evt.event_class == "/Perf/Filesystem")
+      type: 1
+  Satellite_Automation_Notif:
+    enabled: true
+    rule:
+      source: (dev.production_state == 500) and (evt.severity == 5) and (evt.event_class
+        == "/NewServer")
+      type: 1
+  Signing:
+    enabled: true
+    rule:
+      source: (elem.name == "eRegistration_Queues") and (evt.severity >= 3) and ("Signing
+        exceeded" in evt.summary)
+      type: 1
+  SmartCards_CRL:
+    enabled: true
+    rule:
+      source: ("/SmartCards" in dev.groups) and (evt.severity >= 3) and ("Value changed
+        from None" not in evt.summary) and ("timed out" not in evt.summary)
+      type: 1
+  TrustBuilder:
+    enabled: true
+    rule:
+      source: (dev.production_state >= 900) and ("/TrustBuilder" in dev.groups) and
+        ("ModelChange event" not in evt.summary) and (evt.severity != 2) and (evt.event_class
+        != "/Status/Snmp/SNMP_AgentStop") and (evt.event_class != "/Status/Snmp/SNMP_AgentStart")
+        and ("Value changed from None" not in evt.summary)
+      type: 1
+  WebSEAL:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and ("/SEAL" in dev.groups) and ("ModelChange
+        event state update request" not in evt.summary) and (evt.severity != 2) and
+        (evt.event_class != "/Status/Snmp/SNMP_AgentStop") and (evt.event_class !=
+        "/Status/Snmp/SNMP_AgentStart") and ("Value changed from None" not in evt.summary)
+      type: 1
+  Website_CostaUI:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and (elem.name
+        == "statuts.notaire.be") and (evt.event_class == "/Status/Web")
+      type: 1
+  Websites_SSN:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 3) and (dev.device_class
+        == "/Websites/SSN") and ("Invalid IPv6 URL" not in evt.summary)
+      type: 1
+  Windows_Servers:
+    rule:
+      source: (dev.production_state == 1000) and ("/Server/Microsoft" in dev.device_class)
+        and (evt.severity > 2) and ("failed collection" not in evt.summary) and (("/Status/Ping"
+        in evt.event_class) or (("/Status/WinService" in evt.event_class) and (evt.count
+        >= 2)) or ("/Perf/Filesystem" in evt.event_class) or ((evt.event_class ==
+        "/Status") and ("WinRS" in evt.message)))
+      type: 1
+  Zenoss_Datasource:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and ("datasources-disabled" in evt.event_key)
+      type: 1
+  Zenoss_Heartbeat:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and (evt.event_class == "/Status/Heartbeat") and
+        (evt.count > 5)
+      type: 1
+  Zenoss_mgmt:
+    enabled: true
+    rule:
+      source: ("Device successfully added" in evt.summary)
+      type: 1
+  Zenoss_transform:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and ("transform" in evt.summary)
+      type: 1
+  Zenoss_zenpython:
+    enabled: true
+    rule:
+      source: (dev.production_state == 1000) and (evt.severity >= 4) and (evt.event_class
+        == "/Status/Heartbeat") and ("zenpython" in sub_elem.name)
+      type: 1
+  rancid-run:
+    enabled: true
+    rule:
+      source: (evt.event_class_key == "ciscoConfigManEvent")
+      type: 1
+  test:
+    enabled: true
+    rule:
+      source: (evt.severity >= 3) and (dev.device_class == "/Cisco Ironport ESA")
+      type: 1
+notifications:
+  AMQ:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      N_AMQ'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      N_AMQ'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 120
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - jndenonne (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - AMQ
+  ActiveMQ_ASF:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+
+      ActiveMQ_ASF'
+    clear_body_format: '
+
+      Event: ''${clearEvt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${clearEvt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+
+      ActiveMQ_ASF'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - asf-dev (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - ActiveMQ_ASF
+  ActiveMQ_Delivery:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      ActiveMQ_Delivery'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      ActiveMQ_Delivery'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - application_support (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - ActiveMQ_Delivery
+    - ActiveMQ_HeapMemory
+  ActiveMQ_Naban:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - dcraeye (User)
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - ActiveMQ_Naban
+  ActiveMQ_Restart:
+    action_timeout: '90'
+    body_format: ssh zenoss@${evt/device} "sudo sudo -H -u zenoss_shell bash -c 'sudo
+      systemctl restart activemq-a.service && sudo systemctl restart activemq-b.service'"
+    enabled: true
+    recipients:
+    - lhemeryck (User)
+    send_initial_occurrence: true
+    triggers:
+    - ActiveMQ_HeapMemory
+  ActiveMQ_Restart_Test:
+    action_timeout: '90'
+    body_format: /opt/zenoss/bin/zminion --minion-name zminion_DC2 run -- "/usr/bin/ssh
+      -i /home/zenoss/.ssh/id_rsa zenoss@dvb-amq-l02.dev.credoc.be "touch /home/zenoss/test_20190930_2""
+    enabled: true
+    recipients:
+    - lhemeryck (User)
+    send_initial_occurrence: true
+    triggers:
+    - ActiveMQ_HeapMemory_Test
+  App_Portal_Log:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      App_Portal_Log'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      App_Portal_Log'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - mverhaegen (User)
+    - mlucas (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - App_Portal_Log
+  BIP:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      BIP<br />'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      BIP<br />'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - jscheers (User)
+    - fgalmart (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - BIP
+  Captor:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device}<br />
+
+      Component: ${evt/component}<br />
+
+      Severity: ${evt/severity}<br />
+
+      Time: ${evt/lastTime}<br />
+
+      Message:<br />
+
+      ${evt/message}<br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Captor<br />'
+    clear_body_format: '
+
+      Event: ''${evt/summary}''<br />
+
+      Cleared by: ''${evt/clearid}''<br />
+
+      At: ${evt/stateChange}<br />
+
+      Device: ${evt/device}<br />
+
+      Component: ${evt/component}<br />
+
+      Severity: ${evt/severity}<br />
+
+      Message:<br />
+
+      ${evt/message}<br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Captor<br />'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - application_support (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Captor
+  Certificates:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Certificates'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Certificates'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - jscheers (User)
+    - fgalmart (User)
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Certificates
+  Cisco_Switch:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+
+      Cisco_Switch'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+
+      Cisco_Switch'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 360
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - jscheers (User)
+    - fgalmart (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Cisco_Switch
+  Dev_Servers:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Dev_Servers'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Dev_Servers'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - nhurion (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Dev_Servers
+  DiskSpace:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      DiskSpace'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      DiskSpace'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - DiskSpace
+  Environment:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Environment'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Environment'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 120
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - dwalravens (User)
+    - bvansteelandt (User)
+    - dvankrieken (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Environment
+  ExampleServiceEmailNotification:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device}
+
+      Component: ${evt/component}
+
+      Severity: ${evt/severity}
+
+      Time: ${evt/lastTime}
+
+      Message:
+
+      ${evt/message}
+
+      <a tal:attributes="href urls/eventUrl">Event Detail</a>
+
+      <a tal:attributes="href urls/ackUrl">Acknowledge</a>
+
+      <a tal:attributes="href urls/closeUrl">Close</a>
+
+      <a tal:attributes="href urls/eventsUrl">Device Events</a>
+
+
+      The following events are causes of this event:
+
+
+      <tal:block tal:repeat="item esa/causes">
+
+      Impact Chain: ${item/impactChain}
+
+      Device: ${item/evt/device}
+
+      Component: ${item/evt/component}
+
+      Severity: ${item/evt/severity}
+
+      Time: ${item/evt/lastTime}
+
+      Message:
+
+      ${item/evt/message}
+
+      <a tal:attributes="href item/urls/eventUrl">Event Detail</a>
+
+      <a tal:attributes="href item/urls/ackUrl">Acknowledge</a>
+
+      <a tal:attributes="href item/urls/closeUrl">Close</a>
+
+      <a tal:attributes="href item/urls/eventsUrl">Device Events</a>
+
+      </tal:block>
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}''
+
+      Cleared by: ''${evt/clearid}''
+
+      At: ${evt/stateChange}
+
+      Device: ${evt/device}
+
+      Component: ${evt/component}
+
+      Severity: ${evt/severity}
+
+      Message:
+
+      ${evt/message}
+
+      <a href="${urls/reopenUrl}">Reopen</a>
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${evt/summary}/${clearEvt/summary}'
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Example Service Trigger
+  Firewall_Connections:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      At: ${evt/stateChange} <br />
+
+      Message: <br />
+
+      ${clearEvt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - tdelaet (User)
+    - jscheers (User)
+    - ddeclercq (User)
+    - lvanhoudt (User)
+    - dvanderkrieken (User)
+    - lhemeryck (User)
+    - xgerard (User)
+    - ddiakodimitris (User)
+    - Lidwine.Do.Huu (User)
+    - cbouque (User)
+    - dgeshef (User)
+    - sdegreef (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Firewall_Connections
+  Infra_API:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      <br />
+
+      Component: ${evt/component} <br />
+
+      <br />
+
+      Severity: ${evt/severity} <br />
+
+      <br />
+
+      Time: ${evt/lastTime} <br />
+
+      <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+
+      Infra_API'
+    clear_body_format: '
+
+      Event: ''${clearEvt/summary}'' <br />
+
+      <br />
+
+      At: ${evt/stateChange} <br />
+
+      <br />
+
+      Device: ${evt/device} <br />
+
+      <br />
+
+      Component: ${evt/component} <br />
+
+      <br />
+
+      Severity: ${evt/severity} <br />
+
+      <br />
+
+      Message: <br />
+
+      ${clearEvt/message} <br />
+
+      <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Infra_API'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - apic_admin (User)
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Infra_APIMgmt
+  Infra_Datacenter:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+
+      Infra_Datacenter'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+
+      Infra_Datacenter'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - bvansteelandt (User)
+    - dwalravens (User)
+    - dvanderkrieken (User)
+    - tdelaet (User)
+    - ddeclercq (User)
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Infra_Datacenter
+  Infra_Hardware:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Infra_Hardware<br />'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Infra_Hardware<br />'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 360
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - tdelaet (User)
+    - ddeclercq (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Infra_Hardware
+    - Infra_Hardware_Probes
+    - Infra_TSM
+    - Infra_TSM_Linux
+  Infra_ISAM:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      ISAM'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      ISAM'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Infra_ISAM
+  Infra_Linux:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+
+      Infra_Linux'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Event Message: ${evt/message}<br />
+
+      Clear Message: ${clearEvt/message}<br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+
+      Infra_Linux'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 660
+    email_from: zenoss@fednot.be
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - stuyizere (User)
+    - unix (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Infra_Linux
+    - Infra_TSM
+  Infra_Linux_2019:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Infra_Linux_2019'
+    clear_body_format: '
+
+      Event: ''${clearEvt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${clearEvt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Infra_Linux_2019'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 60
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - stuyizere (User)
+    - sdescamps (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - ActiveMQ_HeapMemory
+    - Linux_disk_space
+  Infra_Network:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Infra_Network'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Infra_Network'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - jscheers (User)
+    - fgalmart (User)
+    - dsagi (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Infra_Network
+  Infra_Network_2019:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - jscheers (User)
+    - fgalmart (User)
+    - dsagi (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Belnot_DNS_F5
+  Infra_Windows:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Infra_Windows_'
+    clear_body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${clearEvt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Infra_Windows'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - mkela (User)
+    - shuyens (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Belnot_DNS_Windows
+    - Infra_Windows
+  IronPort:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      IronPort'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      IronPort'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - mkela (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - IronPort
+  OmniTracker:
+    body_content_type: text
+    body_format: 'Device: ${evt/device}
+
+      Component: ${evt/component}
+
+      Component Type: ${evt/comp_type}
+
+      Severity: ERROR
+
+      Time: ${evt/lastTime}
+
+      Message: ${evt/message}
+
+      EventId: ${evt/evid}
+
+
+      Omnitracker'
+    clear_body_format: 'Device: ${evt/device}
+
+      Component: ${evt/component}
+
+      Component Type: ${evt/comp_type}
+
+      Severity: ${evt/severityString}
+
+      Time: ${evt/lastTime}
+
+      Message: ${evt/message}
+
+      EventId: ${evt/evid}
+
+
+      Omnitracker'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - omnitracker (User)
+    - lhemeryck (User)
+    repeat_seconds: 14400
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - ActiveMQ_Delivery
+  OnCall:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: 'ONCALL - [zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 660
+    email_from: zenoss_oncall@fednot.be
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - oncall (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: ONCALL - [zenoss] ${evt/device} ${evt/summary}
+    triggers:
+    - OnCall
+  OnCall_Mail_24_7:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 330
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - oncall_sms (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - OnCall_SMS_PDU
+    - OnCall_SMS_Temp
+  OnCall_Mail_day:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - oncall_sms (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - OnCall_SMS_Websites
+  OnCall_Mail_night:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 330
+    email_from: zenoss@fednot.be
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - oncall_sms (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - OnCall_SMS_App
+    - OnCall_SMS_Mail
+  OnCall_SMS_24_7:
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    enabled: true
+    recipients:
+    - oncall_sms (User)
+    - oncall_sms2 (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Firewall_Connections
+    - OnCall_SMS_LDAP
+    - OnCall_SMS_PDU
+    - OnCall_SMS_Temp
+  OnCall_SMS_day:
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    enabled: true
+    recipients:
+    - oncall_sms (User)
+    - oncall_sms2 (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - OnCall_SMS_Websites
+  OnCall_SMS_night:
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 300
+    recipients:
+    - oncall_sms (User)
+    - oncall_sms2 (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - OnCall_SMS_App
+    - OnCall_SMS_Mail
+  Production_App_Servers:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Production_App_Servers'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Event Message: ${evt/message} <br />
+
+      Clear Message: ${clearEvt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Production_App_Servers'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 120
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - mverhaegen (User)
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Production_App_Servers
+  RenditionQueue:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      RenditionQueue'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      RenditionQueue'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - dcraeye (User)
+    - dwalravens (User)
+    - lhemeryck (User)
+    - pverbeeck (User)
+    - tdelaet (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - RenditionQueue
+    - RenditionWinRM
+  SP25Error:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      SP25Error'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      SP25Error'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - pverbeeck (User)
+    - bartois (User)
+    - lhemeryck (User)
+    - vdaems (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - SP25Error
+  SP25Out_Response_Time:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      SP25Out_Response_Time'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      SP25Out_Response_Time'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - pverbeeck (User)
+    - lhemeryck (User)
+    - bartois (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - SP25Out_Response_Time
+  SP25Queue:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      SP25Queue'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      SP25Queue'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - pverbeeck (User)
+    - lhemeryck (User)
+    - lvervaeck (User)
+    - amisbaer (User)
+    - dlaureys (User)
+    - vdaems (User)
+    - application_support (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - SP25Out_Response_Time
+    - SP25Queue
+  SQL_FileSystem:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      SQL_FileSystem'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      SQL_FileSystem'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - tdelaet (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - SQL_FileSystem
+  SSN_Admin:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      SSN_Admin'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      SSN_Admin'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - wberthels (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Websites_SSN
+  Satellite_Automation_Notif:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Satellite'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Satellite'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - stuyizere (User)
+    - lhemeryck (User)
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Satellite_Automation_Notif
+  SelfMonitoring:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      SelfMonitoring'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      SelfMonitoring'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 120
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+  Signing:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Signing'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Signing'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 360
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - pverbeeck (User)
+    - bartois (User)
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Signing
+  Smartcards_CRL:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Smartcards_CRL'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Smartcards_CRL'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 660
+    email_from: zenoss@fednot.be
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - stuyizere (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - SmartCards_CRL
+  Tech_Support:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - ppakozdi (User)
+    - mverhaegen (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Infra_ISAM_Memory
+  TrustBuilder:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      TrustBuilder'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      TrustBuilder'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 360
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - application_support (User)
+    - dvanderkrieken (User)
+    - tclaes (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - TrustBuilder
+  WebSEAL:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      WebSEAL'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      WebSEAL'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 120
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - WebSEAL
+  Website_CostaUI:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      '
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      '
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - jndenonne (User)
+    - application_support (User)
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Website_CostaUI
+  Windows_Servers:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Windows_Servers'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Windows_Servers'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 360
+    email_from: zenoss@fednot.be
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - mkela (User)
+    - shuyens (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Windows_Servers
+  Zenoss_SMS_Datasource:
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    recipients:
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Zenoss_Datasource
+  Zenoss_alert:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Zenoss_alert'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Zenoss_alert'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    delay_seconds: 600
+    email_from: zenoss_alert@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    - admin (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Zenoss_Datasource
+    - Zenoss_Heartbeat
+    - Zenoss_transform
+  Zenoss_mgmt:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Zenoss_mgmt'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Zenoss_mgmt'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss_mgmt@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Zenoss_mgmt
+  test:
+    body_content_type: html
+    body_format: '
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Time: ${evt/lastTime} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/eventUrl}">Event Detail</a><br />
+
+      <a href="${urls/ackUrl}">Acknowledge</a><br />
+
+      <a href="${urls/closeUrl}">Close</a><br />
+
+      <a href="${urls/eventsUrl}">Device Events</a><br />
+
+      <br />
+
+      Zenoss_test'
+    clear_body_format: '
+
+      Event: ''${evt/summary}'' <br />
+
+      Cleared by: ''${evt/clearid}'' <br />
+
+      At: ${evt/stateChange} <br />
+
+      Device: ${evt/device} <br />
+
+      Component: ${evt/component} <br />
+
+      Severity: ${evt/severity} <br />
+
+      Message: <br />
+
+      ${evt/message} <br />
+
+      <a href="${urls/reopenUrl}">Reopen</a><br />
+
+      <br />
+
+      Zenoss_test'
+    clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${clearEvt/summary}'
+    email_from: zenoss_test@fednot.be
+    enabled: true
+    host: smtp.in.credoc.be
+    port: '25'
+    recipients:
+    - lhemeryck (User)
+    send_clear: true
+    send_initial_occurrence: true
+    subject_format: '[zenoss] ${evt/device} ${evt/summary}'
+    triggers:
+    - Infra_TSM

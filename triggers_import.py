@@ -112,8 +112,8 @@ def import_notification(routers, data, current_notifications):
         recipient_options = result['data']
         recipients = new_data['recipients']
         current_recipients_label = [r['label'] for r in current_c_data['recipients']]
-        current_recipients_label = []                 # To reset recipients list
-        current_c_data['recipients'] = []             # To reset recipients list
+        # current_recipients_label = []                 # To reset recipients list
+        # current_c_data['recipients'] = []             # To reset recipients list
         for recipient in recipients:
             for r_value in recipient_options:
                 if r_value['label'] == recipient:
