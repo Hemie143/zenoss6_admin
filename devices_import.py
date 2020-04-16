@@ -561,8 +561,7 @@ if __name__ == '__main__':
     }
 
     # TODO: The following functions do not edit the item if already present
-    # parse_groups(routers, input)
-    # parse_systems(routers, input)
+    parse_groups(routers, input)
+    parse_systems(routers, input)
     parse_locations(routers, input)
-
     parse_deviceclasses(routers, input)

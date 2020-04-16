@@ -69,9 +69,11 @@ process_class_organizers:
       AppDynamics:
         description: AppDynamics Controller
         excludeRegex: \b(vim|tail|grep|tar|cat|bash)\b
-        includeRegex: \/opt\/AppDynamics\/Controller\/jre\/bin\/java
-        replaceRegex: .*
-        replacement: AppDynamics Controller
+        includeRegex: ^.*-Dxxxappdynamics.agent.tierName=([a-zA-Z0-9_-]*).*$
+        replaceRegex: ^.*-Dxxxappdynamics.agent.tierName=([a-zA-Z0-9_-]*).*$
+        replacement: \1
+        zProperties:
+          zMonitor: false
   /Processes/Linux/Atlassian:
     description: instances
     process_class:
@@ -190,6 +192,7 @@ process_class_organizers:
         replacement: \1
         zProperties:
           zFailSeverity: 5
+          zMonitor: false
   /Processes/Linux/Tomcat:
     description: instances
     process_class:

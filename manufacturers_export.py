@@ -1,6 +1,7 @@
 import zenAPI.zenApiLib
 import argparse
 import yaml
+import sys
 from tqdm import tqdm
 
 
@@ -13,7 +14,10 @@ def get_manufacturerdata(routers, uid):
     for k in fields:
         v = data.get(k, '')
         if v:
-            data_json[k] = v
+            if k == 'url':
+                data_json['URL'] = v
+            else:
+                data_json[k] = v
     return data_json
 
 
@@ -38,12 +42,18 @@ def get_productdata(routers, uid, name):
     manufacturer_router = routers['Manufacturers']
     response = manufacturer_router.callMethod('getProductData', uid=uid, prodname=name)
     data = response['result']['data'][0]
-    fields = ['name', 'partno', 'prodKeys', 'desc', 'os']
+    fields = ['name', 'partno', 'prodKeys', 'desc', 'os', 'type']
     data_json = {}
     for k in fields:
         v = data.get(k, '')
         if v:
-            data_json[k] = v
+            if k == 'prodKeys':
+                data_json['prodkeys'] = v
+            elif k == 'desc':
+                data_json['description'] = v
+            else:
+                data_json[k] = v
+    # TODO: zProperties ?
     return data_json
 
 
@@ -57,7 +67,11 @@ def parse_manufacturerlist(routers, output):
 
     manufacturers = sorted(data, key=lambda i: i['uid'])
     manufacturer_json = {}
-    for manufacturer in tqdm(manufacturers, desc='Manufacturers', ascii=True):
+    man_loop = tqdm(manufacturers, desc='Manufacturers', ascii=True, file=sys.stdout)
+    for manufacturer in man_loop:
+        man_loop.set_description('Manufacturer ({})'.format(manufacturer['path']))
+        man_loop.refresh()
+
         if 'manufacturers' not in manufacturer_json:
             manufacturer_json['manufacturers'] = {}
         manufacturer_path = '/' + manufacturer['path']
@@ -67,7 +81,7 @@ def parse_manufacturerlist(routers, output):
         manufacturer_json['manufacturers'][manufacturer_path].update(man_data)
         man_products = get_manufacturerproducts(routers, manufacturer_uid)
         manufacturer_json['manufacturers'][manufacturer_path].update(man_products)
-    yaml.safe_dump(manufacturer_json, file(output, 'w'), encoding='utf-8', allow_unicode=True, sort_keys=True)
+        yaml.safe_dump(manufacturer_json, file(output, 'w'), encoding='utf-8', allow_unicode=True, sort_keys=True)
 
 
 if __name__ == '__main__':

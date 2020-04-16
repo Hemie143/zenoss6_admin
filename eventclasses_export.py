@@ -32,6 +32,7 @@ def get_transforms(routers, uid):
             break
     return transform_data
 
+
 def get_mappings(routers, uid):
     eventclass_router = routers['EventClasses']
     response = eventclass_router.callMethod('getInstances', uid=uid)
@@ -85,8 +86,12 @@ def parse_eventclasses(routers, output):
     print('Retrieved {} event classes'.format(len(eventclasses_list)))
 
     eventclass_data = {'event_classes': {}}
-    for uid in tqdm(eventclasses_list, desc='Event Classes '):
+    ec_loop = tqdm(eventclasses_list, desc='Event Classes ', ascii=True)
+    for uid in ec_loop:
         branch_path = uid[10:]
+        ec_loop.set_description('Event Class ({})'.format(branch_path))
+        ec_loop.refresh()
+
         eventclass_data['event_classes'][branch_path] = {}
         # Properties
         ec_props = get_properties(routers, uid)
@@ -97,8 +102,10 @@ def parse_eventclasses(routers, output):
         # Mappings
         ec_mappings = get_mappings(routers, uid)
         eventclass_data['event_classes'][branch_path].update(ec_mappings)
-
-    yaml.safe_dump(eventclass_data, file(output, 'w'), encoding='utf-8', allow_unicode=True, sort_keys=True)
+        try:
+            yaml.safe_dump(eventclass_data, file(output, 'w'), encoding='utf-8', allow_unicode=True, sort_keys=True)
+        except:
+            pass
 
 
 if __name__ == '__main__':

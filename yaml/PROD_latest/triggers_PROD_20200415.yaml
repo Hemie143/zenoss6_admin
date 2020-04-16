@@ -504,6 +504,7 @@ notifications:
     subject_format: '[zenoss] ${evt/device} ${evt/summary}'
     triggers:
     - AMQ
+    - BIP
   ActiveMQ_ASF:
     action: email
     body_content_type: html
@@ -1307,6 +1308,9 @@ notifications:
 
       '
     clear_subject_format: '[zenoss] CLEAR: ${evt/device} ${evt/summary}/${clearEvt/summary}'
+    email_from: zenoss_test@fednot.be
+    host: smtp.in.credoc.be
+    port: '25'
     send_initial_occurrence: true
     subject_format: '[zenoss] ${evt/device} ${evt/summary}'
     triggers:
@@ -1974,6 +1978,7 @@ notifications:
     - lhemeryck (User)
     - mkela (User)
     - shuyens (User)
+    - jleplat (User)
     send_clear: true
     send_initial_occurrence: true
     subject_format: '[zenoss] ${evt/device} ${evt/summary}'

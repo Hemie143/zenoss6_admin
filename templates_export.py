@@ -3,6 +3,7 @@ import argparse
 import re
 from collections import OrderedDict
 import yaml
+import time
 from tqdm import tqdm
 
 
@@ -110,19 +111,67 @@ def get_datasources(routers, uid):
     ds_data = sorted(ds_data, key=lambda i: i['name'])
     dp_data = sorted(dp_data, key=lambda i: i['name'])
     for ds in ds_data:
-        ds_keys = ds.keys()
+        ds_uid = ds['uid']
+        response = template_router.callMethod('getDataSourceDetails', uid=ds_uid)
+        ds_details = response['result']['record']
+
+        ds_keys = ds_details.keys()
         ds_keys.remove('name')
         ds_name = ds['name']
         datasource_json['datasources'][ds_name] = {}
         for k, default in ds_fields.items():
-            v = ds.get(k, None)
+            v = ds_details.get(k, None)
             if k in ds_keys:
                 ds_keys.remove(k)
             if v and v != default:
                 datasource_json['datasources'][ds_name][k] = v
-        v = ds.get('source', None)
-        if v and v != ds.get('plugin_classname', None):
-            datasource_json['datasources'][ds_name]['source'] = v
+        if 'usessh' in ds_details:
+            datasource_json['datasources'][ds_name]['usessh'] = ds_details['usessh']
+
+        # Source field
+        v = ds_details.get('source', None)
+        # if v and v != ds.get('plugin_classname', None):
+        if v and not v.startswith('ZenPacks.'):
+            ds_type = ds_details['type']
+            # TODO: Refactor with mapping
+            if ds_type in ['SNMP', 'Cisco SNMP']:
+                datasource_json['datasources'][ds_name]['oid'] = v
+            elif ds_type == 'SQL':
+                datasource_json['datasources'][ds_name]['sql'] = v
+            elif ds_type == 'COMMAND':
+                # print(ds)
+                # print(datasource_json)
+                # exit()
+                # datasource_json['datasources'][ds_name]['commandTemplate'] = ds.get('commandTemplate', None)
+                # TODO: Remove "over SSH" ?
+                if "over SSH" in v:
+                    v = v[:-9]
+                datasource_json['datasources'][ds_name]['commandTemplate'] = v
+            elif ds_type == 'WebTx':
+                datasource_json['datasources'][ds_name]['initialURL'] = v
+            elif ds_type == 'NX-API Command':
+                datasource_json['datasources'][ds_name]['command'] = v
+            elif ds_type in ['ApacheMonitor', 'MySqlMonitor']:
+                datasource_json['datasources'][ds_name]['hostname'] = v
+            elif ds_type == 'Calculated Performance':
+                datasource_json['datasources'][ds_name]['expression'] = v
+            elif ds_type == 'JMX':
+                if v != '${dev/id}':
+                    print(ds_type)
+                    print('source: {}'.format(v))
+                    print(ds)
+                    exit()
+                # No data for output
+            elif ds_type in ['Kubernetes Metrics', 'Cisco APIC Properties', 'Cisco APIC Stats', 'LDAPMonitor',
+                             'Windows Process', 'VMware vSphere', 'Property', 'PING']:
+                pass
+                # No data for output
+            else:
+                print(ds_type)
+                print('source: {}'.format(v))
+                print(ds)
+                print(ds_details)
+                exit()
         # ds_all_fields.update(ds_keys)
 
         # Datapoints
@@ -144,15 +193,23 @@ def get_datasources(routers, uid):
 
             dp_keys.remove('aliases')
             dp_aliases = dp.get('aliases', [])
-            aliases_text = []
+
+            # aliases: [{id: "test", formula: "1, *"}, {id: "test2", formula: "2, *"}]
+
+            aliases_yaml = []
             for alias in dp_aliases:
                 alias_formula = alias.get('formula', 'null')
                 if not alias_formula:
                     alias_formula = 'null'
-                aliases_text.append("{}: '{}'".format(alias['name'], alias_formula))
+                # aliases_text.append("{}: '{}'".format(alias['name'], alias_formula))
+                aliases_yaml.append({'id': alias['name'], 'formula': alias['formula']})
+            '''
             if aliases_text:
                 value = '{{{}}}'.format(', '.join(aliases_text)).encode('ascii')
                 datasource_json['datasources'][ds_name]['datapoints'][dp_name]['aliases'] = value
+            '''
+            if aliases_yaml:
+                datasource_json['datasources'][ds_name]['datapoints'][dp_name]['aliases'] = aliases_yaml
             # dp_all_fields.update(dp_keys)
     return datasource_json
 
@@ -165,6 +222,12 @@ def get_thresholds(routers, uid):
     threshold_json = {}
     if not th_data:
         return threshold_json
+
+    # print(th_data)
+
+    # for t in th_data:
+    #     print(t['uid'])
+
 
     '''
     [
@@ -205,11 +268,16 @@ def get_thresholds(routers, uid):
             th_keys.remove('dsnames')
         dsnames = threshold.get('dsnames', [])
         if dsnames:
-            v = '[{}]'.format(', '.join(dsnames))
+            # v = '[{}]'.format(', '.join(dsnames))
             # yaml_print(key='dsnames', value=v, indent=indent + 4)
-            threshold_json['thresholds'][threshold_name]['dsnames'] = v
+            # threshold_json['thresholds'][threshold_name]['dsnames'] = v
+            threshold_json['thresholds'][threshold_name]['dsnames'] = dsnames
             # threshold_json['thresholds'][threshold_name]['dsnames2'] = dsnames
         # th_all_fields.update(th_keys)
+
+    # print(threshold_json)
+
+
     return threshold_json
 
 
@@ -241,8 +309,8 @@ def get_graphs(routers, uid):
     ]
     '''
 
-    gp_fields = OrderedDict([('description', 'DataPointGraphPoint'), ('legend', ''), ('dpName', ''),
-                             ('lineType', 'LINE'), ('lineWidth', 1), ('stacked', False), ('color', ''),
+    gp_fields = OrderedDict([('description', 'DataPointGraphPoint'), ('type', 'DataPoint'), ('legend', ''),
+                             ('dpName', ''), ('lineType', 'LINE'), ('lineWidth', 1), ('stacked', False), ('color', ''),
                              ('colorindex', None), ('format', '%5.2lf%s'), ('cFunc', 'AVERAGE'),
                              ('limit', -1), ('rpn', ''), ('includeThresholds', False), ('thresholdLegends', {}),
                              ('threshId', None), ('text', '')])
@@ -338,6 +406,10 @@ def parse_templates(routers, output):
     else:
         print('Total number of templates is OK')
 
+    templates_json = {}
+
+    # TODO: next in function ?
+
     # Group templates by device class
     device_classes = {}
     while dc_templates:
@@ -357,23 +429,40 @@ def parse_templates(routers, output):
         dc_templates = dc_templates - templates
     print('Found {} Device classes templates'.format(len(device_classes)))
 
-    templates_json = {}
-    for device_class, uids in tqdm(sorted(device_classes.items()), desc='Device classes ', ascii=True):
+    dc_loop = tqdm(sorted(device_classes.items()), desc='Device Classes ', ascii=True)
+    for device_class, uids in dc_loop:
+        dc_loop.set_description('Device Class ({})'.format(device_class))
+        dc_loop.refresh()
         if 'device_classes' not in templates_json:
             templates_json['device_classes'] = {}
         templates_json['device_classes'][device_class] = {}
-        for uid in tqdm(uids, desc='    Templates', ascii=True):
+        uids = sorted(uids)
+        t_loop = tqdm(uids, desc='    Templates', ascii=True)
+        for uid in t_loop:
+            t_loop.set_description('    Template ({})'.format(uid))
+            t_loop.refresh()
             if 'templates' not in templates_json['device_classes'][device_class]:
                 templates_json['device_classes'][device_class]['templates'] = {}
             data = get_template(routers, uid)
             templates_json['device_classes'][device_class]['templates'].update(data)
+            try:
+                yaml.safe_dump(templates_json, file(output, 'w'), encoding='utf-8', allow_unicode=True, sort_keys=True)
+            except:
+                time.sleep(10)
 
-    for uid in tqdm(device_templates, desc='Local templates', ascii=True):
+    # Local templates
+    dt_loop = tqdm(device_templates, desc='Local templates', ascii=True)
+    for uid in dt_loop:
+        dt_loop.set_description('Local template ({})'.format(uid))
+        dt_loop.refresh()
+
         if 'device_classes' not in templates_json:
             templates_json['device_classes'] = {}
         if uid.startswith('/zport/dmd/Devices/ControlCenter/'):
             continue
         dc_name = uid[18:]
+        dc_name = '/'.join(dc_name.split('/')[:-1])
+
         templates_json['device_classes'][dc_name] = {}
         if 'templates' not in templates_json['device_classes'][dc_name]:
             templates_json['device_classes'][dc_name]['templates'] = {}

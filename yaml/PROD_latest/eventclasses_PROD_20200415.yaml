@@ -108,28 +108,16 @@ event_classes:
 
 
 
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+          For more information, click http://www.microsoft.com/contentredirect.asp.'
       MSExchangeIS Mailbox Store_1029:
         eventClassKey: MSExchangeIS Mailbox Store_1029
-        example: 'username@domain.com failed an operation because the user did not
-          have the following access rights:
-
-
-          ''Delete'' ''Read Property'' ''Write Property'' ''Create Message'' ''View
-          Item'' ''Create Subfolder'' ''Write Security Descriptor'' ''Write Owner''
-          ''Read Security Descriptor'' ''Contact''
-
-
-          The distinguished name of the owning mailbox is /O=My Organization/OU=DOMAIN/CN=RECIPIENTS/CN=username.
-          The folder ID is in the data section of this event.
-
-
-
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+        example: "username@domain.com failed an operation because the user did not\
+          \ have the following access rights:\n\n'Delete' 'Read Property' 'Write Property'\
+          \ 'Create Message' 'View Item' 'Create Subfolder' 'Write Security Descriptor'\
+          \ 'Write Owner' 'Read Security Descriptor' 'Contact' \n\nThe distinguished\
+          \ name of the owning mailbox is /O=My Organization/OU=DOMAIN/CN=RECIPIENTS/CN=username.\
+          \ The folder ID is in the data section of this event.\n\n\nFor more information,\
+          \ click http://www.microsoft.com/contentredirect.asp."
       MSExchangeIS Mailbox Store_1032:
         eventClassKey: MSExchangeIS Mailbox Store_1032
         example: '/o=My Organization/ou=DOMAIN/cn=Recipients/cn=vwindmil sent a message
@@ -138,9 +126,7 @@ event_classes:
 
 
 
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+          For more information, click http://www.microsoft.com/contentredirect.asp.'
         zProperties:
           zEventSeverity: 1
       MSExchangeSA_9320:
@@ -156,23 +142,13 @@ event_classes:
 
 
 
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+          For more information, click http://www.microsoft.com/contentredirect.asp.'
       MSExchangeSA_9323:
         eventClassKey: MSExchangeSA_9323
-        example: 'Entry ''Nangpal, Alpana'' has invalid or expired e-mail certificates.  These
-          certificates will not be included in the offline address list for ''\Global
-          Address List''.
-
-
-          - Default Offline Address List
-
-
-
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+        example: "Entry 'Nangpal, Alpana' has invalid or expired e-mail certificates.\
+          \  These certificates will not be included in the offline address list for\
+          \ '\\Global Address List'.  \n\n- Default Offline Address List\n\n\nFor\
+          \ more information, click http://www.microsoft.com/contentredirect.asp."
       smtpsvc_5000:
         eventClassKey: smtpsvc_5000
         example: The message file 'E:\Program Files\Exchsrvr\Mailroot\vsi 1\Queue\NTFS_584fe40801c5f24800007253.EML'  in
@@ -232,9 +208,7 @@ event_classes:
           Subj:   **ADMINISTRATOR ALERT**
 
 
-          Place Media "MHS805" into drive or library unit
-
-          '
+          Place Media "MHS805" into drive or library unit'
         zProperties:
           zEventSeverity: 3
       BROWSER_8032:
@@ -242,9 +216,7 @@ event_classes:
         example: 'The browser service has failed to retrieve the backup list too many
           times on transport \Device\NetBT_Tcpip_{7177A0FB-FAD9-40C6-846C-FD72AAEC94A0}.
 
-          The backup browser is stopping.
-
-          '
+          The backup browser is stopping.'
         zProperties:
           zEventSeverity: 4
       Cloudmark Server Edition_2011:
@@ -257,9 +229,7 @@ event_classes:
 
           Zacarias,  Geneva
 
-          Zanti, Debra
-
-          '
+          Zanti, Debra'
         zProperties:
           zEventSeverity: 4
       EventLog_6000:
@@ -278,41 +248,20 @@ event_classes:
           zEventSeverity: 3
       NETLOGON_5719:
         eventClassKey: NETLOGON_5719
-        example: 'This computer was not able to set up a secure session with a domain
-
-          controller in domain DOMAIN due to the following:
-
-          The remote procedure call failed and did not execute.
-
-
-          This may lead to authentication problems. Make sure that this
-
-          computer is connected to the network. If the problem persists,
-
-          please contact your domain administrator.
-
-
-
-
-          ADDITIONAL INFO
-
-
-          If this computer is a domain controller for the specified domain, it
-
-          sets up the secure session to the primary domain controller emulator in
-          the specified
-
-          domain. Otherwise, this computer sets up the secure session to any domain
-          controller
-
-          in the specified domain.
-
-          '
+        example: "This computer was not able to set up a secure session with a domain\n\
+          controller in domain DOMAIN due to the following: \nThe remote procedure\
+          \ call failed and did not execute. \n\nThis may lead to authentication problems.\
+          \ Make sure that this\ncomputer is connected to the network. If the problem\
+          \ persists,\nplease contact your domain administrator.\n\n\n\nADDITIONAL\
+          \ INFO\n\nIf this computer is a domain controller for the specified domain,\
+          \ it\nsets up the secure session to the primary domain controller emulator\
+          \ in the specified\ndomain. Otherwise, this computer sets up the secure\
+          \ session to any domain controller\nin the specified domain."
         zProperties:
           zEventSeverity: 4
       Norton AntiVirus_6:
         eventClassKey: Norton AntiVirus_6
-        example: Scan could not access path C:\\RECYCLER\\S-1-5-21-1953108385-1836779210-1757479407-15306\\Dc231.ENC
+        example: Scan could not access path C:\RECYCLER\S-1-5-21-1953108385-1836779210-1757479407-15306\Dc231.ENC
       Remote Storage_4002:
         eventClassKey: Remote Storage_4002
         example: Media <MHS809/RS-AMICASARCH-8> cannot be mounted into a drive. Media
@@ -322,7 +271,7 @@ event_classes:
       Remote Storage_6021:
         eventClassKey: Remote Storage_6021
         example: An error was detected doing Data Transfer for <Demand Recall> on
-          AMICASARCH\\NTFS\\F:. User cancelled the operation. (0x8101000c)
+          AMICASARCH\NTFS\F:. User cancelled the operation. (0x8101000c)
         zProperties:
           zEventSeverity: 3
       Server Agents_1562:
@@ -333,9 +282,7 @@ event_classes:
           Error: Unable to initialize agent on non-ProLiant system.
 
 
-          Cause: The System Information Agent only operates on ProLiant systems.
-
-          '
+          Cause: The System Information Agent only operates on ProLiant systems.'
       Service Control Manager_7031:
         eventClassKey: Service Control Manager_7031
         example: 'The SNMP Service service terminated unexpectedly.  It has done this
@@ -354,9 +301,7 @@ event_classes:
           connections to add headroom.  To do that, modify the MinFreeConnections
           and MaxFreeConnections for the LanmanServer
 
-          in the registry.
-
-          '
+          in the registry.'
         zProperties:
           zEventSeverity: 5
       USER32_1073:
@@ -368,15 +313,13 @@ event_classes:
       W3SVC_101:
         eventClassKey: W3SVC_101
         example: 'The server was unable to add the virtual root ''/Packages/{80364610-d332-43de-b552-e3c35156edd4}''
-          for the directory ''\SERVERNAME\Packages\Cisco VPN Client\4.6'' due to the
-          following error: Logon failure: unknown user name or bad password.  The
+          for the directory ''\\SERVERNAME\Packages\Cisco VPN Client\4.6'' due to
+          the following error: Logon failure: unknown user name or bad password.  The
           data is the error code.
 
 
           For additional information specific to this message please visit the Microsoft
-          Online Support site located at: http://www.microsoft.com/contentredirect.asp.
-
-          '
+          Online Support site located at: http://www.microsoft.com/contentredirect.asp.'
       Winlogon_1218:
         eventClassKey: Winlogon_1218
         example: 'Failed to load Terminal Server Profile path.
@@ -385,9 +328,7 @@ event_classes:
 
           User Name: Administrator
 
-          Domain: DOMAIN
-
-          '
+          Domain: DOMAIN'
         zProperties:
           zEventSeverity: 3
       Winlogon_1219:
@@ -395,9 +336,7 @@ event_classes:
         example: 'Logon rejected for DOMAIN\username. Unable to obtain Terminal Server
           User Configuration.
 
-          Error: The RPC server is unavailable.
-
-          '
+          Error: The RPC server is unavailable.'
         zProperties:
           zEventSeverity: 4
   /Events/App/Info:
@@ -422,9 +361,7 @@ event_classes:
         eventClassKey: MSSQLSERVER_17055
         example: '3041 :
 
-          BACKUP failed to complete the command BACKUP LOG datarepo WITH NO_LOG
-
-          '
+          BACKUP failed to complete the command BACKUP LOG datarepo WITH NO_LOG'
         zProperties:
           zEventSeverity: 2
       MSSQLSERVER_17177:
@@ -471,9 +408,7 @@ event_classes:
 
 
           For more information about administering a server running Software Update
-          Services, see the Microsoft Software Update Services Deployment Guide (http://go.microsoft.com/fwlink/?LinkId=6928).
-
-          '
+          Services, see the Microsoft Software Update Services Deployment Guide (http://go.microsoft.com/fwlink/?LinkId=6928).'
         zProperties:
           zEventSeverity: 3
     zProperties:
@@ -488,15 +423,13 @@ event_classes:
           lost.
 
           This error may be caused by a failure of your computer hardware or network
-          connection. Please try to save this file elsewhere.
-
-          '
+          connection. Please try to save this file elsewhere.'
         zProperties:
           zEventSeverity: 3
       Print_6161:
         eventClassKey: Print_6161
         example: 'The document Default Report Title owned by USERNAME failed to print
-          on printer Client\\DOMAIN-client#\\10.1.2.3 - LJ 4100n. Data type: NT EMF
+          on printer Client\DOMAIN-client#\10.1.2.3 - LJ 4100n. Data type: NT EMF
           1.008. Size of the spool file in bytes: 131776. Number of bytes printed:
           0. Total number of pages in the document: 2. Number of pages printed: 0.
           Client machine: \\COMPUTER. Win32 error code returned by the print processor:
@@ -510,11 +443,8 @@ event_classes:
           zEventSeverity: 3
       Schedule_7901:
         eventClassKey: Schedule_7901
-        example: 'The At1.job command failed to start due to the following error:
-
-          General access denied error
-
-          '
+        example: "The At1.job command failed to start due to the following error:\
+          \ \nGeneral access denied error"
   /Events/App/Log:
     mappings:
       CROND:
@@ -529,7 +459,7 @@ event_classes:
         eventClassKey: postfix/smtpd
         example: 'warning: 68.33.51.29: hostname pcp0010796240pcs.anapol01.md.comcast.net
           verification failed: Host not found'
-        regex: 'warning: (?P<eventKey>\\S+):'
+        regex: 'warning: (?P<eventKey>\S+):'
       procmail:
         eventClassKey: procmail
         example: Descriptor 1 was not open
@@ -721,6 +651,10 @@ event_classes:
         example: Service started.
         regex: Service started.
         sequence: 1
+    zProperties:
+      zEventClearClasses:
+      - /App/Stop
+      zEventSeverity: 0
   /Events/App/Stop:
     mappings:
       FileMaker Server 7_140:
@@ -907,18 +841,14 @@ event_classes:
         sequence: 1
         transform: 'evt.summary = evt.summary.split(":", 2)[-1].strip()
 
-          evt.eventKey = summary.split()[2]
-
-          '
+          evt.eventKey = summary.split()[2]'
       pool_member_up:
         eventClassKey: mcpd
         example: '01070727:5: Pool member 172.16.3.20:80 monitor status up.'
         regex: Pool member [^ ]+ monitor status up
         transform: 'evt.summary = evt.summary.split(":", 2)[-1].strip()
 
-          evt.eventKey = summary.split()[2]
-
-          '
+          evt.eventKey = summary.split()[2]'
         zProperties:
           zEventSeverity: 0
       state_change_down:
@@ -1776,7 +1706,7 @@ event_classes:
         transform: "import re\n\neventKey = getattr(evt, 'eventKey', None)\nif eventKey:\n\
           \    match = re.search(r'^topology/pod-\\d+/node-\\d+/sys/phys-', eventKey)\n\
           \    if match:\n        if not component or component.__class__.__name__\
-          \ == 'FabricNode':\n            evt._action = 'drop'\n"
+          \ == 'FabricNode':\n            evt._action = 'drop'"
   /Events/Cisco/FW:
     mappings:
       defaultmapping:
@@ -1875,9 +1805,7 @@ event_classes:
 
           failed, or the node may have lost communication with the other active
 
-          server cluster nodes.
-
-          '
+          server cluster nodes.'
         zProperties:
           zEventSeverity: 4
   /Events/Cluster/CRM: {}
@@ -1922,9 +1850,7 @@ event_classes:
 
           in any other network components to which the node is connected such as
 
-          hubs, switches, or bridges.
-
-          '
+          hubs, switches, or bridges.'
         zProperties:
           zEventSeverity: 4
       ClusSvc_1128:
@@ -1932,9 +1858,7 @@ event_classes:
         example: 'Cluster network ''Private'' is operational (up). All available server
           cluster nodes
 
-          attached to the network can communicate using it.
-
-          '
+          attached to the network can communicate using it.'
         zProperties:
           zEventSeverity: 0
       ClusSvc_1130:
@@ -1950,9 +1874,7 @@ event_classes:
 
           Finally, check for hardware or software errors in the adapters that attach
 
-          the nodes to the network.
-
-          '
+          the nodes to the network.'
         zProperties:
           zEventSeverity: 4
   /Events/Cluster/ResourceDegraded:
@@ -2061,8 +1983,8 @@ event_classes:
         transform: evt._action = "drop"
       Map_to_MPG:
         eventClassKey: defaultmapping
-        rule: (evt.component.split(\'_\')[0].find(\'dpwr\') > -1 and evt.eventGroup
-          == "syslog")
+        rule: (evt.component.split('_')[0].find('dpwr') > -1 and evt.eventGroup ==
+          "syslog")
         sequence: 14
         transform: "import re\n\nif evt.component.find('KBO_BCE') > -1:\n    dp_dev,\
           \ dp_tags, dp_comp, trail = evt.component.split('_')[:4]\n    dp_comp =\
@@ -2197,9 +2119,7 @@ event_classes:
         transform: 'evt.eventKey = getattr(evt, ''ims-trap-chan'') + " " + getattr(evt,
           ''ims-trap-env-type'')
 
-          evt.summary = evt.eventKey + " " + getattr(evt, ''ims-trap-status'')
-
-          '
+          evt.summary = evt.eventKey + " " + getattr(evt, ''ims-trap-status'')'
         zProperties:
           zEventSeverity: 5
       environment-alarm-trap-normal:
@@ -2210,9 +2130,7 @@ event_classes:
         transform: 'evt.eventKey = getattr(evt, ''ims-trap-chan'') + " " + getattr(evt,
           ''ims-trap-env-type'')
 
-          evt.summary = evt.eventKey + " " + getattr(evt, ''ims-trap-status'')
-
-          '
+          evt.summary = evt.eventKey + " " + getattr(evt, ''ims-trap-status'')'
         zProperties:
           zEventSeverity: 0
       externalSensorStateChange:
@@ -2466,9 +2384,7 @@ event_classes:
           again.
 
 
-          [SNMP TRAP: 6025 in CPQHLTH.MIB]
-
-          '
+          [SNMP TRAP: 6025 in CPQHLTH.MIB]'
         zProperties:
           zEventSeverity: 3
   /Events/HW/Backup:
@@ -4770,9 +4686,7 @@ event_classes:
           12 = QUEUED FOR EXPANSION
 
 
-          13 = UNKNOWN
-
-          '
+          13 = UNKNOWN'
         zProperties:
           zEventSeverity: 4
       CPQCISSE_24625:
@@ -4784,9 +4698,7 @@ event_classes:
         eventClassKey: CPQCISSE_24644
         example: 'Physical Drive in Box 1, Bay 5 of Embedded Controller has failed.
 
-          Failure Code: 0x07.
-
-          '
+          Failure Code: 0x07.'
         zProperties:
           zEventSeverity: 4
       QDLT32_7:
@@ -4852,9 +4764,7 @@ event_classes:
 
           [SNMP TRAP: 16022 in
 
-          CPQFCA.MIB]
-
-          '
+          CPQFCA.MIB]'
         zProperties:
           zEventSeverity: 4
       Storage Agents_1146:
@@ -4869,9 +4779,7 @@ event_classes:
 
           5=predictiveFailure, 6=failed)
 
-          [SNMP TRAP: 16016 in CPQFCA.MIB]
-
-          '
+          [SNMP TRAP: 16016 in CPQFCA.MIB]'
         zProperties:
           zEventSeverity: 4
       cpqExtArrayLogDrvStatusChange:
@@ -5379,11 +5287,12 @@ event_classes:
         transform: "evt.summary = \"Status is now %d for the IDE logical drive.\"\
           \  %(evt.cpqIdeLogicalDriveStatus)\nsnmpindex = \"%d.%d\" %(evt.cpqIdeLogicalDriveControllerIndex,\
           \ evt.cpqIdeLogicalDriveIndex)\nfor comp in device.getMonitoredComponents(type=\"\
-          cpqIdeLogicalDrive\"):\nfor comp in device.getMonitoredComponents(type=\"\
-          LogicalDisk\"):\n    if comp.__class__.__name__ != \"cpqIdeLogicalDrive\"\
-          : continue\n    if comp.snmpindex != snmpindex: continue\n    comp.status\
-          \ = evt.cpqIdeLogicalDriveStatus\n    evt.component = comp.id\n    evt.severity\
-          \ = comp.statusSeverity(comp.status)\n    txnCommit()\n    break\n"
+          cpqIdeLogicalDrive\"):\n    for comp in device.getMonitoredComponents(type=\"\
+          LogicalDisk\"):\n        if comp.__class__.__name__ != \"cpqIdeLogicalDrive\"\
+          : continue\n        if comp.snmpindex != snmpindex: continue\n        comp.status\
+          \ = evt.cpqIdeLogicalDriveStatus\n        evt.component = comp.id\n    \
+          \    evt.severity = comp.statusSeverity(comp.status)\n        txnCommit()\n\
+          \        break\n"
       cpqcissm_11:
         eventClassKey: cpqcissm_11
         example: The driver detected a controller error on \Device\Scsi\cpqcissm1.
@@ -5431,9 +5340,7 @@ event_classes:
 
           Previous state was: Non-Critical (Warning)
 
-          Temperature sensor value (in Degrees Celsius): 11.0
-
-          '
+          Temperature sensor value (in Degrees Celsius): 11.0'
         zProperties:
           zEventSeverity: 0
       Server Administrator_1053:
@@ -5446,9 +5353,7 @@ event_classes:
 
           Previous state was: OK (Normal)
 
-          Temperature sensor value (in Degrees Celsius): 10.0
-
-          '
+          Temperature sensor value (in Degrees Celsius): 10.0'
         zProperties:
           zEventSeverity: 4
       Server Agents_1091:
@@ -5457,9 +5362,7 @@ event_classes:
 
           is operational again.  The server has previously been shutdown due to
 
-          a thermal anomaly and has just become operational again.
-
-          '
+          a thermal anomaly and has just become operational again.'
         zProperties:
           zEventSeverity: 0
       cpqHe3TemperatureDegraded:
@@ -5605,12 +5508,9 @@ event_classes:
         transform: evt.summary = "Temperature has returned to normal range."
       cpqasm2_4111:
         eventClassKey: cpqasm2_4111
-        example: 'Environment Abnormality Auto Shutdown (EAAS) initiated due to thermal
-          reasons,
-
-          either resulting from the system overheating, or from the loss of cooling.
-
-          '
+        example: "Environment Abnormality Auto Shutdown (EAAS) initiated due to thermal\
+          \ reasons, \neither resulting from the system overheating, or from the loss\
+          \ of cooling."
         zProperties:
           zEventSeverity: 4
     transform: "try:\n    comp = evt.component.name()\nexcept:\n    comp = evt.component\n\
@@ -5641,9 +5541,7 @@ event_classes:
           Chassis: ''0''; Fan: ''1''
 
 
-          [SNMP TRAP: 6036 in CPQHLTH.MIB]
-
-          '
+          [SNMP TRAP: 6036 in CPQHLTH.MIB]'
         zProperties:
           zEventSeverity: 4
       cpqHe3FltTolFanDegraded:
@@ -5859,9 +5757,7 @@ event_classes:
         example: 'A required processor fan (fan #1) has failed.  Environment Abnormality
           Auto Shutdown
 
-          (EAAS) initiated.
-
-          '
+          (EAAS) initiated.'
         zProperties:
           zEventSeverity: 4
     transform: "try:\n    comp = evt.component.name()\nexcept:\n    comp = evt.component\n\
@@ -5903,9 +5799,7 @@ event_classes:
           Chassis: ''0''
 
 
-          [SNMP TRAP: 6032 in CPQHLTH.MIB]
-
-          '
+          [SNMP TRAP: 6032 in CPQHLTH.MIB]'
       anacron:
         eventClassKey: anacron
         example: Updated timestamp for job `cron.daily' to 2005-12-13
@@ -5961,9 +5855,7 @@ event_classes:
 
           <object-dn>CN=Username,CN=Users,DC=domain,DC=com (org\Users\username)</object-dn>
 
-          <component>Publisher</component>
-
-          '
+          <component>Publisher</component>'
       FileMaker Server 7_94:
         eventClassKey: FileMaker Server 7_94
         example: Client "CLIENTNAME" opening database "DATABASENAME" as "USERNAME".
@@ -5994,7 +5886,7 @@ event_classes:
       MSExchangeIS Mailbox Store_1173:
         eventClassKey: MSExchangeIS Mailbox Store_1173
         example: Error 0x6bb deleting unused restricted view from folder 1-C8EA27F
-          on database "First Storage Group\\Mailbox Store (MHSMAIL1)". Microsoft Exchange
+          on database "First Storage Group\Mailbox Store (MHSMAIL1)". Microsoft Exchange
           Information Store will try to delete the view again at the next maintenance
           interval.   For more information, click http://www.microsoft.com/contentredirect.asp.
       MSExchangeTransport_3005:
@@ -6015,7 +5907,7 @@ event_classes:
         example: 'Client printer auto-creation failed.  The driver could not be installed.
           Possible reasons for the failure: The driver is not in the list of drivers
           on the server. The driver cannot be located. The driver has not been mapped.
-          Client name: (DOMAIN-client) Printer: (Client\\DOMAIN-client#\\Kyocera Mita
+          Client name: (DOMAIN-client) Printer: (Client\DOMAIN-client#\Kyocera Mita
           KM-1650 KX - 10.1.2.3)  Printer driver: (Kyocera Mita KM-1650 KX)'
       NETLOGON_5722:
         eventClassKey: NETLOGON_5722
@@ -6056,8 +5948,8 @@ event_classes:
           To filter out the needed information, please search for lines which
       Print_2:
         eventClassKey: Print_2
-        example: NT AUTHORITY\\SYSTEM Printer Client\\DOMAIN-client#\\Color Printer
-          - 10.1.2.3 was created.
+        example: NT AUTHORITY\SYSTEM Printer Client\DOMAIN-client#\Color Printer -
+          10.1.2.3 was created.
       Print_20:
         eventClassKey: Print_20
         example: Printer Driver HP LaserJet 4000 Series PCL for Windows NT x86 Version-3
@@ -6065,26 +5957,26 @@ event_classes:
           UNIRES.DLL, PCL5ERES.DLL, HPC4500U.DLL, TTFSUB.GPD, hplj5si.hlp, STDNAMES.GPD.
       Print_3:
         eventClassKey: Print_3
-        example: NT AUTHORITY\\SYSTEM  Printer Client\\DOMAIN-client#\\HP Laserjet
-          2100 PCL 6 - 10.1.2.3 was deleted.
+        example: NT AUTHORITY\SYSTEM  Printer Client\DOMAIN-client#\HP Laserjet 2100
+          PCL 6 - 10.1.2.3 was deleted.
       Print_4:
         eventClassKey: Print_4
-        example: NT AUTHORITY\\SYSTEM  Printer Client\\DOMAIN-client#\\HP Laserjet
-          2100 PCL 6 - 10.1.2.3 is pending deletion.
+        example: NT AUTHORITY\SYSTEM  Printer Client\DOMAIN-client#\HP Laserjet 2100
+          PCL 6 - 10.1.2.3 is pending deletion.
       Print_8:
         eventClassKey: Print_8
-        example: NT AUTHORITY\\SYSTEM  Printer Client\\DOMAIN-client#\\HP Laserjet
-          2100 PCL 6 - 10.1.2.3 was purged.
+        example: NT AUTHORITY\SYSTEM  Printer Client\DOMAIN-client#\HP Laserjet 2100
+          PCL 6 - 10.1.2.3 was purged.
       Remote Storage_3037:
         eventClassKey: Remote Storage_3037
-        example: Remote Storage failed to recall file <\AMICASARCH\F$\DICOMImageArchive\2005\06\25\1.3.12.2.1107.5.4.4.1075.5.0.2350209711421538.zip>.
+        example: Remote Storage failed to recall file <\\AMICASARCH\F$\DICOMImageArchive\2005\06\25\1.3.12.2.1107.5.4.4.1075.5.0.2350209711421538.zip>.
           User has hit the runaway recall limit. (0x81060016)
       Removable Storage Service_102:
         eventClassKey: Removable Storage Service_102
         example: Unable to register COM class objects.
       Symantec AntiVirus_6:
         eventClassKey: Symantec AntiVirus_6
-        example: Could not scan 492 files inside D:\\Symantec SMTP 4.x\\Symantec_Mail_Security_for_SMTP_4.1.9.35_Win_Sol.zip
+        example: Could not scan 492 files inside D:\Symantec SMTP 4.x\Symantec_Mail_Security_for_SMTP_4.1.9.35_Win_Sol.zip
           due to extraction errors encountered by the Decomposer Engines.
       Symantec Mail Security for SMTP_2:
         eventClassKey: Symantec Mail Security for SMTP_2
@@ -6099,12 +5991,12 @@ event_classes:
           before you log in again.
       dirxml remote loader_1:
         eventClassKey: dirxml remote loader_1
-        example: '%256: \\ID_VAULT\\org\\services\\DirXML\\Driver-Set\\NewADDriver
-          %257: Subscriber Channel %258: \\ID_VAULT\\org\\Users\\Groups\\AD\\MetaFrame
-          Users %259: <ldap-err ldap-rc="68" ldap-rc-name="LDAP_ALREADY_EXISTS"> <client-err
-          ldap-rc="68" ldap-rc-name="LDAP_ALREADY_EXISTS">Already Exists</client-err>
-          <server-err>00000562: UpdErr: DSID-031A0F4F, problem 6005 (ENTRY_EXISTS),
-          data 0 </server-err> <server-err-ex win32-rc="1378"/> </ldap-err>'
+        example: '%256: \ID_VAULT\org\services\DirXML\Driver-Set\NewADDriver %257:
+          Subscriber Channel %258: \ID_VAULT\org\Users\Groups\AD\MetaFrame Users %259:
+          <ldap-err ldap-rc="68" ldap-rc-name="LDAP_ALREADY_EXISTS"> <client-err ldap-rc="68"
+          ldap-rc-name="LDAP_ALREADY_EXISTS">Already Exists</client-err> <server-err>00000562:
+          UpdErr: DSID-031A0F4F, problem 6005 (ENTRY_EXISTS), data 0 </server-err>
+          <server-err-ex win32-rc="1378"/> </ldap-err>'
       excdo_8206:
         eventClassKey: excdo_8206
         example: Calendaring agent failed with error code 0x80070057 while saving
@@ -6125,8 +6017,8 @@ event_classes:
           click http://www.microsoft.com/contentredirect.asp.
       general_1173:
         eventClassKey: general_1173
-        example: 'NT AUTHORITY\\ANONYMOUS LOGON  Internal event: Active Directory
-          has encountered the following exception and associated parameters.    Exception:
+        example: 'NT AUTHORITY\ANONYMOUS LOGON  Internal event: Active Directory has
+          encountered the following exception and associated parameters.    Exception:
           e0010004  Parameter: 0    Additional Data  Error value: -1603  Internal
           ID: 2050344'
       msexchangeactivesyncnotify_10306:
@@ -6145,7 +6037,7 @@ event_classes:
           http://www.microsoft.com/contentredirect.asp.
       msexchangesa_5008:
         eventClassKey: msexchangesa_5008
-        example: The message tracking log file G:\\Program Files\\Exchsrvr\\MHSMAILlog\\20060120.log
+        example: The message tracking log file G:\Program Files\Exchsrvr\MHSMAILlog\20060120.log
           was deleted.   For more information, click http://www.microsoft.com/contentredirect.asp.
       msexchangesa_9040:
         eventClassKey: msexchangesa_9040
@@ -6166,10 +6058,10 @@ event_classes:
           MID : 1-6E0DB5D. File : .   For more information, click http://www.microsoft.com/contentredirect.asp.'
       norton antivirus_6:
         eventClassKey: norton antivirus_6
-        example: Scan could not access path C:\\pagefile.sys
+        example: Scan could not access path C:\pagefile.sys
       replication_1232:
         eventClassKey: replication_1232
-        example: 'NT AUTHORITY\\ANONYMOUS LOGON  Active Directory attempted to perform
+        example: 'NT AUTHORITY\ANONYMOUS LOGON  Active Directory attempted to perform
           a remote procedure call (RPC) to the following server.  The call timed out
           and was cancelled.    Server: 56fedf38-c8c0-4328-a453-a12a8b9c08ea._msdcs.mhs.med  Call
           Timeout (Mins): 5  Thread ID: 408    Additional Data  Internal ID: 5001047'
@@ -6185,14 +6077,14 @@ event_classes:
           corrupt and has not been enumerated.
       store_1025:
         eventClassKey: store_1025
-        example: 'An error occurred on database "First Storage Group\\Public Folder
+        example: 'An error occurred on database "First Storage Group\Public Folder
           Store (MHSMAIL1)".  Function name or description of problem: Restrict/SetSearchCriteria
           Error: -1102 Warning: fail to apply search optimization to folder (FID 1-3B3C7)   Retrying
           without optimization.   For more information, click http://www.microsoft.com/contentredirect.asp.'
       store_1173:
         eventClassKey: store_1173
         example: Error 0x6bb deleting unused restricted view from folder 1-C604C2D
-          on database "First Storage Group\\Mailbox Store (MHSMAIL1)". Microsoft Exchange
+          on database "First Storage Group\Mailbox Store (MHSMAIL1)". Microsoft Exchange
           Information Store will try to delete the view again at the next maintenance
           interval. For more information, click http://www.microsoft.com/contentredirect.asp.
       store_1211:
@@ -6365,9 +6257,7 @@ event_classes:
           (IP) address 195.56.77.3.
 
 
-          For more information about this event, see ISA Server Help.
-
-          '
+          For more information about this event, see ISA Server Help.'
         zProperties:
           zEventSeverity: 3
       SNMP-3-CPUHOG:
@@ -6549,13 +6439,9 @@ event_classes:
           zEventSeverity: 2
       DhcpServer_1041:
         eventClassKey: DhcpServer_1041
-        example: 'The DHCP service is not servicing any clients because none of
-
-          the active network interfaces have statically configured IP
-
-          addresses, or there are no active interfaces.
-
-          '
+        example: "The DHCP service is not servicing any clients because none of \n\
+          the active network interfaces have statically configured IP \naddresses,\
+          \ or there are no active interfaces."
         zProperties:
           zEventSeverity: 3
   /Events/Net/Dhcp/Ack:
@@ -6789,22 +6675,14 @@ event_classes:
           or excessive replication traffic.  The data is the number of suppressed
           events
 
-          encountered in the last 15 minute interval.
-
-          '
+          encountered in the last 15 minute interval.'
         zProperties:
           zEventAction: status
       NETLOGON_5789:
         eventClassKey: NETLOGON_5789
-        example: 'Attempt to update DNS Host Name of the computer object
-
-          in Active Directory failed. The updated value was ''hostname.domain.com''.
-
-          The following error occurred:
-
-          The parameter is incorrect.
-
-          '
+        example: "Attempt to update DNS Host Name of the computer object\nin Active\
+          \ Directory failed. The updated value was 'hostname.domain.com'.\nThe following\
+          \ error occurred: \nThe parameter is incorrect."
         zProperties:
           zEventSeverity: 3
       Wins_4102:
@@ -6902,7 +6780,7 @@ event_classes:
         example: "import base64\nimport socket\n\nevt.summary = 'A Radius server has\
           \ been deactivated from the global list'\n\nfor attr in evt.details._map:\n\
           \    if attr.startswith('claRadiusAddress'):\n        ipb64= getattr(evt,\
-          \ attr, '')\n        break\n\n# Assume that AddressType is 1 (ipv4à\nipAddress\
+          \ attr, '')\n        break\n\n# Assume that AddressType is 1 (ipv4)\nipAddress\
           \ = socket.inet_ntoa(base64.b64decode(ipb64))\n\nevt.message = 'The Radius\
           \ server {} has been deactivated from the global list\\r\\nsnmp trap ciscoLwappAAARadiusServerGlobalDeactivated'.format(ipAddress\
           \ )\n"
@@ -7308,7 +7186,7 @@ event_classes:
           29 : ''selfTest'', 30 : ''nonRedundant'' }
 
 
-          evt.summary = ''The outlet {} changed state''.format(evt.outletLabelà
+          evt.summary = ''The outlet {} changed state''.format(evt.outletLabel)
 
           evt.message = ''The outlet {} changed state to {}. \r\nsnmp trap outletSensorStateChange''.format(evt.outletLabel,
           stateDic[evt.measurementsOutletSensorState])
@@ -7489,6 +7367,7 @@ event_classes:
       \ host memory' in evt.eventKey:\n    value = float(evt.current) / float(device.hw.totalMemory)\
       \ * 100.0\n    msg = 'Host memory usage: {:.2f}%'.format(value)\n    evt.message\
       \ = msg\n    evt.summary = msg\n\n"
+  /Events/Perf/MissedRuns: {}
   /Events/Perf/OpenFiles: {}
   /Events/Perf/Predict: {}
   /Events/Perf/QoS: {}
@@ -7601,7 +7480,7 @@ event_classes:
       dropbear:
         eventClassKey: dropbear
         example: Child connection from 10.1.2.3:55107
-        regex: Child connection from (?P<eventKey>\\S+):\\d+
+        regex: Child connection from (?P<eventKey>\S+):\d+
         zProperties:
           zEventAction: history
       sshd_pam_unix:
@@ -7623,9 +7502,7 @@ event_classes:
 
 
 
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+          For more information, click http://www.microsoft.com/contentredirect.asp.'
         zProperties:
           zEventAction: status
           zEventSeverity: 1
@@ -7637,9 +7514,7 @@ event_classes:
 
 
 
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+          For more information, click http://www.microsoft.com/contentredirect.asp.'
         zProperties:
           zEventAction: status
           zEventSeverity: 1
@@ -7647,7 +7522,7 @@ event_classes:
         evaluation: \d+ \S+ \S+ SEV=\d+ (?P<component>\S+) RPT=\d+ \S+ (?P<summary>.*)
         eventClassKey: defaultmapping
         example: 1101379 03/17/2006 10:52:59.040 SEV=4 IKE/120 RPT=54919 10.1.2.3  Group
-          [IPsecUsers] User [domain\\username] PHASE 2 COMPLETED (msgid=ae41db32)
+          [IPsecUsers] User [domain\username] PHASE 2 COMPLETED (msgid=ae41db32)
         regex: \d+ \S+ \S+ SEV=\d+ (?P<component>\S+) RPT=\d+ \S+  (?P<summary>Group
           \[(?P<secGroup>\S+)\] User \[(?P<username>\S+)\] PHASE 2 COMPLETED)
         sequence: 1
@@ -7679,9 +7554,7 @@ event_classes:
 
 
           For additional information specific to this message please visit the Microsoft
-          Online Support site located at: http://www.microsoft.com/contentredirect.asp.
-
-          '
+          Online Support site located at: http://www.microsoft.com/contentredirect.asp.'
         zProperties:
           zEventSeverity: 4
       W3SVC_100:
@@ -7692,9 +7565,7 @@ event_classes:
 
 
           For additional information specific to this message please visit the Microsoft
-          Online Support site located at: http://www.microsoft.com/contentredirect.asp.
-
-          '
+          Online Support site located at: http://www.microsoft.com/contentredirect.asp.'
         zProperties:
           zEventSeverity: 3
       dropbear:
@@ -7715,7 +7586,7 @@ event_classes:
         eventClassKey: sudo
         example: 'edahl : TTY=pts/4 ; PWD=/home/edahl ; USER=root ; COMMAND=/bin/su
           -'
-        regex: '(?P<username>\\S+) : TTY=(?P<tty>\\S+) ; PWD=(?P<pwd>\\S+) ; USER=(?P<targetUser>\\S+)
+        regex: '(?P<username>\S+) : TTY=(?P<tty>\S+) ; PWD=(?P<pwd>\S+) ; USER=(?P<targetUser>\S+)
           ; COMMAND=(?P<command>.*)'
     zProperties:
       zEventAction: history
@@ -7729,21 +7600,21 @@ event_classes:
           zEventAction: history
       Symantec AntiVirus_46:
         eventClassKey: Symantec AntiVirus_46
-        example: 'Security Risk Found!Threat: Trojan.Dropper in File: D:\\AHSInstall\\TouchWorks
+        example: 'Security Risk Found!Threat: Trojan.Dropper in File: D:\AHSInstall\TouchWorks
           10.1.1 CD.part1.exe by: Scheduled scan.  Action: Clean failed : Delete failed.  Action
           Description: The file was left unchanged.'
         zProperties:
           zEventSeverity: 3
       Symantec AntiVirus_5:
         eventClassKey: Symantec AntiVirus_5
-        example: 'Threat Found!Threat: Trojan.Dropper in File: c:\\speedtest\\touchworks
+        example: 'Threat Found!Threat: Trojan.Dropper in File: c:\speedtest\touchworks
           10.1.1 cd.part1.exe by: Scheduled scan.  Action: Delete succeeded.  Action
           Description: The file was deleted successfully.'
         zProperties:
           zEventSeverity: 3
       Symantec AntiVirus_51:
         eventClassKey: Symantec AntiVirus_51
-        example: 'Security Risk Found!Threat: Trojan.Dropper in File: G:\\AHSInstall\\TouchWorks
+        example: 'Security Risk Found!Threat: Trojan.Dropper in File: G:\AHSInstall\TouchWorks
           10.1.1 CD.part1.exe by: Scheduled scan.  Action: Delete succeeded.  Action
           Description: The file was deleted successfully.'
         zProperties:
@@ -7950,6 +7821,9 @@ event_classes:
       dockerContainerStatus:
         eventClassKey: dockerContainerStatus
         example: 'container status: exited (0) 48 minutes ago'
+      emc-vnx-file-events:
+        eventClassKey: emc-vnx-file-events
+        sequence: 21
       entSensorStatus:
         eventClassKey: entSensorStatus
         example: 'current status: non-operational'
@@ -8087,6 +7961,10 @@ event_classes:
         transform: 'from ZenPacks.zenoss.CiscoMonitor import transforms
 
           transforms.status_handler(device, component, evt)'
+    transform: "if evt.firstTime == evt.lastTime and hasattr(evt, 'compClass'):\n\
+      \     for comp in device.getMonitoredComponents(type=evt.compClass):\n     \
+      \   if comp.id != evt.component: continue\n        comp.status = int(evt.compStatus)\n\
+      \        from transaction import commit\n        commit()\n        break\n"
   /Events/Status/AMQ:
     transform: "import re\ndatapoint,  threshold =evt.eventKey.split('|')\n\nif 'DLQ_QueueSize'\
       \ in threshold:\n    evt.component  = 'DLQ'\n    r = re.search(r'.*current value\\\
@@ -8287,6 +8165,7 @@ event_classes:
       \   elif stateCode == 6:\n        message = 'device error detected'\n    elif\
       \ stateCode == 7:\n        message = 'link issue detected'\n    evt.message\
       \ = evt.summary = message"
+  /Events/Status/ControlCenter: {}
   /Events/Status/DLQ:
     transform: 'import re
 
@@ -8444,19 +8323,19 @@ event_classes:
     transform: "if int(float(evt.current)) == 0:\n    msg = 'Junction {}: OK'.format(evt.component)\n\
       if int(float(evt.current)) == 1:\n    msg = 'Junction {}: failure '.format(evt.component)\n\
       elif int(float(evt.current)) == 2:\n    msg = 'Junction {}: major failure'.format(evt.component)\n\
-      \nevt.message = msg\nevt.summary = msg\n"
+      \nevt.message = msg\nevt.summary = msg"
   /Events/Status/ISAM/ISAMJunctionServer:
     transform: "if int(float(evt.current)) == 0:\n    msg = 'Junctioned Server {}:\
       \ OK'.format(evt.component)\nif int(float(evt.current)) == 1:\n    msg = 'Junctioned\
       \ Server {}: failure '.format(evt.component)\nelif int(float(evt.current)) ==\
       \ 2:\n    msg = 'Junctioned Server {}: major failure'.format(evt.component)\n\
-      \nevt.message = msg\nevt.summary = msg\n"
+      \nevt.message = msg\nevt.summary = msg"
   /Events/Status/ISAM/ISAMReverseProxy:
     transform: "if int(float(evt.current)) == 0:\n    msg = 'Reverse Proxy {}: OK'.format(evt.component)\n\
       if int(float(evt.current)) == 1:\n    msg = 'Reverse Proxy {}: failure with\
       \ a Junction'.format(evt.component)\nelif int(float(evt.current)) == 2:\n  \
       \  msg = 'Reverse Proxy {}: Reverse Proxy failure'.format(evt.component)\n\n\
-      evt.message = msg\nevt.summary = msg\n"
+      evt.message = msg\nevt.summary = msg"
   /Events/Status/ISAM/LogData:
     mappings:
       iss.0.2:
@@ -8658,6 +8537,9 @@ event_classes:
       \    except:\n        summaries = {'total': 0}\n        existing_count = 0\n\
       \        \n    if summaries['total']:\n        existing_count = list(summaries['events'])[0]['count']\n\
       \ \n    if existing_count <= 6:\n        evt.severity = 2   \n"
+    zProperties:
+      zEventClearClasses:
+      - /Status/Wmi/Conn
   /Events/Status/Ping/Lag:
     transform: "# Initialize existing_count.\nexisting_count = 0\n\n# Prefix for fingerprint\
       \ (dedupid)\ndedupfields = [evt.device, evt.component, evt.eventClass]\n \n\
@@ -8708,13 +8590,13 @@ event_classes:
 
           This does not imply anything about whether the configuration has
 
-          changed (unlike the standard coldStart or warmStart traps)
-
-          '
+          changed (unlike the standard coldStart or warmStart traps)'
         eventClassKey: bigipAgentRestart
         example: snmp trap bigipAgentRestart
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipAgentStart
           zEventSeverity: 3
       bigipAgentShutdown:
         evaluation: An indication that the agent is in the process of being shut down.
@@ -8722,6 +8604,8 @@ event_classes:
         example: snmp trap bigipAgentShutdown
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipAgentStart
           zEventSeverity: 3
       bigipAgentStart:
         evaluation: An indication that the agent has started running.
@@ -8731,16 +8615,11 @@ event_classes:
         zProperties:
           zEventSeverity: 0
       bigipAggrReaperStateChange:
-        evaluation: 'The aggressive reaper state changed. Aggressive reaper
-
-          state changes indicate the system is moving into distress-mode
-
-          for DOS prevention.
-
-          '
+        evaluation: "The aggressive reaper state changed. Aggressive reaper \nstate\
+          \ changes indicate the system is moving into distress-mode \nfor DOS prevention."
         eventClassKey: bigipAggrReaperStateChange
         example: snmp trap bigipAggrReaperStateChange
-        sequence: 12
+        sequence: 21
         zProperties:
           zEventSeverity: 3
       bigipAomCpuTempTooHigh:
@@ -8769,48 +8648,34 @@ event_classes:
 
           violation(s) which is marked as blocking at the current active
 
-          policy in Application Security Module.
-
-          '
+          policy in Application Security Module.'
         eventClassKey: bigipAsmFtpRequestBlocked
         example: snmp trap bigipAsmFtpRequestBlocked
-        sequence: 12
+        sequence: 21
         zProperties:
           zEventSeverity: 3
       bigipAsmFtpRequestViolation:
-        evaluation: 'The FTP request issued a violation to the current active
-
-          policy. This violation is marked as an alerting violation
-
-          in that policy in Application Security Module.
-
-          '
+        evaluation: "The FTP request issued a violation to the current active\npolicy.\
+          \ This violation is marked as an alerting violation \nin that policy in\
+          \ Application Security Module."
         eventClassKey: bigipAsmFtpRequestViolation
         example: snmp trap bigipAsmFtpRequestViolation
         sequence: 12
         zProperties:
           zEventSeverity: 3
       bigipAsmRequestBlocked:
-        evaluation: 'The HTTP request was blocked because it issued (at least one)
-
-          violation(s) which is marked as blocking at the current active
-
-          policy in Application Security Module.
-
-          '
+        evaluation: "The HTTP request was blocked because it issued (at least one)\n\
+          violation(s) which is marked as blocking at the current active \npolicy\
+          \ in Application Security Module."
         eventClassKey: bigipAsmRequestBlocked
         example: snmp trap bigipAsmRequestBlocked
         sequence: 12
         zProperties:
           zEventSeverity: 3
       bigipAsmRequestViolation:
-        evaluation: 'The HTTP request issued a violation to the current active policy.
-
-          This violation is marked as an alerting violation in that policy
-
-          in Application Security Module.
-
-          '
+        evaluation: "The HTTP request issued a violation to the current active policy.\
+          \ \nThis violation is marked as an alerting violation in that policy\nin\
+          \ Application Security Module."
         eventClassKey: bigipAsmRequestViolation
         example: snmp trap bigipAsmRequestViolation
         sequence: 12
@@ -8821,25 +8686,19 @@ event_classes:
 
           violation(s) which is marked as blocking at the current active
 
-          policy in Application Security Module.
-
-          '
+          policy in Application Security Module.'
         eventClassKey: bigipAsmSmtpRequestBlocked
         example: snmp trap bigipAsmSmtpRequestBlocked
         sequence: 12
         zProperties:
           zEventSeverity: 3
       bigipAsmSmtpRequestViolation:
-        evaluation: 'The SMTP request issued a violation to the current active
-
-          policy. This violation is marked as an alerting violation
-
-          in that policy in Application Security Module.
-
-          '
+        evaluation: "The SMTP request issued a violation to the current active\npolicy.\
+          \ This violation is marked as an alerting violation \nin that policy in\
+          \ Application Security Module."
         eventClassKey: bigipAsmSmtpRequestViolation
         example: snmp trap bigipAsmSmtpRequestViolation
-        sequence: 12
+        sequence: 21
         zProperties:
           zEventSeverity: 3
       bigipAuthFailed:
@@ -8930,9 +8789,7 @@ event_classes:
       bigipConfigLoaded:
         evaluation: 'Deprecated! The compoent which created this event has been
 
-          deprecated.  The configuration was loaded.
-
-          '
+          deprecated.  The configuration was loaded.'
         eventClassKey: bigipConfigLoaded
         example: snmp trap bigipConfigLoaded
         sequence: 12
@@ -8960,26 +8817,18 @@ event_classes:
         zProperties:
           zEventSeverity: 3
       bigipDiskPartitionGrowth:
-        evaluation: 'The disk partition exceeds the specified growth limit.
-
-          By default, the limit is set to 5% of the total disk space.
-
-          The growth is difference of two consecutive monitoring data.
-
-          '
+        evaluation: "The disk partition exceeds the specified growth limit. \nBy default,\
+          \ the limit is set to 5% of the total disk space.\nThe growth is difference\
+          \ of two consecutive monitoring data."
         eventClassKey: bigipDiskPartitionGrowth
         example: snmp trap bigipDiskPartitionGrowth
         sequence: 12
         zProperties:
           zEventSeverity: 3
       bigipDiskPartitionWarn:
-        evaluation: 'The disk partition free space is very limited, which is
-
-          less than a specified limit. By default, the limit is set
-
-          to 30% of total disk space.
-
-          '
+        evaluation: "The disk partition free space is very limited, which is   \n\
+          less than a specified limit. By default, the limit is set\nto 30% of total\
+          \ disk space."
         eventClassKey: bigipDiskPartitionWarn
         example: snmp trap bigipDiskPartitionWarn
         sequence: 12
@@ -8998,23 +8847,16 @@ event_classes:
         example: snmp trap bigipDosAttackStop
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipDosAttackStart
           zEventSeverity: 3
       bigipExternalLinkChange:
-        evaluation: 'An external interface link status changes.
-
-          For a fixed port, this is an occurrence when network cables
-
-          are connected  or removed, and the network is reconfigured;
-
-          for a pluggable port (such as a SFP or XFP port), this happens
-
-          when the pluggable unit is plugged in or unplugged,
-
-          or when a cable is connected or removed from a plugged port.
-
-          The possible values are UP, DOWN, or UNPOPULATED.
-
-          '
+        evaluation: "An external interface link status changes.  \nFor a fixed port,\
+          \ this is an occurrence when network cables \nare connected  or removed,\
+          \ and the network is reconfigured; \nfor a pluggable port (such as a SFP\
+          \ or XFP port), this happens \nwhen the pluggable unit is plugged in or\
+          \ unplugged, \nor when a cable is connected or removed from a plugged port.\
+          \  \nThe possible values are UP, DOWN, or UNPOPULATED."
         eventClassKey: bigipExternalLinkChange
         example: snmp trap bigipExternalLinkChange
         sequence: 12
@@ -9026,6 +8868,8 @@ event_classes:
         example: snmp trap bigipFeatureFailed
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipFeatureOnline
           zEventSeverity: 3
       bigipFeatureOnline:
         evaluation: A high availability feature is now responding.
@@ -9047,6 +8891,8 @@ event_classes:
         example: snmp trap bigipGtmAppNotAvail
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmAppAvail
           zEventSeverity: 3
       bigipGtmAppObjAvail:
         evaluation: An application object is becoming available in global management
@@ -9063,6 +8909,8 @@ event_classes:
         example: snmp trap bigipGtmAppObjNotAvail
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmAppObjAvail
           zEventSeverity: 3
       bigipGtmBig3dSslCertExpired:
         evaluation: BIG-IP GTM BIG3D SSL Cert has expired.
@@ -9093,6 +8941,8 @@ event_classes:
         example: snmp trap bigipGtmBoxNotAvail
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmBoxAvail
           zEventSeverity: 3
       bigipGtmDcAvail:
         evaluation: A data center is becoming available in global traffic management
@@ -9108,6 +8958,8 @@ event_classes:
         example: snmp trap bigipGtmDcDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmDcEnabled
           zEventSeverity: 3
       bigipGtmDcEnabled:
         evaluation: A data center is enabled in global traffic management module.
@@ -9123,6 +8975,8 @@ event_classes:
         example: snmp trap bigipGtmDcNotAvail
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmDcAvail
           zEventSeverity: 3
       bigipGtmJoinedGroup:
         evaluation: BIG-IP GTM joined sync group.
@@ -9165,6 +9019,8 @@ event_classes:
         example: snmp trap bigipGtmLinkDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmLinkEnabled
           zEventSeverity: 3
       bigipGtmLinkEnabled:
         evaluation: A link is enabled in global traffic management module.
@@ -9179,6 +9035,8 @@ event_classes:
         example: snmp trap bigipGtmLinkNotAvail
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmLinkAvail
           zEventSeverity: 3
       bigipGtmPoolAvail:
         evaluation: A pool is becoming available in global traffic management module.
@@ -9194,6 +9052,8 @@ event_classes:
         example: snmp trap bigipGtmPoolDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmPoolEnabled
           zEventSeverity: 3
       bigipGtmPoolEnabled:
         evaluation: A pool is enabled in global traffic management module.
@@ -9217,6 +9077,8 @@ event_classes:
         example: snmp trap bigipGtmPoolMbrDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmPoolMbrEnabled
           zEventSeverity: 3
       bigipGtmPoolMbrEnabled:
         evaluation: A pool member is enabled in global traffic management module.
@@ -9233,6 +9095,8 @@ event_classes:
         sequence: 12
         zProperties:
           zEventAction: drop
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmPoolMbrAvail
           zEventSeverity: 3
       bigipGtmPoolNotAvail:
         evaluation: A pool is becoming unavailable in global traffic management module.
@@ -9241,6 +9105,8 @@ event_classes:
         sequence: 12
         zProperties:
           zEventAction: drop
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmPoolAvail
           zEventSeverity: 3
       bigipGtmProberPoolDisabled:
         evaluation: Prober Pool Disabled.
@@ -9248,6 +9114,8 @@ event_classes:
         example: snmp trap bigipGtmProberPoolDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmProberPoolEnabled
           zEventSeverity: 3
       bigipGtmProberPoolEnabled:
         evaluation: Prober Pool Enabled.
@@ -9262,6 +9130,8 @@ event_classes:
         example: snmp trap bigipGtmProberPoolMbrDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmProberPoolMbrEnabled
           zEventSeverity: 3
       bigipGtmProberPoolMbrEnabled:
         evaluation: Prober Pool Member Enabled.
@@ -9311,6 +9181,8 @@ event_classes:
         example: snmp trap bigipGtmServerDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmServerEnabled
           zEventSeverity: 3
       bigipGtmServerEnabled:
         evaluation: A server is enabled in global traffic management module.
@@ -9326,6 +9198,8 @@ event_classes:
         example: snmp trap bigipGtmServerNotAvail
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmServerAvail
           zEventSeverity: 3
       bigipGtmSslCertExpired:
         evaluation: BIG-IP GTM SSL Cert has expired.
@@ -9356,6 +9230,8 @@ event_classes:
         example: snmp trap bigipGtmVsDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmVsEnabled
           zEventSeverity: 3
       bigipGtmVsEnabled:
         evaluation: A virtual server is enabled in global traffic management module.
@@ -9372,6 +9248,8 @@ event_classes:
         sequence: 12
         zProperties:
           zEventAction: drop
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmVsAvail
           zEventSeverity: 3
       bigipGtmWideIpAvail:
         evaluation: A wide IP is becoming available in global traffic management module.
@@ -9387,6 +9265,8 @@ event_classes:
         example: snmp trap bigipGtmWideIpDisabled
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmWideIpEnabled
           zEventSeverity: 3
       bigipGtmWideIpEnabled:
         evaluation: A wide IP is enabled in global traffic management module.
@@ -9403,13 +9283,13 @@ event_classes:
         sequence: 12
         zProperties:
           zEventAction: drop
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipGtmWideIpAvail
           zEventSeverity: 3
       bigipHardDiskFailure:
         evaluation: 'Deprecated!  This object has been eliminated.
 
-          The hard disk is failing.
-
-          '
+          The hard disk is failing.'
         eventClassKey: bigipHardDiskFailure
         example: snmp trap bigipHardDiskFailure
         sequence: 12
@@ -9475,9 +9355,7 @@ event_classes:
       bigipLogAlert:
         evaluation: 'Action must be taken immediately for the system to work
 
-          properly.
-
-          '
+          properly.'
         eventClassKey: bigipLogAlert
         example: snmp trap bigipLogAlert
         sequence: 12
@@ -9519,15 +9397,10 @@ event_classes:
         zProperties:
           zEventSeverity: 3
       bigipNetLinkDown:
-        evaluation: 'An internal interface link is down. This is for L1 and L2.
-
-          These are internal links within the box connecting the CPU
-
-          and Switch subsystems, which should never lose link.
-
-          If they do, it indicates a serious problem.
-
-          '
+        evaluation: "An internal interface link is down. This is for L1 and L2. \n\
+          These are internal links within the box connecting the CPU \nand Switch\
+          \ subsystems, which should never lose link. \nIf they do, it indicates a\
+          \ serious problem."
         eventClassKey: bigipNetLinkDown
         example: snmp trap bigipNetLinkDown
         sequence: 12
@@ -9539,6 +9412,8 @@ event_classes:
         example: snmp trap bigipNodeDown
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipNodeUp
           zEventSeverity: 3
       bigipNodeRate:
         evaluation: A node has exceeded the allowed rate.
@@ -9546,6 +9421,8 @@ event_classes:
         example: snmp trap bigipNodeRate
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipNodeUp
           zEventSeverity: 3
       bigipNodeUp:
         evaluation: A node is detected UP.
@@ -9574,6 +9451,8 @@ event_classes:
         example: snmp trap bigipServiceDown
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipServiceUp
           zEventSeverity: 3
       bigipServiceUp:
         evaluation: A service is detected UP.
@@ -9597,16 +9476,11 @@ event_classes:
         zProperties:
           zEventSeverity: 3
       bigipSslLimitExceeded:
-        evaluation: 'The SSL license limits are exceeded,
-
-          either for TPS (Transactions Per Second) or
-
-          for MPS (Megabits Per Second).
-
-          '
+        evaluation: "The SSL license limits are exceeded, \neither for TPS (Transactions\
+          \ Per Second) or \nfor MPS (Megabits Per Second)."
         eventClassKey: bigipSslLimitExceeded
         example: snmp trap bigipSslLimitExceeded
-        sequence: 12
+        sequence: 21
         zProperties:
           zEventSeverity: 3
       bigipStandByFail:
@@ -9622,6 +9496,8 @@ event_classes:
         example: snmp trap bigipStandby
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipActive
           zEventSeverity: 3
       bigipSystemCheckAlertCurrentHigh:
         evaluation: Current is too high.
@@ -9696,9 +9572,7 @@ event_classes:
       bigipTamdAlert:
         evaluation: 'Too many authentication failures (> 60) in 1 second to
 
-          TMM (Traffic Management Module).
-
-          '
+          TMM (Traffic Management Module).'
         eventClassKey: bigipTamdAlert
         example: snmp trap bigipTamdAlert
         sequence: 12
@@ -9707,9 +9581,7 @@ event_classes:
       bigipUnsolicitedRepliesExceededThreshold:
         evaluation: 'The DNS cache object received unsolicited query replies
 
-          exceeding a configured threshold.
-
-          '
+          exceeding a configured threshold.'
         eventClassKey: bigipUnsolicitedRepliesExceededThreshold
         example: snmp trap bigipUnsolicitedRepliesExceededThreshold
         sequence: 12
@@ -9735,6 +9607,8 @@ event_classes:
         example: snmp trap bigipVcmpAlertsVcmpPowerOff
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/bigipVcmpAlertsVcmpPowerOn
           zEventSeverity: 3
       bigipVcmpAlertsVcmpPowerOn:
         evaluation: A VCMP guest is powered on from a suspended or powered off state.
@@ -9763,6 +9637,8 @@ event_classes:
         example: snmp trap emASMSigInstallFailed
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/emASMSigInstallComplete
           zEventSeverity: 3
       emASMSigUpdateAvailable:
         evaluation: ASM signature update is available.
@@ -9777,6 +9653,8 @@ event_classes:
         example: snmp trap emASMSigUpdateFailed
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/emASMSigUpdateAvailable
           zEventSeverity: 3
       emCertificateExpiration:
         evaluation: A device certificate will expire soon.
@@ -9889,6 +9767,8 @@ event_classes:
         example: snmp trap emHotfixInstallFailed
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/emHotfixInstallComplete
           zEventSeverity: 3
       emMemoryUsage:
         evaluation: The system memory is exceeding configured usage limits.
@@ -9968,6 +9848,8 @@ event_classes:
         example: snmp trap emSoftwareInstallFailed
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/emSoftwareInstallComplete
           zEventSeverity: 3
       emStatsCollectionRateCap:
         evaluation: Performance-monitoring data collection rate exceeds recommended
@@ -9983,6 +9865,8 @@ event_classes:
         example: snmp trap emStatsDBConnectivityLost
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/emStatsDBConnectivityRestored
           zEventSeverity: 3
       emStatsDBConnectivityRestored:
         evaluation: Statistics database connectivity is restored.
@@ -10040,6 +9924,8 @@ event_classes:
         example: snmp trap loadBalTrapServiceDown
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/loadBalTrapServiceUP
           zEventSeverity: 3
       loadBalTrapServiceUP:
         evaluation: Service Came Up.
@@ -10061,6 +9947,8 @@ event_classes:
         example: snmp trap threednsTrapServerGreenToRed
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/threednsTrapServerRedToGreen
           zEventSeverity: 3
       threednsTrapServerRedToGreen:
         evaluation: Server change from red to green status.
@@ -10075,6 +9963,8 @@ event_classes:
         example: snmp trap threednsTrapVSGreenToRed
         sequence: 12
         zProperties:
+          zEventClearClasses:
+          - /Status/Snmp/F5 Labs/instances/threednsTrapVSRedToGreen
           zEventSeverity: 3
       threednsTrapVSRedToGreen:
         evaluation: Virtual server change from red to green status.
@@ -10086,9 +9976,7 @@ event_classes:
     transform: 'from ZenPacks.zenoss.BigIpMonitor.transforms import *
 
 
-      process_trap(evt)
-
-      '
+      process_trap(evt)'
   /Events/Status/Snmp/NSNotify:
     mappings:
       nsNotifyRestart:
@@ -15874,35 +15762,17 @@ event_classes:
     mappings:
       Service Control Manager_7000:
         eventClassKey: Service Control Manager_7000
-        example: 'The ImageNow Server Fax Agent 5.41 service failed to start due to
-          the following error:
-
-          The service did not start due to a logon failure.
-
-          '
-        resolution: Check the Username and Password on the specified service to make
-          sure it is correct.
+        example: "The ImageNow Server Fax Agent 5.41 service failed to start due to\
+          \ the following error: \nThe service did not start due to a logon failure."
         zProperties:
           zEventSeverity: 4
       Service Control Manager_7038:
         eventClassKey: Service Control Manager_7038
-        example: 'The ImageNow Server Fax Agent 5.41 service was unable to log on
-          as .\Administrator with the currently configured
-
-          password due to the following error:
-
-          Logon failure: unknown user name or bad password.
-
-
-          To ensure that the service is
-
-          configured properly, use the Services snap-in in Microsoft Management
-
-          Console (MMC).
-
-          '
-        resolution: Check the Username and Password on the specified service to make
-          sure it is correct.
+        example: "The ImageNow Server Fax Agent 5.41 service was unable to log on\
+          \ as .\\Administrator with the currently configured\npassword due to the\
+          \ following error: \nLogon failure: unknown user name or bad password. \n\
+          \nTo ensure that the service is\nconfigured properly, use the Services snap-in\
+          \ in Microsoft Management\nConsole (MMC)."
         zProperties:
           zEventSeverity: 4
   /Events/Status/WinServiceSNMP:
@@ -15927,6 +15797,7 @@ event_classes:
   /Events/Status/Wmi: {}
   /Events/Status/Wmi/Conn: {}
   /Events/Status/XmlRpc: {}
+  /Events/Status/ZEP: {}
   /Events/Status/Zone:
     transform: "if any([value in evt.message for value in (\"Command not found\",\
       \ \"No data returned\")]):\n            evt.summary = \"The system may not be\
@@ -15946,9 +15817,7 @@ event_classes:
           Array Controller [Embedded] has failed.
 
 
-          Failure Code: 0x0d.
-
-          '
+          Failure Code: 0x0d.'
       Storage Agents_1202:
         eventClassKey: Storage Agents_1202
       VxSvc_PercPro_509:
@@ -16140,25 +16009,16 @@ event_classes:
 
           Modify user: username
 
-          The attribute syntax specified to the directory service is invalid.
-
-          '
+          The attribute syntax specified to the directory service is invalid.'
         zProperties:
           zEventAction: history
           zEventSeverity: 1
       DirXML Remote Loader_2:
         eventClassKey: DirXML Remote Loader_2
-        example: 'Driver : \ID_VAULT\org\services\DirXML\Driver-Set\NewADDriver
-
-          Thread : Subscriber Channel
-
-          Object :
-
-          Message : Could not set password via platform call. Err=2221 (user not found)
-
-          This error has been reported 1980 times in a row since first logged.
-
-          '
+        example: "Driver : \\ID_VAULT\\org\\services\\DirXML\\Driver-Set\\NewADDriver\n\
+          Thread : Subscriber Channel\nObject : \nMessage : Could not set password\
+          \ via platform call. Err=2221 (user not found)\nThis error has been reported\
+          \ 1980 times in a row since first logged."
         zProperties:
           zEventSeverity: 3
       MRxSmb_8003:
@@ -16169,35 +16029,17 @@ event_classes:
           that believes that it is the master browser for the domain on transport
           NetBT_Tcpip_{4E448810-5CCB.
 
-          The master browser is stopping or an election is being forced.
-
-          '
+          The master browser is stopping or an election is being forced.'
         sequence: 1
         zProperties:
           zEventAction: history
       MSExchangeAL_8270:
         eventClassKey: MSExchangeAL_8270
-        example: 'LDAP returned the error [10] No Such Attribute when importing the
-          transaction
-
-          dn: <GUID=EB3D6BE41A37084C8D306C8190A80CF0>
-
-          changetype: Modify
-
-          msExchPoliciesIncluded:delete:{FDBF7EC5-F16E-4840-805D-25D492F273E5},{3B6813EC-CE89-42BA-9442-D87D4AA30DBC}
-
-          objectGUID:EB3D6BE41A37084C8D306C8190A80CF0
-
-          -
-
-
-          DC=domain,DC=com
-
-
-
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+        example: "LDAP returned the error [10] No Such Attribute when importing the\
+          \ transaction \ndn: <GUID=EB3D6BE41A37084C8D306C8190A80CF0>\nchangetype:\
+          \ Modify\nmsExchPoliciesIncluded:delete:{FDBF7EC5-F16E-4840-805D-25D492F273E5},{3B6813EC-CE89-42BA-9442-D87D4AA30DBC}\n\
+          objectGUID:EB3D6BE41A37084C8D306C8190A80CF0\n-\n\nDC=domain,DC=com\n\n\n\
+          For more information, click http://www.microsoft.com/contentredirect.asp."
         zProperties:
           zEventSeverity: 3
       MSExchangeIS_9548:
@@ -16208,9 +16050,7 @@ event_classes:
 
 
 
-          For more information, click http://www.microsoft.com/contentredirect.asp.
-
-          '
+          For more information, click http://www.microsoft.com/contentredirect.asp.'
         zProperties:
           zEventSeverity: 2
       Userenv_1006:
@@ -16231,12 +16071,17 @@ event_classes:
       DCOM_10016:
         eventClassKey: DCOM_10016
         example: "The application-specific permission settings do not grant Local\
-          \ Activation permission for the COM Server application with CLSID\n{0C0A3666-30C9-11D0-8F20-00805F2CD064}\n\
+          \ Activation permission for the COM Server application with CLSID \n{0C0A3666-30C9-11D0-8F20-00805F2CD064}\n\
           \ to the user NT AUTHORITY\\NETWORK SERVICE SID (S-1-5-20).  This security\
           \ permission can be modified using the Component Services administrative\
-          \ tool.\n"
+          \ tool."
         zProperties:
           zEventAction: history
+      MSExchangeIS_9646:
+        eventClassKey: MSExchangeIS_9646
+        sequence: 21
+        zProperties:
+          zEventSeverity: 5
   /Events/Win/EventLog:
     mappings:
       System:
@@ -16303,7 +16148,7 @@ event_classes:
           exceeded the maximum of 250 objects of type "objtMessage". For more information,
           click http://www.microsoft.com/contentredirect.asp.
         regex: Mapi session "/o=My Organization/ou=DOMAIN/cn=Recipients/cn=username"
-          exceeded the maximum of \\d+ objects of type "objtMessage". For more information,
+          exceeded the maximum of \d+ objects of type "objtMessage". For more information,
           click http://www.microsoft.com/contentredirect.asp.
         zProperties:
           zEventSeverity: 5
@@ -16327,7 +16172,7 @@ event_classes:
       BROWSER_8021:
         eventClassKey: BROWSER_8021
         example: The browser was unable to retrieve a list of servers from the browser
-          master \MHSISA on the network \Device\NetBT_Tcpip_{D160DC6C-96D6-4C96-8F04-F6FEA5E9089B}.
+          master \\MHSISA on the network \Device\NetBT_Tcpip_{D160DC6C-96D6-4C96-8F04-F6FEA5E9089B}.
           The data is the error code.
         zProperties:
           zEventAction: history
@@ -16371,17 +16216,12 @@ event_classes:
     mappings:
       Userenv_1517:
         eventClassKey: Userenv_1517
-        example: 'Windows saved user DOMAIN\administrator registry while an application
-          or service was still using the registry during log off. The memory used
-          by the user''s registry has not been freed. The registry will be unloaded
-          when it is no longer in use.
-
-
-
-          This is often caused by services running as a user account, try configuring
-          the services to run in either the LocalService or NetworkService account.
-
-          '
+        example: "Windows saved user DOMAIN\\administrator registry while an application\
+          \ or service was still using the registry during log off. The memory used\
+          \ by the user's registry has not been freed. The registry will be unloaded\
+          \ when it is no longer in use. \n\n\nThis is often caused by services running\
+          \ as a user account, try configuring the services to run in either the LocalService\
+          \ or NetworkService account."
         zProperties:
           zEventAction: history
       Userenv_1524:
@@ -16398,43 +16238,21 @@ event_classes:
     mappings:
       WUSyncService_101:
         eventClassKey: WUSyncService_101
-        example: 'Software Update Services encountered a failure during synchronization.
-
-
-          View the synchronization log on this server for details of what failed during
-          synchronization. To view the synchronization log, go to the Software Update
-          Services Admin Web site (http://<YourServerName>/SUSAdmin), and click the
-          View synchronization log link. (Error 0x80190197: HTTP error 407. Proxy
-          authentication required.)
-
-
-
-
-          User Action
-
-
-          Try synchronizing the server again to see if the error occurs again. To
-          synchronize the server, go to the Software Update Services Admin Web site,
-          and click the Synchronize server link. Then click the Synchronize Now button.
-
-
-
-
-          Additional Data
-
-
-          The most common reason for failed synchronization is incorrect proxy server
-          configuration. If you are using a proxy server, please confirm your configuration
-          by going to the Software Update Services Admin Web site and clicking the
-          Set options link. Confirm your configuration in the results pane.
-
-
-
-
-          For troubleshooting information, see the Microsoft Software Update Services
-          Deployment Guide (http://go.microsoft.com/fwlink/?LinkId=6928).
-
-          '
+        example: "Software Update Services encountered a failure during synchronization.\n\
+          \nView the synchronization log on this server for details of what failed\
+          \ during synchronization. To view the synchronization log, go to the Software\
+          \ Update Services Admin Web site (http://<YourServerName>/SUSAdmin), and\
+          \ click the View synchronization log link. (Error 0x80190197: HTTP error\
+          \ 407. Proxy authentication required.)\n\n\n\nUser Action \n\nTry synchronizing\
+          \ the server again to see if the error occurs again. To synchronize the\
+          \ server, go to the Software Update Services Admin Web site, and click the\
+          \ Synchronize server link. Then click the Synchronize Now button.\n\n\n\n\
+          Additional Data\n\nThe most common reason for failed synchronization is\
+          \ incorrect proxy server configuration. If you are using a proxy server,\
+          \ please confirm your configuration by going to the Software Update Services\
+          \ Admin Web site and clicking the Set options link. Confirm your configuration\
+          \ in the results pane.\n\n\n\nFor troubleshooting information, see the Microsoft\
+          \ Software Update Services Deployment Guide (http://go.microsoft.com/fwlink/?LinkId=6928)."
         zProperties:
           zEventSeverity: 3
       Windows Update Agent_16:

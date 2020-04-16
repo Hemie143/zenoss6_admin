@@ -1,0 +1,19 @@
+event_classes:
+  /Events/Win/Exchange:
+    mappings:
+      Cloudmark Server Edition_2007:
+        eventClassKey: Cloudmark Server Edition_2007
+        example: Cloudmark Server Edition cannot establish a connection to the Exchange
+          server.
+        zProperties:
+          zEventSeverity: 4
+      MSExchangeIS_9646:
+        eventClassKey: MSExchangeIS_9646
+        example: Mapi session "/o=My Organization/ou=DOMAIN/cn=Recipients/cn=username"
+          exceeded the maximum of 250 objects of type "objtMessage". For more information,
+          click http://www.microsoft.com/contentredirect.asp.
+        regex: Mapi session "/o=My Organization/ou=DOMAIN/cn=Recipients/cn=username"
+          exceeded the maximum of \d+ objects of type "objtMessage". For more information,
+          click http://www.microsoft.com/contentredirect.asp.
+        zProperties:
+          zEventSeverity: 5

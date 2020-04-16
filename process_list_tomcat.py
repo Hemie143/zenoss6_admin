@@ -1,6 +1,6 @@
 import zenAPI.zenApiLib
 import argparse
-
+import re
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='List processes definition')
@@ -31,9 +31,21 @@ if __name__ == '__main__':
             u'monitored': True, 
             u'uid': u'/zport/dmd/Devices/Server/SSH/Linux/APP/Prod/devices/prb-app-l02.in.credoc.be/os/processes/zport_dmd_Processes_Linux_Tomcat_osProcessClasses_tcinstances_7108537956afa2a526f96cc9da7b0c36'}
             '''
-            print('{}\t{}'.format(instance['name'], instance['device']['device']))
+            # print(instance['uid'])
+            #print(instance)
 
-            # print(instance)
+            response = process_router.callMethod('getInfo', uid=instance['uid'])
+            # print(response)
+            i_data = response['result']['data']
+            process_cmd = i_data['getMonitoredProcesses']
+            r = re.match('^.*-Dappdynamics.agent.tierName=([a-zA-Z0-9_-]*).*$', process_cmd)
+            if r:
+                appD = r.group(1)
+            else:
+                appD = 'N/A'
+
+            print('{}\t{}\t{}'.format(instance['name'], instance['device']['device'], appD))
+
 
     exit()
 

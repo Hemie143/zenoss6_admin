@@ -1,0 +1,83 @@
+manufacturers:
+  /Manufacturers/Snmp-Informant:
+    URL: http://www.snmp-informant.com/
+    products:
+      Configuration Manager Client:
+        name: Configuration Manager Client
+        os: true
+        prodkeys:
+        - Configuration Manager Client
+        type: Operating System
+      GenuineIntel_ Intel_R_ Pentium_R_ D CPU 3.00GHz:
+        name: GenuineIntel_ Intel_R_ Pentium_R_ D CPU 3.00GHz
+        prodkeys:
+        - 'GenuineIntel: Intel(R) Pentium(R) D CPU 3.00GHz'
+        type: Hardware
+      HP MULTI-ENVIRONMENT,SN_CNBJ190297,FN_F7401V6,SVCID_16336,PID_HP:
+        name: HP MULTI-ENVIRONMENT,SN_CNBJ190297,FN_F7401V6,SVCID_16336,PID_HP
+        prodkeys:
+        - HP MULTI-ENVIRONMENT,SN:CNBJ190297,FN:F7401V6,SVCID:16336,PID:HP
+        type: Software
+      Hotfix for MDAC 2.71 _KB911562:
+        name: Hotfix for MDAC 2.71 _KB911562
+        prodkeys:
+        - Hotfix for MDAC 2.71 (KB911562)
+        type: Software
+      IBM Tivoli Storage Manager Client:
+        name: IBM Tivoli Storage Manager Client
+        os: true
+        prodkeys:
+        - IBM Tivoli Storage Manager Client
+        type: Operating System
+      Microsoft Policy Platform:
+        name: Microsoft Policy Platform
+        os: true
+        prodkeys:
+        - Microsoft Policy Platform
+        type: Operating System
+      Microsoft SQL Server Desktop Engine _SOLARWINDS:
+        name: Microsoft SQL Server Desktop Engine _SOLARWINDS
+        prodkeys:
+        - Microsoft SQL Server Desktop Engine (SOLARWINDS)
+        type: Software
+      Microsoft Silverlight:
+        name: Microsoft Silverlight
+        os: true
+        prodkeys:
+        - Microsoft Silverlight
+        type: Operating System
+      Mozilla Firefox _1.5.0.6:
+        name: Mozilla Firefox _1.5.0.6
+        prodkeys:
+        - Mozilla Firefox (1.5.0.6)
+        type: Software
+      Mozilla Firefox _1.5.0.7:
+        name: Mozilla Firefox _1.5.0.7
+        prodkeys:
+        - Mozilla Firefox (1.5.0.7)
+        type: Software
+      SNMP Informant Agent _Standard Edition:
+        name: SNMP Informant Agent _Standard Edition
+        prodkeys:
+        - SNMP Informant Agent (Standard Edition)
+        type: Software
+      Security Update for Windows Media Player 6.4 _KB925398:
+        name: Security Update for Windows Media Player 6.4 _KB925398
+        prodkeys:
+        - Security Update for Windows Media Player 6.4 (KB925398)
+        type: Software
+      Update for Windows Server 2003 _KB911897:
+        name: Update for Windows Server 2003 _KB911897
+        prodkeys:
+        - Update for Windows Server 2003 (KB911897)
+        type: Software
+      Vim 6.4 _self-installing:
+        name: Vim 6.4 _self-installing
+        prodkeys:
+        - Vim 6.4 (self-installing)
+        type: Software
+      libstdc__-3.4.5-2:
+        name: libstdc__-3.4.5-2
+        prodkeys:
+        - libstdc++-3.4.5-2
+        type: Software

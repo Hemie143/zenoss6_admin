@@ -1,0 +1,13 @@
+service_organizers:
+  /Services/WinService:
+    service_class:
+      RemoteRegistry:
+        description: Remote Registry Service
+        monitoredStartModes:
+        - Auto
+        serviceKeys: RemoteRegistry
+      ReportServer:
+        description: SQL Server Reporting Services (MSSQLSERVER)
+        monitoredStartModes:
+        - Auto
+        serviceKeys: ReportServer
