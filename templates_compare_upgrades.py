@@ -26,6 +26,7 @@ def get_backup_templates(router):
 
     # TODO: some templates are renamed with <name>-upgrade-<numbers>, others to <name>-backup-upgrade-<numbers>
     templates = get_tree_templates(result, name_filter='-backup')
+    # templates = get_tree_templates(result, name_filter='-preupgrade')
     return templates
 
 def inspect_datasources(router, uid1, uid2):
@@ -189,6 +190,7 @@ def inspect_template(router, template_uid):
         new_template_uid = template_uid[:-7]
     else:
         r = re.match(r'(.*)-backup-preupgrade-\d+', template_uid)
+        # r = re.match(r'(.*)-preupgrade-\d+', template_uid)
         new_template_uid = r.group(1)
     result = router.callMethod('getInfo', uid=new_template_uid)['result']
     if not result['success']:

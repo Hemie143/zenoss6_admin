@@ -91,7 +91,8 @@ def get_datasources(routers, uid):
                              ('namespace', None), ('usePowershell', True), ('instance', None),
                              ('expectedIpAddress', None), ('initialUser', None), ('chunk_size', None),
                              ('initialURL', None), ('counter', None), ('dbtype', None), ('command', None),
-                             ('attempts', 2)])
+                             ('attempts', 2), ('dnsServer', None)
+                             ])
 
     '''
     [
@@ -128,6 +129,11 @@ def get_datasources(routers, uid):
         if 'usessh' in ds_details:
             datasource_json['datasources'][ds_name]['usessh'] = ds_details['usessh']
 
+        '''
+        if 'Dns' in ds_details['type']:
+            print(ds_details)
+        '''
+
         # Source field
         v = ds_details.get('source', None)
         # if v and v != ds.get('plugin_classname', None):
@@ -163,10 +169,12 @@ def get_datasources(routers, uid):
                     exit()
                 # No data for output
             elif ds_type in ['Kubernetes Metrics', 'Cisco APIC Properties', 'Cisco APIC Stats', 'LDAPMonitor',
-                             'Windows Process', 'VMware vSphere', 'Property', 'PING']:
+                             'Windows Process', 'VMware vSphere', 'Property', 'PING', 'Kubernetes Calculated Metrics']:
                 pass
                 # No data for output
             else:
+                print()
+                print('Datasource - unknown type')
                 print(ds_type)
                 print('source: {}'.format(v))
                 print(ds)
@@ -284,6 +292,13 @@ def get_thresholds(routers, uid):
 def get_graphs(routers, uid):
     template_router = routers['Template']
     response = template_router.callMethod('getGraphs', uid=uid)
+    '''
+    print(response)
+    if not response['result']['success']:
+        print("Could not find graphs for {}".format(uid))
+        print(response)
+        exit(1)
+    '''
     result = response['result']
 
     graph_json = {}
@@ -317,7 +332,7 @@ def get_graphs(routers, uid):
 
     # yaml_print(key='graphs', indent=indent)
     graph_json['graphs'] = {}
-    gr_data = sorted(result, key=lambda i: i['name'])
+    gr_data = sorted(result, key=lambda i: i['name'])           # TODO: May crash in some cases, to debug
     # dp_data = sorted(dp_data, key=lambda i: i['name'])
     for graph in gr_data:
         graph_name = graph['name']
@@ -433,6 +448,8 @@ def parse_templates(routers, output):
     for device_class, uids in dc_loop:
         dc_loop.set_description('Device Class ({})'.format(device_class))
         dc_loop.refresh()
+        if device_class < '/Network/Cisco/Nexus/9000':
+            continue
         if 'device_classes' not in templates_json:
             templates_json['device_classes'] = {}
         templates_json['device_classes'][device_class] = {}

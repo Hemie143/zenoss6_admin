@@ -145,6 +145,7 @@ def import_graph(routers, device_class, template_uid, graph, gr_data):
     if not response['result']['exists']:
         response = template_router.callMethod('addGraphDefinition', templateUid=template_uid,
                                               graphDefinitionId=graph)
+        # print(response)
         if not response['result']['success']:
             print(response)
             exit()
@@ -154,6 +155,7 @@ def import_graph(routers, device_class, template_uid, graph, gr_data):
     response = template_router.callMethod('getGraphDefinition', uid=gr_uid)
     if not response['result']['success']:
         print(response)
+        print(gr_uid)
         exit()
     current_data = response['result']['data']
     # print(current_data)

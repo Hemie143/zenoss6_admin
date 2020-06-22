@@ -23,7 +23,8 @@ def get_tree_templates(tree_branch, name_filter=None, known_templates=None):
 def get_backup_templates(router):
     root_tree = router.callMethod('getDeviceClassTemplates', id='/zport/dmd/Devices')     # dict
     result = root_tree['result']                                                                   # list of 1 item (root)
-    templates = get_tree_templates(result, name_filter='-backup')
+    # templates = get_tree_templates(result, name_filter='-backup')
+    templates = get_tree_templates(result, name_filter='-preupgrade')
     return templates
 
 def delete_template(router, template_uid, deviceclass, template_name):
