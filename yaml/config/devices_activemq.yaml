@@ -1,0 +1,121 @@
+device_classes:
+  /Server/SSH/Linux/ActiveMQ:
+    devices:
+      dvb-amq-l11.dev.credoc.be:
+        collector: DC2
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.0.40.17
+        name: dvb-amq-l11.dev.credoc.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Linux
+        - /Systems/Infrastructure/Linux/Staging
+        templates:
+        - Device
+        zProperties:
+          zJolokiaUsername: zenoss
+      dvb-amq-l12.dev.credoc.be:
+        collector: DC2
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.0.40.18
+        name: dvb-amq-l12.dev.credoc.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Linux
+        - /Systems/Infrastructure/Linux/Staging
+        templates:
+        - Device
+        zProperties:
+          zJolokiaUsername: zenoss
+      ttb-amq-l11.tst.credoc.be:
+        collector: DC2
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.1.40.17
+        name: ttb-amq-l11.tst.credoc.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Linux
+        - /Systems/Infrastructure/Linux/Staging
+        templates:
+        - Device
+        zProperties:
+          zJolokiaUsername: zenoss
+      ttb-amq-l12.tst.credoc.be:
+        collector: DC2
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.1.40.18
+        name: ttb-amq-l12.tst.credoc.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Linux
+        - /Systems/Infrastructure/Linux/Staging
+        templates:
+        - Device
+        zProperties:
+          zJolokiaUsername: zenoss
+      acb-amq-l11.acc.credoc.be:
+        collector: DC2
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.2.40.17
+        name: acb-amq-l11.acc.credoc.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Linux
+        - /Systems/Infrastructure/Linux/Staging
+        templates:
+        - Device
+        zProperties:
+          zJolokiaUsername: zenoss
+      acb-amq-l12.acc.credoc.be:
+        collector: DC2
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.2.40.18
+        name: acb-amq-l12.acc.credoc.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Linux
+        - /Systems/Infrastructure/Linux/Staging
+        templates:
+        - Device
+        zProperties:
+          zJolokiaUsername: zenoss
+      prb-amq-l11.in.credoc.be:
+        collector: DC2
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.40.17
+        name: prb-amq-l11.in.credoc.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Linux
+        templates:
+        - Device
+        zProperties:
+          zJolokiaUsername: zenoss
+      prb-amq-l12.in.credoc.be:
+        collector: DC2
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.40.18
+        name: prb-amq-l12.in.credoc.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Linux
+        templates:
+        - Device
+        zProperties:
+          zJolokiaUsername: zenoss

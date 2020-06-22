@@ -1,0 +1,227 @@
+reports_organizers: 
+  Reports: 
+    label: Reports
+  Reports/AWS Reports: 
+    label: AWS Reports
+  Reports/Azure: 
+    label: Azure
+  Reports/Capacity Planning: 
+    label: Capacity Planning
+    reports: 
+      Capacity Usage: 
+        label: Capacity Usage
+  Reports/Custom Device Reports: 
+    label: Custom Device Reports
+  Reports/Custom Device Reports/BartV_rep_test: 
+    label: BartV_rep_test
+    reports: 
+      device rep: 
+        label: device rep
+        /zport/dmd/Reports/Custom Device Reports/BartV_rep_test/device rep/editDeviceReport: /zport/dmd/Reports/Custom Device Reports/BartV_rep_test/device rep/editDeviceReport
+    reports: 
+      Event Count by Device: 
+        label: Event Count by Device
+        /zport/dmd/Reports/Custom Device Reports/Event Count by Device/editDeviceReport: /zport/dmd/Reports/Custom Device Reports/Event Count by Device/editDeviceReport
+      Linux File Systems in alert: 
+        label: Linux File Systems in alert
+        /zport/dmd/Reports/Custom Device Reports/Linux File Systems in alert/editDeviceReport: /zport/dmd/Reports/Custom Device Reports/Linux File Systems in alert/editDeviceReport
+  Reports/Device Reports: 
+    label: Device Reports
+    reports: 
+      All Devices: 
+        label: All Devices
+      All Monitored Components: 
+        label: All Monitored Components
+      Device Changes: 
+        label: Device Changes
+      HP Chassis List: 
+        label: HP Chassis List
+      HP Device Bay List: 
+        label: HP Device Bay List
+      MAC Addresses: 
+        label: MAC Addresses
+      Model Collection Age: 
+        label: Model Collection Age
+      New Devices: 
+        label: New Devices
+      Ping Status Issues: 
+        label: Ping Status Issues
+  Reports/Device Reports/SMI-S Reports: 
+    label: SMI-S Reports
+    reports: 
+      Controllers: 
+        label: Controllers
+      Hard Disks: 
+        label: Hard Disks
+      SNMP Status Issues: 
+        label: SNMP Status Issues
+      Software Inventory: 
+        label: Software Inventory
+  Reports/E-Registration Queues: 
+    label: E-Registration Queues
+    reports: 
+      Queues: 
+        label: Queues
+        /zport/dmd/Reports/E-Registration Queues/Queues/editGraphReport: /zport/dmd/Reports/E-Registration Queues/Queues/editGraphReport
+  Reports/Enterprise Reports: 
+    label: Enterprise Reports
+    reports: 
+      Cisco Inventory: 
+        label: Cisco Inventory
+      Customized Performance Templates: 
+        label: Customized Performance Templates
+      Data Sources in Use: 
+        label: Data Sources in Use
+      Datapoints per Collector: 
+        label: Datapoints per Collector
+      Defined Thresholds: 
+        label: Defined Thresholds
+      Event Time to Resolution: 
+        label: Event Time to Resolution
+      Interface Utilization: 
+        label: Interface Utilization
+      Interface Volume: 
+        label: Interface Volume
+      Maintenance Windows: 
+        label: Maintenance Windows
+      Network Topology: 
+        label: Network Topology
+      Notifications and Triggers by Recipient: 
+        label: Notifications and Triggers by Recipient
+      Organizer Availability: 
+        label: Organizer Availability
+      Organizer Graphs: 
+        label: Organizer Graphs
+      User Event Activity: 
+        label: User Event Activity
+      Users Group Membership: 
+        label: Users Group Membership
+  Reports/Event Reports: 
+    label: Event Reports
+    reports: 
+      All EventClasses: 
+        label: All EventClasses
+      All EventMappings: 
+        label: All EventMappings
+      All Heartbeats: 
+        label: All Heartbeats
+  Reports/Event Reports/Custom: 
+    label: Custom
+    reports: 
+      Linux Filesystem: 
+        label: Linux Filesystem
+        /zport/dmd/Reports/Event Reports/Custom/Linux Filesystem/editDeviceReport: /zport/dmd/Reports/Event Reports/Custom/Linux Filesystem/editDeviceReport
+      Disabled Transforms: 
+        label: Disabled Transforms
+  Reports/Graph Reports: 
+    label: Graph Reports
+    reports: 
+      Belnot DNS: 
+        label: Belnot DNS
+        /zport/dmd/Reports/Graph Reports/Belnot DNS/editMultiGraphReport: /zport/dmd/Reports/Graph Reports/Belnot DNS/editMultiGraphReport
+      CISCO ASA (VPN): 
+        label: CISCO ASA (VPN)
+        /zport/dmd/Reports/Graph Reports/CISCO ASA (VPN)/editGraphReport: /zport/dmd/Reports/Graph Reports/CISCO ASA (VPN)/editGraphReport
+      Firewall Connections: 
+        label: Firewall Connections
+        /zport/dmd/Reports/Graph Reports/FWConnections/editGraphReport: /zport/dmd/Reports/Graph Reports/FWConnections/editGraphReport
+      HQ WAN Link: 
+        label: HQ WAN Link
+        /zport/dmd/Reports/Graph Reports/HQ WAN Link/editGraphReport: /zport/dmd/Reports/Graph Reports/HQ WAN Link/editGraphReport
+      Netw DC2 Switchports to FW: 
+        label: Netw DC2 Switchports to FW
+        /zport/dmd/Reports/Graph Reports/Netw DC2 Switchports to FW/editGraphReport: /zport/dmd/Reports/Graph Reports/Netw DC2 Switchports to FW/editGraphReport
+      Network DC1 ports to FW: 
+        label: Network DC1 ports to FW
+        /zport/dmd/Reports/Graph Reports/Network DC1 ports to FW/editGraphReport: /zport/dmd/Reports/Graph Reports/Network DC1 ports to FW/editGraphReport
+      Network to V7KU (DC1): 
+        label: Network to V7KU (DC1)
+        /zport/dmd/Reports/Graph Reports/Network to V7KU (DC1)/editGraphReport: /zport/dmd/Reports/Graph Reports/Network to V7KU (DC1)/editGraphReport
+      Network_Colt Line LE-254381: 
+        label: Network_Colt Line LE-254381
+        /zport/dmd/Reports/Graph Reports/Network_Colt Line LE-254381/editGraphReport: /zport/dmd/Reports/Graph Reports/Network_Colt Line LE-254381/editGraphReport
+      Network_MetroLink_10G: 
+        label: Network_MetroLink_10G
+        /zport/dmd/Reports/Graph Reports/Network_MetroLink_10G/editGraphReport: /zport/dmd/Reports/Graph Reports/Network_MetroLink_10G/editGraphReport
+      SCALITY DOBJ (CPU and Load): 
+        label: SCALITY DOBJ (CPU and Load)
+        /zport/dmd/Reports/Graph Reports/SCALITY DOBJ (CPU and Load)/editGraphReport: /zport/dmd/Reports/Graph Reports/SCALITY DOBJ (CPU and Load)/editGraphReport
+      SCALITY DOBJ (Mem): 
+        label: SCALITY DOBJ (Mem)
+        /zport/dmd/Reports/Graph Reports/SCALITY DOBJ (Mem)/editGraphReport: /zport/dmd/Reports/Graph Reports/SCALITY DOBJ (Mem)/editGraphReport
+      SCALITY DOBJ (Network): 
+        label: SCALITY DOBJ (Network)
+        /zport/dmd/Reports/Graph Reports/SCALITY DOBJ (Network)/editGraphReport: /zport/dmd/Reports/Graph Reports/SCALITY DOBJ (Network)/editGraphReport
+      WAN Routers: 
+        label: WAN Routers
+        /zport/dmd/Reports/Graph Reports/WAN Routers/editGraphReport: /zport/dmd/Reports/Graph Reports/WAN Routers/editGraphReport
+      isp LINES: 
+        label: isp LINES
+        /zport/dmd/Reports/Graph Reports/isp LINES/editGraphReport: /zport/dmd/Reports/Graph Reports/isp LINES/editGraphReport
+  Reports/Monitoring Capabilities Reports: 
+    label: Monitoring Capabilities Reports
+    reports: 
+      Installed Templates: 
+        label: Installed Templates
+  Reports/Multi-Graph Reports: 
+    label: Multi-Graph Reports
+    reports: 
+      FirewallConnections: 
+        label: FirewallConnections
+        /zport/dmd/Reports/Multi-Graph Reports/FirewallConnections/editMultiGraphReport: /zport/dmd/Reports/Multi-Graph Reports/FirewallConnections/editMultiGraphReport
+      Stamping: 
+        label: Stamping
+        /zport/dmd/Reports/Multi-Graph Reports/Stamping/editMultiGraphReport: /zport/dmd/Reports/Multi-Graph Reports/Stamping/editMultiGraphReport
+  Reports/Multi-Graph Reports/WAN Bandwidth Usage: 
+    label: WAN Bandwidth Usage
+    reports: 
+      Internet Bandwidth Usage: 
+        label: Internet Bandwidth Usage
+        /zport/dmd/Reports/Multi-Graph Reports/WAN Bandwidth Usage/Internet Bandwidth Usage/editGraphReport: /zport/dmd/Reports/Multi-Graph Reports/WAN Bandwidth Usage/Internet Bandwidth Usage/editGraphReport
+      Leased Lines Bandwidth Usage: 
+        label: Leased Lines Bandwidth Usage
+        /zport/dmd/Reports/Multi-Graph Reports/WAN Bandwidth Usage/Leased Lines Bandwidth Usage/editGraphReport: /zport/dmd/Reports/Multi-Graph Reports/WAN Bandwidth Usage/Leased Lines Bandwidth Usage/editGraphReport
+  Reports/Performance Reports: 
+    label: Performance Reports
+    reports: 
+      Availability Report: 
+        label: Availability Report
+      CPU Utilization: 
+        label: CPU Utilization
+      Filesystem Util Report: 
+        label: Filesystem Util Report
+      Interface Utilization: 
+        label: Interface Utilization
+      Memory Utilization: 
+        label: Memory Utilization
+      Threshold Summary: 
+        label: Threshold Summary
+  Reports/Storage: 
+    label: Storage
+    reports: 
+      Clients: 
+        label: Clients
+      Disk Firmware: 
+        label: Disk Firmware
+      Licenses: 
+        label: Licenses
+  Reports/vSphere: 
+    label: vSphere
+    reports: 
+      Clusters: 
+        label: Clusters
+      Datastores: 
+        label: Datastores
+      Hosts: 
+        label: Hosts
+      LUNs: 
+        label: LUNs
+      Resource Pools: 
+        label: Resource Pools
+      VM to Datastore: 
+        label: VM to Datastore
+      VMs: 
+        label: VMs
+      VMware Utilization: 
+        label: VMware Utilization
+{u'menuText': [u'Custom Device Report', u'Graph Report', u'Multi-Graph Report'], u'reportTypes': [u'customDeviceReport', u'graphReport', u'multiGraphReport'], u'success': True}

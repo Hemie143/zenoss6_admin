@@ -1,0 +1,1737 @@
+device_classes:
+  /Server/Microsoft/Windows/domain_fednot.be:
+    name: domain_fednot.be
+    zProperties:
+      zWinKDC: 10.103.0.101,10.103.0.2,10.102.0.4,10.102.0.6
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@fednot.be
+      zWinScheme: http
+    devices:
+      PRA-SQL-S01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.51
+        name: PRA-SQL-S01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      aspprod.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.13.31
+        location: /Bergstraat
+        name: aspprod.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/EXCLUDED
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      ccsql-s03.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/MSSQL
+        ipAddressString: 192.168.17.178
+        location: /Bergstraat
+        name: ccsql-s03.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      cpexmbs01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.17.179
+        location: /Bergstraat
+        name: cpexmbs01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      cpwbk-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.80
+        location: /Bergstraat
+        name: cpwbk-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      crecrpfs01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.17.165
+        location: /Bergstraat
+        name: crecrpfs01.fednot.be
+        priority: 3
+        productionState: -1
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      credc01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/OnCall
+        ipAddressString: 192.168.17.157
+        location: /Bergstraat
+        name: credc01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+      credc02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/OnCall
+        ipAddressString: 192.168.17.158
+        location: /Bergstraat
+        name: credc02.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+          - EventLog
+      credc03.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/OnCall
+        ipAddressString: 192.168.17.167
+        location: /Bergstraat
+        name: credc03.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+          - EventLog
+          - IIS
+      creter01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.81
+        location: /Bergstraat
+        name: creter01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-adfs-l01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.93.115
+        name: pra-adfs-l01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-admon-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.14
+        name: pra-admon-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          - Active Directory
+          - MSExchangeIS
+      pra-adx-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.56
+        name: pra-adx-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          zWinRMConnectTimeout: 120
+      pra-dc-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.2
+        name: pra-dc-s02.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+      pra-dc-s04.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.4
+        name: pra-dc-s04.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+      pra-dc-s06.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.6
+        name: pra-dc-s06.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+      pra-dfs-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.165
+        name: pra-dfs-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-dhcp-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.93.41
+        name: pra-dhcp-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - MSExchange2010IS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - MSExchange2010IS
+      pra-fdoc-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.140.10
+        name: pra-fdoc-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/NO SCCM
+        templates:
+        - Device
+        - EventLog
+        - MSExchange2010IS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          - MSExchange2010IS
+      pra-fwevnt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.21
+        name: pra-fwevnt-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-mbam-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.10
+        name: pra-mbam-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          zWinUseWsmanSPN: true
+      pra-mgt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.19
+        name: pra-mgt-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-omnit-s01.fednot.be:
+        collector: DC1
+        ipAddressString: 10.102.0.123
+        name: pra-omnit-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zWinKDC: 10.102.0.4
+          zWinRMPort: '5985'
+          zWinRMUser: gen_zenoss@fednot.be
+          zWinScheme: http
+      pra-plunet-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.29
+        name: pra-plunet-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prsmftp-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.35
+        name: pra-prsmftp-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-prsmprt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.31
+        name: pra-prsmprt-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-prsmprt-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.32
+        name: pra-prsmprt-s02.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-prsmprt-s03.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.33
+        name: pra-prsmprt-s03.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-prsmts-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.34
+        name: pra-prsmts-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.15
+        name: pra-prt-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          - IIS
+      pra-qcenter-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.28
+        name: pra-qcenter-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-repu-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.33.52
+        name: pra-repu-s02.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          - EventLog
+      pra-sccm-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.70
+        name: pra-sccm-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          - IIS
+      pra-spap-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.62
+        name: pra-spap-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          - EventLog
+      pra-spfe-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.61
+        name: pra-spfe-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          - EventLog
+      pra-spow-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.63
+        name: pra-spow-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-svn-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.37
+        name: pra-svn-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-tpc-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.100
+        name: pra-tpc-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/NO SCCM
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-vivaldi-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.136
+        name: pra-vivaldi-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+      pra-wsus-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.161
+        name: pra-wsus-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      tta-svn-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.17
+        name: tta-svn-s01.fednot.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      tta-ter-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.14
+        name: tta-ter-s01.fednot.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      tta-vivaldi-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.15
+        name: tta-vivaldi-s01.fednot.be
+        priority: 3
+        productionState: -1
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      tta-wbk-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.10
+        name: tta-wbk-s01.fednot.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      cll0365-sccm.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.104.0.32
+        name: cll0365-sccm.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      dev2sql0syb.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.16
+        name: dev2sql0syb.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-adfs-l02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.93.116
+        name: pra-adfs-l02.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-assnot-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.30
+        name: pra-assnot-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-azcnct-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.13.115
+        name: pra-azcnct-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-callc-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.133.102
+        name: pra-callc-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-captor-s10.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.26
+        name: pra-captor-s10.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-cnkats-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.34
+        name: pra-cnkats-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-crm-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.60
+        name: pra-crm-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-crm-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.61
+        name: pra-crm-s02.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dfs-c00.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.82
+        name: pra-dfs-c00.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dfs-c00-fs1.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.83
+        name: pra-dfs-c00-fs1.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dfs-c00-fs2.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.84
+        name: pra-dfs-c00-fs2.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dfs-n02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.81
+        name: pra-dfs-n02.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dhcp-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.93.42
+        name: pra-dhcp-s02.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dmsapp-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.12
+        name: pra-dmsapp-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dmscont-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.53.11
+        name: pra-dmscont-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dmscts-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.53.14
+        name: pra-dmscts-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dmsindx-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.53.12
+        name: pra-dmsindx-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dmstrs-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.53.13
+        name: pra-dmstrs-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dmsxcp-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.70
+        name: pra-dmsxcp-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-exmbs-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.123.179
+        name: pra-exmbs-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-exmgt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.13.118
+        name: pra-exmgt-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-monaas-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.93.132
+        name: pra-monaas-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-planvw-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.25
+        name: pra-planvw-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-print-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.16
+        name: pra-print-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prsmftp-s10.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.16
+        name: pra-prsmftp-s10.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prsmprt-s10.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.123
+        name: pra-prsmprt-s10.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prsmprt-s11.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.120
+        name: pra-prsmprt-s11.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prsmprt-s12.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.125
+        name: pra-prsmprt-s12.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prsmts-s10.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.124
+        name: pra-prsmts-s10.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prsmvpn-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.15
+        name: pra-prsmvpn-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prsmvpn-s10.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.121
+        name: pra-prsmvpn-s10.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prtg-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.250.101.110
+        name: pra-prtg-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-qcenter-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.28
+        name: pra-qcenter-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-qlikprt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.32
+        name: pra-qlikprt-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-qliksns-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.31
+        name: pra-qliksns-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-radius-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.7
+        name: pra-radius-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-repu-s03.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.33.151
+        name: pra-repu-s03.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-repu-s04.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.33.152
+        name: pra-repu-s04.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-repu-s05.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.33.153
+        name: pra-repu-s05.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-repu-s06.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.33.154
+        name: pra-repu-s06.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-sapsm-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.93.10
+        name: pra-sapsm-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-sccm-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.71
+        name: pra-sccm-s02.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-sccm-s10.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.72
+        name: pra-sccm-s10.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-sqlcrm-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.116
+        name: pra-sqlcrm-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-sqlcrm-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.117
+        name: pra-sqlcrm-s02.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-subca-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.130
+        name: pra-subca-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-subcert-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.150
+        name: pra-subcert-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-tbl-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.24
+        name: pra-tbl-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-tblts-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.33
+        name: pra-tblts-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-vcc-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.174
+        name: pra-vcc-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-wsus-s10.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.162
+        name: pra-wsus-s10.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-zfax-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.133.103
+        name: pra-zfax-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pr-irs-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.99.41
+        name: pr-irs-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pr-pamam-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.33.20
+        name: pr-pamam-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pr-pamrds-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.20.19
+        name: pr-pamrds-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pr-subcert-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.20.51
+        name: pr-subcert-s02.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device

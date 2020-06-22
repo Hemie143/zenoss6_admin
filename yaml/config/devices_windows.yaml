@@ -1,0 +1,1798 @@
+device_classes:
+  /Server/Microsoft:
+    name: Microsoft
+    zProperties:
+      zDeviceTemplates:
+      - Device
+      - Cluster
+      - Active Directory
+      - IIS
+      - MSExchange2010IS
+      zIcon: /++resource++mswindows/img/server-windows.png
+      zSnmpMonitorIgnore: true
+      zWindowsRemodelEventClassKeys:
+      - clusterOwnerChange
+  /Server/Microsoft/Cluster:
+    devices:
+      pr-sql-c01.pra-data.fednot.be:
+        collector: DC1
+        ipAddressString: 10.4.201.101
+        name: pr-sql-c01.pra-data.fednot.be
+        priority: 3
+        productionState: 400
+        templates:
+        - Active Directory
+        - IIS
+        - MSExchange2010IS
+        zProperties:
+          zWinKDC: 10.131.202.51,10.131.201.51
+          zWinRMUser: gen_zenoss@PRA-DATA.fednot.be
+      pr-sql-n11.pra-data.fednot.be:
+        collector: DC1
+        ipAddressString: 10.4.201.11
+        name: pr-sql-n11.pra-data.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Active Directory
+        - IIS
+        - MSExchange2010IS
+    name: Cluster
+    zProperties:
+      zDeviceTemplates:
+      - Cluster
+      - Active Directory
+      - IIS
+      - MSExchange2010IS
+      zPythonClass: ZenPacks.zenoss.Microsoft.Windows.ClusterDevice
+  /Server/Microsoft/Windows:
+    name: Windows
+    zProperties:
+      zDeviceTemplates:
+      - Device
+      zPythonClass: ZenPacks.zenoss.Microsoft.Windows.Device
+      zWinKDC: 192.168.17.157
+      zWinRMPort: '5986'
+      zWinRMServerName: ${here/titleOrId}
+      zWinRMUser: Zenoss@FEDNOT.BE
+      zWinScheme: https
+  /Server/Microsoft/Windows/domain_acc.staging.local:
+    devices:
+      cadc-s01.acc.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.2.50.51
+        name: cadc-s01.acc.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+          zWinRMServerName: cadc-s01.acc.staging.local
+      cadc-s02.acc.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.2.50.52
+        name: cadc-s02.acc.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+          zWinRMServerName: cadc-s02.acc.staging.local
+      carep-l01.acc.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.2.50.41
+        name: carep-l01.acc.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          zWinRMServerName: carep-l01.acc.staging.local
+      carep-l02.acc.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.2.50.42
+        name: carep-l02.acc.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          zWinRMServerName: carep-l02.acc.staging.local
+      casql-n01.acc.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/MSSQL
+        ipAddressString: 10.2.50.21
+        name: casql-n01.acc.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          zWinRMServerName: casql-n01.acc.staging.local
+      casql-n02.acc.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/MSSQL
+        ipAddressString: 10.2.50.22
+        name: casql-n02.acc.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          zWinRMServerName: casql-n02.acc.staging.local
+    name: domain_acc.staging.local
+    zProperties:
+      zWinKDC: +10.2.50.51,+10.2.50.52
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@acc.staging.local
+      zWinScheme: http
+  /Server/Microsoft/Windows/domain_credoc.local:
+    devices:
+      cpdc-s01.in.credoc.be:
+        collector: DC1
+        comments: condrieu
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.50.51
+        name: cpdc-s01.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zWinRMServerName: CONDRIEU.credoc.local
+      cpdc-s02.in.credoc.be:
+        collector: DC1
+        comments: grappa
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.50.52
+        name: cpdc-s02.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zWinRMServerName: GRAPPA.credoc.local
+      cpsqlmon-s01.in.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/MSSQL
+        ipAddressString: 10.4.50.91
+        name: cpsqlmon-s01.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zWinRMServerName: cpsqlmon-s01.credoc.local
+      prb-cnkaudt-s01.credoc.local:
+        collector: DC1
+        ipAddressString: 10.4.30.62
+        name: prb-cnkaudt-s01.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+      prb-dc-s04.in.credoc.be:
+        collector: DC1
+        ipAddressString: 10.4.50.54
+        name: prb-dc-s04.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zWinRMServerName: prb-dc-s04.credoc.local
+      prb-dc-s05.credoc.local:
+        collector: DC1
+        ipAddressString: 10.4.50.65
+        name: prb-dc-s05.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+      prb-prdprsm-s01.in.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.30.41
+        name: prb-prdprsm-s01.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          zWinRMServerName: prb-prdprsm-s01.credoc.local
+      prb-prsmweb-s10.credoc.local:
+        collector: DC1
+        ipAddressString: 10.4.30.12
+        name: prb-prsmweb-s10.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+      prb-rep-l01.in.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.50.46
+        name: prb-rep-l01.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          zWinRMServerName: CPREP-L01.credoc.local
+      prb-rep-l02.in.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.50.47
+        name: prb-rep-l02.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          zWinRMServerName: cprep-l02.credoc.local
+      prb-sign-l01.credoc.local:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.40.21
+        name: prb-sign-l01.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        zProperties:
+          zWinUseWsmanSPN: true
+      prb-sign-l02.credoc.local:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.40.22
+        name: prb-sign-l02.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+      prb-sql-n31.credoc.local:
+        collector: DC1
+        ipAddressString: 10.4.50.131
+        name: prb-sql-n31.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        - /Systems/Infrastructure/Windows/Production/SQL/Wave3
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+      prb-sql-n32.credoc.local:
+        collector: DC1
+        ipAddressString: 10.4.50.132
+        name: prb-sql-n32.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+      prb-sql-n33.credoc.local:
+        collector: DC1
+        ipAddressString: 10.4.50.133
+        name: prb-sql-n33.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+      prb-sql-n34.credoc.local:
+        collector: DC1
+        ipAddressString: 10.4.50.134
+        name: prb-sql-n34.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        - /Systems/Infrastructure/Windows/Production/SQL/Wave3
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+      prb-sql-n35.credoc.local:
+        collector: DC1
+        ipAddressString: 10.4.50.135
+        name: prb-sql-n35.credoc.local
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        - /Systems/Infrastructure/Windows/Production/SQL/Wave3
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+    name: domain_credoc.local
+    zProperties:
+      zWinKDC: 10.4.50.51,10.4.50.52,10.4.50.54
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@credoc.local
+      zWinScheme: http
+  /Server/Microsoft/Windows/domain_credoc.local/Rendition:
+    cProperties:
+      cJavaHome:
+        type: string
+        value: D:\RenditionServer-PRB\jre
+      cJmxClient:
+        type: string
+        value: D:\Monitoring-Tools\Jmx-Client\cmdline-jmxclient-0.10.3.jar
+      cJmxPort:
+        type: int
+        value: 8686
+    devices:
+      prb-pdfr-s01.in.credoc.be:
+        cProperties:
+          cJavaHome:
+            type: string
+            value: D:\RenditionServer-PRB\jre
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/Dashboard/Production
+        - /Groups/EREGISTRATION
+        ipAddressString: 10.4.50.41
+        name: prb-pdfr-s01.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - Rendition3
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Rendition3
+          zWinRMServerName: prb-pdfr-s01.credoc.local
+      prb-pdfr-s02.in.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/Dashboard/Production
+        - /Groups/EREGISTRATION
+        ipAddressString: 10.4.50.42
+        name: prb-pdfr-s02.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - Rendition3
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Rendition3
+          zWinRMServerName: prb-pdfr-s02.credoc.local
+      prb-pdfr-s03.in.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/Dashboard/Production
+        - /Groups/EREGISTRATION
+        ipAddressString: 10.4.50.43
+        name: prb-pdfr-s03.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - Rendition3
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          - Rendition3
+          zWinRMServerName: prb-pdfr-s03.credoc.local
+      prb-pdfr-s04.in.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/Dashboard/Production
+        - /Groups/EREGISTRATION
+        ipAddressString: 10.4.50.44
+        name: prb-pdfr-s04.in.credoc.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - Rendition3
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          - Rendition3
+          zWinRMServerName: prb-pdfr-s04.credoc.local
+    name: Rendition
+  /Server/Microsoft/Windows/domain_fednot.be:
+    devices:
+      aspprod.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.13.31
+        location: /Bergstraat
+        name: aspprod.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/EXCLUDED
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      ccsql-s03.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/MSSQL
+        ipAddressString: 192.168.17.178
+        location: /Bergstraat
+        name: ccsql-s03.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      cpexmbs01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.17.179
+        location: /Bergstraat
+        name: cpexmbs01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      cpwbk-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.17.182
+        location: /Bergstraat
+        name: cpwbk-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      creter01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.17.170
+        location: /Bergstraat
+        name: creter01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-adfs-l01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.93.115
+        name: pra-adfs-l01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-dc-s04.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.4
+        name: pra-dc-s04.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+      pra-dhcp-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.93.41
+        name: pra-dhcp-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - MSExchange2010IS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - MSExchange2010IS
+      pra-mgt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.19
+        name: pra-mgt-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-plunet-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.29
+        name: pra-plunet-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      secnotdcrus.secnot.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.13.2
+        name: secnotdcrus.secnot.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - MSExchange2010IS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - MSExchange2010IS
+          zWinRMServerName: secnotdcrus.fednot.be
+      tta-Plunet-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.13
+        name: tta-Plunet-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+    name: domain_fednot.be
+    zProperties:
+      zWinKDC: 10.103.0.101,10.103.0.2,10.102.0.4,10.102.0.6
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@fednot.be
+      zWinScheme: http
+  /Server/Microsoft/Windows/domain_mgt.staging.local:
+    devices:
+      stb-load-s05.staging.credoc.be:
+        collector: DC2
+        ipAddressString: 10.5.50.95
+        name: stb-load-s05.staging.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/NO SCCM
+        templates:
+        - Device
+        zProperties:
+          zWinRMServerName: stb-load-s05.mgt.staging.local
+      tta-omnit-s01.mgt.staging.local:
+        collector: DC2
+        ipAddressString: 10.1.43.41
+        name: tta-omnit-s01.mgt.staging.local
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+      tta-tbl-s01.mgt.staging.credoc.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.1.43.24
+        name: tta-tbl-s01.mgt.staging.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          zWinRMServerName: tta-tbl-s01.mgt.staging.local
+          zWinUseWsmanSPN: true
+    name: domain_mgt.staging.local
+    zProperties:
+      zWinKDC: 10.5.50.55,10.5.50.58,10.5.50.59
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@MGT.STAGING.LOCAL
+      zWinScheme: http
+  /Server/Microsoft/Windows/domain_mgt.staging.local/Rendition:
+    devices:
+      stb-pdfr-s01.staging.credoc.be:
+        cProperties:
+          cJavaHome:
+            type: string
+            value: D:\RenditionServer-ACC3\jre
+          cJmxClient:
+            type: string
+            value: D:\zenoss\cmdline-jmxclient-0.10.3.jar
+          cJmxPort:
+            type: int
+            value: 8688
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.5.50.41
+        name: stb-pdfr-s01.staging.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - Powershell_Test
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Powershell_Test
+          zWinRMServerName: stb-pdfr-s01.mgt.staging.local
+      stb-pdfr-s02.staging.credoc.be:
+        cProperties:
+          cJavaHome:
+            type: string
+            value: D:\RenditionServer-ACC3\jre
+          cJmxClient:
+            type: string
+            value: D:\zenoss\cmdline-jmxclient-0.10.3.jar
+          cJmxPort:
+            type: int
+            value: 8688
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.5.50.42
+        name: stb-pdfr-s02.staging.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - Powershell_Test
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Powershell_Test
+          zWinKDC: csdc-s01.staging.credoc.be
+          zWinRMServerName: stb-pdfr-s02.mgt.staging.local
+      stb-pdfr-s03.staging.credoc.be:
+        cProperties:
+          cJavaHome:
+            type: string
+            value: D:\RenditionServer-ACC3\jre
+          cJmxClient:
+            type: string
+            value: D:\zenoss\cmdline-jmxclient-0.10.3.jar
+          cJmxPort:
+            type: int
+            value: 8688
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.5.50.43
+        name: stb-pdfr-s03.staging.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - Powershell_Test
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Powershell_Test
+          zWinRMServerName: stb-pdfr-s03.mgt.staging.local
+      stb-pdfr-s04.staging.credoc.be:
+        cProperties:
+          cJavaHome:
+            type: string
+            value: D:\RenditionServer-TAA\jre
+          cJmxClient:
+            type: string
+            value: D:\zenoss\cmdline-jmxclient-0.10.3.jar
+          cJmxPort:
+            type: int
+            value: 8683
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.5.50.44
+        name: stb-pdfr-s04.staging.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - Powershell_Test
+        - Rendition3
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Rendition3
+          - Powershell_Test
+          zWinKDC: csdc-s11.staging.credoc.be
+          zWinRMServerName: stb-pdfr-s04.mgt.staging.local
+      stb-pdfr-s05.staging.credoc.be:
+        cProperties:
+          cJavaHome:
+            type: string
+            value: D:\RenditionServer-DSA\jre
+          cJmxClient:
+            type: string
+            value: D:\Monitoring-Tools\Jmx-Client\cmdline-jmxclient-0.10.3.jar
+          cJmxPort:
+            type: int
+            value: 8685
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.5.50.45
+        name: stb-pdfr-s05.staging.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        templates:
+        - Device
+        - Powershell_Test
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Powershell_Test
+          zWinRMServerName: stb-pdfr-s05.mgt.staging.local
+      stb-pdfr-s06.staging.credoc.be:
+        cProperties:
+          cJavaHome:
+            type: string
+            value: D:\RenditionServer-DSB\jre
+          cJmxClient:
+            type: string
+            value: D:\Monitoring-Tools\Jmx-Client\cmdline-jmxclient-0.10.3.jar
+          cJmxPort:
+            type: int
+            value: 8686
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.5.50.46
+        name: stb-pdfr-s06.staging.credoc.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Staging
+        templates:
+        - Device
+        - Powershell_Test
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Powershell_Test
+          zWinRMServerName: stb-pdfr-s06.mgt.staging.local
+    name: Rendition
+  /Server/Microsoft/Windows/domain_nan.be:
+    devices:
+      prn-dc-s01.nan.be:
+        collector: DC1
+        ipAddressString: 10.12.90.201
+        name: prn-dc-s01.nan.be
+        priority: 3
+        productionState: 400
+        templates:
+        - Device
+      prn-dc-s02.nan.be:
+        collector: DC2
+        ipAddressString: 10.12.90.202
+        name: prn-dc-s02.nan.be
+        priority: 3
+        productionState: 400
+        templates:
+        - Device
+      prn-dc-s03.nan.be:
+        collector: DC1
+        ipAddressString: 10.12.90.203
+        name: prn-dc-s03.nan.be
+        priority: 3
+        productionState: 400
+        templates:
+        - Device
+      prn-dc-s04.nan.be:
+        collector: DC2
+        ipAddressString: 10.12.90.204
+        name: prn-dc-s04.nan.be
+        priority: 3
+        productionState: 400
+        templates:
+        - Device
+    name: domain_nan.be
+    zProperties:
+      zWinKDC: 10.12.90.201,10.12.90.202,10.12.90.203,10.12.90.204
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@nan.be
+      zWinScheme: http
+  /Server/Microsoft/Windows/domain_pra-data.fednot.be:
+    devices:
+      pra-archsql-s01.pra-data.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.131.202.5
+        name: pra-archsql-s01.pra-data.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        - /Systems/Infrastructure/Windows/Updates/NO SCCM
+        templates:
+        - Device
+      pra-dc-s11.pra-data.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.131.202.51
+        name: pra-dc-s11.pra-data.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - Active Directory
+      pra-dc-s12.pra-data.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.131.201.51
+        name: pra-dc-s12.pra-data.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zWinKDC: 10.131.201.51
+    name: domain_pra-data.fednot.be
+    zProperties:
+      zWinKDC: 10.131.202.51,10.131.201.51
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@PRA-DATA.fednot.be
+      zWinScheme: http
+  /Server/Microsoft/Windows/realm_acc.credoc.be:
+    name: realm_acc.credoc.be
+    zProperties:
+      zWinKDC: +10.2.50.51,+10.2.50.52
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@acc.staging.local
+      zWinScheme: http
+  /Server/Microsoft/Windows/realm_credoc.local:
+    name: realm_credoc.local
+    zProperties:
+      zWinKDC: 10.4.50.51,10.4.50.52,10.4.50.54
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@credoc.local
+      zWinScheme: http
+  /Server/Microsoft/Windows/realm_credoc.local/Rendition:
+    cProperties:
+      cJavaHome:
+        type: string
+        value: D:\RenditionServer-PRB\jre
+      cJmxClient:
+        type: string
+        value: D:\Monitoring-Tools\Jmx-Client\cmdline-jmxclient-0.10.3.jar
+      cJmxPort:
+        type: int
+        value: 8686
+    name: Rendition
+  /Server/Microsoft/Windows/realm_fednot.be:
+    devices:
+      PRA-SQL-S01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.51
+        name: PRA-SQL-S01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Production/SQL
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      crecrpfs01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 192.168.17.165
+        location: /Bergstraat
+        name: crecrpfs01.fednot.be
+        priority: 3
+        productionState: -1
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      credc01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/OnCall
+        ipAddressString: 192.168.17.157
+        location: /Bergstraat
+        name: credc01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+      credc02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/OnCall
+        ipAddressString: 192.168.17.158
+        location: /Bergstraat
+        name: credc02.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+          - EventLog
+      credc03.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        - /Groups/OnCall
+        ipAddressString: 192.168.17.167
+        location: /Bergstraat
+        name: credc03.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+          - EventLog
+          - IIS
+      pra-admon-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.14
+        name: pra-admon-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          - Active Directory
+          - MSExchangeIS
+      pra-adx-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.56
+        name: pra-adx-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          zWinRMConnectTimeout: 120
+      pra-dc-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.2
+        name: pra-dc-s02.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+      pra-dc-s06.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.6
+        name: pra-dc-s06.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Active Directory
+          - Device
+      pra-dfs-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.165
+        name: pra-dfs-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-fdoc-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.140.10
+        name: pra-fdoc-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/NO SCCM
+        templates:
+        - Device
+        - EventLog
+        - MSExchange2010IS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          - MSExchange2010IS
+      pra-fwevnt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.21
+        name: pra-fwevnt-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-mbam-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.43.10
+        name: pra-mbam-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-omnit-s01.fednot.be:
+        collector: DC1
+        ipAddressString: 10.102.0.123
+        name: pra-omnit-s01.fednot.be
+        priority: 3
+        productionState: 400
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Active Directory
+        - Device
+        - IIS
+        - MSExchange2010IS
+        zProperties:
+          zWinKDC: 10.102.0.4
+          zWinRMPort: '5985'
+          zWinRMUser: gen_zenoss@fednot.be
+          zWinScheme: http
+      pra-prsmftp-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.35
+        name: pra-prsmftp-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-prsmprt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.31
+        name: pra-prsmprt-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-prsmprt-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.32
+        name: pra-prsmprt-s02.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-prsmprt-s03.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.33
+        name: pra-prsmprt-s03.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-prsmts-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.34
+        name: pra-prsmts-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/CRITICAL IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      pra-prt-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.15
+        name: pra-prt-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          - IIS
+      pra-qcenter-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.28
+        name: pra-qcenter-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-repu-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.33.51
+        name: pra-repu-s01.fednot.be
+        priority: 3
+        productionState: -1
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          zWinRMServerName: pra-repu-s01.fednot.be
+      pra-repu-s02.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.4.33.52
+        name: pra-repu-s02.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          - EventLog
+      pra-sccm-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.70
+        name: pra-sccm-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+          - IIS
+      pra-spap-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.62
+        name: pra-spap-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          - EventLog
+      pra-spfe-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.61
+        name: pra-spfe-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          - EventLog
+      pra-spow-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.63
+        name: pra-spow-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-svn-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.37
+        name: pra-svn-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-tpc-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.100
+        name: pra-tpc-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/NO SCCM
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      pra-vivaldi-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.136
+        name: pra-vivaldi-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        - IIS
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - IIS
+          zWinKDC: 192.168.17.157,10.103.0.101
+          zWinRMPort: '5985'
+          zWinRMUser: gen_zenoss@fednot.be
+          zWinScheme: http
+      pra-wsus-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.102.0.161
+        name: pra-wsus-s01.fednot.be
+        priority: 3
+        productionState: 1000
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Updates/LOW IMPACT
+        templates:
+        - Device
+        zProperties:
+          zDeviceTemplates:
+          - Device
+      tta-svn-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.17
+        name: tta-svn-s01.fednot.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      tta-ter-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.14
+        name: tta-ter-s01.fednot.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        - /Systems/Infrastructure/Windows/Updates/STAGING
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      tta-vivaldi-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.15
+        name: tta-vivaldi-s01.fednot.be
+        priority: 3
+        productionState: -1
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+      tta-wbk-s01.fednot.be:
+        collector: DC1
+        groups:
+        - /Groups/ALL
+        ipAddressString: 10.103.0.10
+        name: tta-wbk-s01.fednot.be
+        priority: 3
+        productionState: 900
+        systems:
+        - /Systems/Infrastructure/Windows/Corporate
+        - /Systems/Infrastructure/Windows/Staging
+        templates:
+        - Device
+        - EventLog
+        zProperties:
+          zDeviceTemplates:
+          - Device
+          - EventLog
+    name: realm_fednot.be
+    zProperties:
+      zDeviceTemplates:
+      - Active Directory
+      - Device
+      - IIS
+      - MSExchange2010IS
+      zWinRMUser: gen_monitoring@FEDNOT.BE
+  /Server/Microsoft/Windows/realm_in.credoc.be:
+    name: realm_in.credoc.be
+    zProperties:
+      zWinKDC: 10.4.50.51
+      zWinRMUser: gen_monitoring@credoc.local
+  /Server/Microsoft/Windows/realm_in.credoc.be/Rendition:
+    cProperties:
+      cJavaHome:
+        type: string
+        value: D:\RenditionServer-PRB\jre
+      cJmxClient:
+        type: string
+        value: D:\Monitoring-Tools\Jmx-Client\cmdline-jmxclient-0.10.3.jar
+      cJmxPort:
+        type: int
+        value: 8686
+    name: Rendition
+    zProperties:
+      zDeviceTemplates:
+      - Active Directory
+      - Device
+      - IIS
+      - MSExchange2010IS
+      - Rendition3
+  /Server/Microsoft/Windows/realm_staging.credoc.be:
+    name: realm_staging.credoc.be
+    zProperties:
+      zDeviceTemplates:
+      - Device
+      zWinKDC: 10.5.50.55
+      zWinRMPort: '5985'
+      zWinRMUser: gen_zenoss@MGT.STAGING.LOCAL
+      zWinScheme: http
