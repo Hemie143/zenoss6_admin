@@ -402,6 +402,8 @@ def parse_templates(routers, output):
     for t in tqdm(result, ascii=True):
         if t['name'] in templates_name_set:
             continue
+        if not t['name'].startswith('HP'):
+            continue
         templates_name_set.add(t['name'])
         t_response = template_router.callMethod('getTemplates', id=t['uid'])
         t_result = t_response['result']
