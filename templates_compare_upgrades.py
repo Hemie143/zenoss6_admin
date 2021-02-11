@@ -12,8 +12,14 @@ def get_tree_templates(tree_branch, name_filter=None, known_templates=None):
     for n in tree_branch:
             if n['leaf'] and (n['uid'] not in known_templates):
                 # print(n['uid'])
-                if (name_filter and name_filter in n['uid']) or not name_filter:
+                template_name = n['uid'].split('/')[-1]
+                if not name_filter:
                     known_templates.add(n['uid'])
+                else:
+                    r = re.match(r'([^-]*)-.*upgrade-\d+', template_name)
+                    #r = re.match(r'(.*?)-(?:backup-)?(?:pre)?upgrade-\d+', template_name)
+                    if r:
+                        known_templates.add(n['uid'])
             elif not n['leaf']:
                 known_templates = known_templates.union(get_tree_templates(n['children'], name_filter, known_templates))
             else:
@@ -25,7 +31,7 @@ def get_backup_templates(router):
     result = root_tree['result']                                                                   # list of 1 item (root)
 
     # TODO: some templates are renamed with <name>-upgrade-<numbers>, others to <name>-backup-upgrade-<numbers>
-    templates = get_tree_templates(result, name_filter='-backup')
+    templates = get_tree_templates(result, name_filter='upgrade')
     # templates = get_tree_templates(result, name_filter='-preupgrade')
     return templates
 
@@ -189,9 +195,10 @@ def inspect_template(router, template_uid):
     if template_uid.endswith('-backup'):
         new_template_uid = template_uid[:-7]
     else:
-        r = re.match(r'(.*)-backup-preupgrade-\d+', template_uid)
-        # r = re.match(r'(.*)-preupgrade-\d+', template_uid)
-        new_template_uid = r.group(1)
+        template_name = template_uid.split('/')[-1]
+        template_location = '/'.join(template_uid.split('/')[:-1])
+        r = re.match(r'(.*?)-(?:backup-)?(?:pre)?upgrade-\d+', template_name)
+        new_template_uid = '{}/{}'.format(template_location, r.group(1))
     result = router.callMethod('getInfo', uid=new_template_uid)['result']
     if not result['success']:
         print(result['msg'])

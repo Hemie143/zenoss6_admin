@@ -88,7 +88,7 @@ if __name__ == '__main__':
     response = trigger_router.callMethod('getTriggers')
     data = response['result']['data']
     yaml_print(key='triggers', indent=0)
-    # parse_triggerlist(routers, data)
+    parse_triggerlist(routers, data)
 
     response = trigger_router.callMethod('getNotifications')
     data = response['result']['data']
