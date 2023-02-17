@@ -49,13 +49,21 @@ def inspect_datasources(router, uid1, uid2):
         ds2_uid = '{}/datasources/{}'.format(uid2, ds1_name)
         ds1_details = router.callMethod('getDataSourceDetails', uid=ds1_uid)['result']['record']
         ds2_details = router.callMethod('getDataSourceDetails', uid=ds2_uid)['result']['record']
+        if ds1_details['type'] != ds2_details['type']:
+            print('        **Difference for datasource {}:'.format(ds1_name))
+            print('            Old type={}'.format(ds1_details['type']))
+            print('            New type={}'.format(ds2_details['type']))
+            datasources2_names.remove(ds1_name)
+            continue
         for k, v in ds1_details.iteritems():
             if k in ['id', 'uid']:
                 continue
+            if v is None:
+                v = ''
             if v != ds2_details[k]:
-                print('        Difference for datasource {}: field {}'.format(ds1_name, k))
-                print('            Old value={}'.format(v))
-                print('            New value={}'.format(ds2_details[k]))
+                print('        Difference for datasource {}: field={}'.format(ds1_name, k))
+                print('            Old value={} ({})'.format(v, type(v)))
+                print('            New value={} ({})'.format(ds2_details[k], type(ds2_details[k])))
         datasources2_names.remove(ds1_name)
     if datasources2_names:
         print('        New datasources: {}'.format(','.join(datasources2_names)))
@@ -129,8 +137,8 @@ def inspect_thresholds(router, uid1, uid2):
             elif v != th2_details[k]:
                 # TODO : Inspect a level lower, as v is a list => compare lists
                 print('        Difference for threshold {}: field {}'.format(th1_name, k))
-                print('            Old value={}'.format(v))
-                print('            New value={}'.format(th2_details[k]))
+                print('            Old value={} ({})'.format(v, type(v)))
+                print('            New value={} ({})'.format(th2_details[k], type(th2_details[k])))
 
         thresholds2_names.remove(th1_name)
     if thresholds2_names:
@@ -154,10 +162,17 @@ def inspect_graphs(router, uid1, uid2):
         for k, v in gr1_def.iteritems():
             if k in ['uid', 'fakeGraphCommands']:
                 continue
-            if v != gr2_def[k]:
+            w = gr2_def[k]
+            if k in ['graphPoints']:
+                v = ','.join(sorted(v.split(', ')))
+                w = ','.join(sorted(w.split(', ')))
+            if k in ['rrdVariables']:
+                v = sorted(v)
+                w = sorted(w)
+            if v != w:
                 print('        Difference for graph {}: field {}'.format(gr1_name, k))
-                print('            Old value={}'.format(v))
-                print('            New value={}'.format(gr2_def[k]))
+                print('            Old value={} ({})'.format(v, type(v)))
+                print('            New value={} ({})'.format(w, type(w)))
 
         gr1_points = router.callMethod('getGraphPoints', uid=gr1_uid)['result']['data']
         gr1_points = sorted(gr1_points, key=lambda k: k['id'])
@@ -174,8 +189,8 @@ def inspect_graphs(router, uid1, uid2):
                     continue
                 if v != gp2[k]:
                     print('        Difference for graph {} graphpoint {}: field {}'.format(gr1_name, gp1_name, k))
-                    print('            Old value={}'.format(v))
-                    print('            New value={}'.format(gp2[k]))
+                    print('            Old value={} ({})'.format(v, type(v)))
+                    print('            New value={} ({})'.format(gp2[k], type(gp2[k])))
             gr2_points_names.remove(gp1_name)
         if gr2_points_names:
             print('        New graph {} graphpoint {}'.format(gr1_name, gp1_name))

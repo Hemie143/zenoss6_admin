@@ -1,8 +1,0 @@
-manufacturers:
-  /Manufacturers/(Standard disk drives):
-    products:
-      VMware Virtual disk SCSI Disk Device:
-        name: VMware Virtual disk SCSI Disk Device
-        prodkeys:
-        - VMware Virtual disk SCSI Disk Device
-        type: Hardware

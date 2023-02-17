@@ -3,18 +3,16 @@ import argparse
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Encrypt password')
+    parser = argparse.ArgumentParser(description='Decrypt password')
     parser.add_argument('-k', dest='key', action='store', default='')
-    parser.add_argument('-p', dest='password', action='store', default='')
+    parser.add_argument('-t', dest='token', action='store', default='')
     options = parser.parse_args()
     key = options.key
-    password = options.password
+    token = options.token
 
     # key = Fernet.generate_key()
     # print('key: {}'.format(key))
     f = Fernet(key)
     print('f: {}'.format(f))
-    token = f.encrypt(password)
+    token = f.decrypt(token)
     print('token: {}'.format(token))
-    out = f.decrypt(token)
-    print('out: {}'.format(out))

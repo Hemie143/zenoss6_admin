@@ -51,10 +51,10 @@ def list_local_templates(router, deviceClass='', templateName=''):
 def list_zenpacks_templates(router, template_router):
     result = router.callMethod('getZenPackMetaData')['result']
     for zp, zp_value in result['data'].items():
-        # print(zp_value)
+        print(zp_value)
         zp_uid = zp_value['uid']
         uid = '{}/packables'.format(zp_uid)
-        zp_info = template_router.callMethod('getInfo', uid=zp_uid)
+        zp_info = template_router.callMethod('getInfo', uid=uid)
         # zp_info = template_router.callMethod('getCollectorTemplate', id=uid)
         # zp_info = router.callMethod('getZenPackMetaData', zenpacks=[zp_uid])['result']
         print(zp_info)
