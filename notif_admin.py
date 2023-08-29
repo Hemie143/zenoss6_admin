@@ -56,7 +56,8 @@ def notif_save(routers, filename):
     for notification in response['result']['data']:
         # print(notification['name'])
         output[notification['name']] = {'enabled': notification['enabled']}
-    yaml.safe_dump(output, file(filename, 'w'), encoding='utf-8', allow_unicode=True, sort_keys=True)
+    with open(filename, 'w') as yaml_file:
+        yaml.safe_dump(output, yaml_file, encoding='utf-8', allow_unicode=True, sort_keys=True)
 
 def notif_restore(routers, filename):
     print('Restoring current notifications setup.')

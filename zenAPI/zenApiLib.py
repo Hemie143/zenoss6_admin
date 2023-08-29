@@ -1,18 +1,26 @@
 #!/usr/bin/env python
 import os
-import requests
-from requests.packages.urllib3.exceptions import InsecureRequestWarning
-from requests.packages.urllib3.util.retry import Retry
-from httplib import HTTPConnection
-from requests.adapters import HTTPAdapter
 import json
-import ConfigParser
-from HTMLParser import HTMLParser
+import requests
+from requests.adapters import HTTPAdapter
+from requests.packages.urllib3.util.retry import Retry
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
+# Try to import from python 2 locations, fallback to python3.
+try:
+    from httplib import HTTPConnection
+    from HTMLParser import HTMLParser
+    import ConfigParser
+except ImportError:
+    from http.client import HTTPConnection
+    from html.parser import HTMLParser
+    import configparser as ConfigParser
 
 if not ('logging' in dir()):
     import logging
+
     logging.basicConfig(
-        format = '%(asctime)s %(levelname)s %(name)s: %(message)s'
+        format='%(asctime)s %(levelname)s %(name)s: %(message)s'
     )
     logging.getLogger().setLevel(logging.ERROR)
 
@@ -21,7 +29,8 @@ class zenConnector():
     '''
     Enhanced API library embedding increased functionality & error handling
     '''
-    def __init__(self, section = 'default', cfgFilePath = "", routerName = None, loglevel = 40):
+
+    def __init__(self, section='default', cfgFilePath="", routerName=None, loglevel=40):
         self._url = ''
         self._routerName = ''
         self._routersInfo = {}
@@ -36,7 +45,6 @@ class zenConnector():
             self.setRouter('IntrospectionRouter')
         else:
             self.setRouter(routerName)
-       
 
     def _getConfigDetails(self, section, cfgFilePath):
         '''
@@ -44,6 +52,14 @@ class zenConnector():
         same directory as the python library file & return parameters in
         specific 'section'.
         '''
+        if isinstance(cfgFilePath, dict):
+            '''
+            Accept a dict of string values containing the input
+            instead of a configuration file path.
+            '''
+            configuration = self._sanitizeConfig(cfgFilePath)
+            return configuration
+        # Use configuration file
         self.log.info('_getConfigDetails; section:%s, cfgFilePath:%s' % (section, cfgFilePath))
         configurations = ConfigParser.ConfigParser()
         if cfgFilePath == "":
@@ -52,30 +68,29 @@ class zenConnector():
             )
         configurations.read(cfgFilePath)
         if not (section in configurations.sections()):
-            raise Exception('Specified configuration section, "%s" not defined in "%s".' % (section, cfgFilePath)) 
+            raise Exception('Specified configuration section, "%s" not defined in "%s".' % (section, cfgFilePath))
         configuration = {item[0]: item[1] for item in configurations.items(section)}
         configuration = self._sanitizeConfig(configuration)
         return configuration
-
 
     def _sanitizeConfig(self, configuration):
         '''
         Ensure 'creds.cfg' configuration file has required fields.
         Deal with special fields.
         '''
-        self.log.info('_sanitizeConfig; configuration:%s' %(configuration))
+        self.log.info('_sanitizeConfig; configuration:%s' % (configuration))
         if not ('url' in configuration):
             raise Exception('Configuration file missing "url" key')
-        #Collection Zone or Resource Manager
+        # Collection Zone or Resource Manager
         if 'cz' in configuration:
             if not 'apikey' in configuration:
                 raise Exception('Configuration file missing "apikey" key')
-            configuration['url'] = configuration['url'] + '/' + configuration['cz']
+            configuration['url'] = '{}/{}'.format(configuration['url'], configuration['cz'])
         elif 'username' in configuration:
             if not 'password' in configuration:
                 self.log.error('Configuration file missing "password" key')
         else:
-            #No username or cz prefix configure
+            # No username or cz prefix configure
             raise Exception('Configuration missing username or collection zone prefix')
         if not ('timeout' in configuration):
             configuration['timeout'] = 3
@@ -91,18 +106,22 @@ class zenConnector():
                 sslVerify = False
                 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
         configuration['ssl_verify'] = sslVerify
+        disableSaml = False
+        if 'disable_saml' in configuration:
+            if configuration['disable_saml'].lower() == 'true':
+                disableSaml = True
+        configuration['disable_saml'] = disableSaml
         return configuration
-
 
     def getRequestSession(self):
         '''
-        Setup defaults for using the requests library 
+        Setup defaults for using the requests library
         '''
         self.log.info('getRequestSession;')
         s = requests.Session()
         retries = Retry(total=self.config['retries'],
-                backoff_factor=1,
-                status_forcelist=[ 500, 502, 503, 504, 405 ])
+                        backoff_factor=1,
+                        status_forcelist=[500, 502, 503, 504, 405])
         s.mount(
             'https://',
             HTTPAdapter(max_retries=retries)
@@ -112,7 +131,6 @@ class zenConnector():
             HTTPAdapter(max_retries=retries)
         )
         return s
-
 
     def callMethod(self, *method, **payload):
         '''
@@ -127,11 +145,12 @@ class zenConnector():
         # Check that specified method is valid, skip 'IntrospectionRouter' router methods
         if self._routerName != 'IntrospectionRouter':
             if not (method[0] in self._routersInfo[self._routerName]['methods'].keys()):
-                raise Exception("Specified router method '%s' is not an option. Available methods for '%s' router are: %s" % (
-                    method[0],
-                    self._routerName,
-                    sorted(self._routersInfo[self._routerName]['methods'].keys())
-                ))
+                raise Exception(
+                    "Specified router method '%s' is not an option. Available methods for '%s' router are: %s" % (
+                        method[0],
+                        self._routerName,
+                        sorted(self._routersInfo[self._routerName]['methods'].keys())
+                    ))
         if self.log.getEffectiveLevel() == 10:
             HTTPConnection.debuglevel = 1
         requests_log = logging.getLogger("requests.packages.urllib3")
@@ -144,28 +163,28 @@ class zenConnector():
             'tid': self._tid,
         }
         if len(payload) == 1 and "override" in payload:
-            #override method
+            # override method
             apiBody.update(payload['override'])
         else:
-            #preferred method
+            # preferred method
             apiBody['data'] = [payload]
         try:
             if 'cz' in self.config:
                 r = self.requestSession.post(self._url,
-                    verify=self.config['ssl_verify'],
-                    timeout=self.config['timeout'],
-                    headers={'content-type': 'application/json',
-                             'z-api-key': self.config['apikey']},
-                    data=json.dumps(apiBody),
-                )
+                                             verify=self.config['ssl_verify'],
+                                             timeout=self.config['timeout'],
+                                             headers={'content-type': 'application/json',
+                                                      'z-api-key': self.config['apikey']},
+                                             data=json.dumps(apiBody),
+                                             )
             else:
                 r = self.requestSession.post(self._url,
-                    auth=(self.config['username'], self.config['password']),
-                    verify=self.config['ssl_verify'],
-                    timeout=self.config['timeout'],
-                    headers={'content-type':'application/json'},
-                    data=json.dumps(apiBody),
-                )
+                                             auth=(self.config['username'], self.config['password']),
+                                             verify=self.config['ssl_verify'],
+                                             timeout=self.config['timeout'],
+                                             headers={'content-type': 'application/json'},
+                                             data=json.dumps(apiBody),
+                                             )
         except Exception as e:
             msg = 'Reqests exception: %s' % e
             self.log.error(msg)
@@ -176,7 +195,6 @@ class zenConnector():
             return r
         else:
             return self._validateRawResponse(r)
-
 
     def pagingMethodCall(self, *method, **payload):
         '''
@@ -204,10 +222,14 @@ class zenConnector():
                 limitApiCallResults))
             rJson = self.callMethod(method[0], **payload)
             # Increment Page from fields in the results
-            if not ('totalCount' in rJson['result']):
-                apiResultsTotal = -1
-            else:
+            if 'totalCount' in rJson['result']:
                 apiResultsTotal = rJson['result']['totalCount']
+            elif 'total' in rJson['result']:
+                apiResultsTotal = rJson['result']['total']
+            else:
+                apiResultsTotal = -1
+
+            if apiResultsTotal != -1:
                 if 'start' in payload:
                     apiResultsReturned = payload['start'] + limitApiCallResults
                     payload['start'] += limitApiCallResults
@@ -215,7 +237,6 @@ class zenConnector():
                     apiResultsReturned = limitApiCallResults
                     payload['start'] = limitApiCallResults
             yield rJson
-
 
     def _validateRawResponse(self, r):
         '''
@@ -225,7 +246,7 @@ class zenConnector():
         if r.status_code != 200:
             self.log.error("API call returned a '%s' http status." % r.status_code)
             self.log.debug("API EndPoint response: %s\n%s ", r.reason, r.text)
-            rJson = {'result': {'success': False} }
+            rJson = {'result': {'success': False}}
             apiResultsTotal = -1
         else:
             if 'Content-Type' in r.headers:
@@ -254,7 +275,6 @@ class zenConnector():
                 apiResultsTotal = -1
         return rJson
 
-
     def setRouter(self, routerName):
         '''
         Set object to specific API router.
@@ -266,6 +286,8 @@ class zenConnector():
         # Temporarily setting to 'IntrospectionRouter' in order to do so.
         self._routerName = 'IntrospectionRouter'
         self._url = self.config['url'] + self._getEndpoint('IntrospectionRouter')
+        if self.config['disable_saml'] == True:
+            self._url += '?saml=0'
         # Query all available routers
         if self._routersInfo == {}:
             apiResp = self.callMethod('getAllRouters')
@@ -274,7 +296,7 @@ class zenConnector():
 
             if not len(apiResp['result']['data']) > 0:
                 raise Exception('getAllRouters call did not return any results')
-            
+
             for resp in apiResp['result']['data']:
                 routerKey = resp.get('action', 'unknown')
                 routers[routerKey] = resp
@@ -288,7 +310,7 @@ class zenConnector():
             ))
         # Query specified router's available methods
         if self._routersInfo[routerName]['methods'] == {}:
-            apiResp = self.callMethod('getRouterMethods', router = routerName)
+            apiResp = self.callMethod('getRouterMethods', router=routerName)
             if not apiResp['result']['success']:
                 raise Exception('getRouterMethods call was not sucessful')
             else:
@@ -298,7 +320,8 @@ class zenConnector():
         # Set router
         self._routerName = routerName
         self._url = self.config['url'] + self._getEndpoint(routerName)
-       
+        if self.config['disable_saml'] == True:
+            self._url += '?saml=0'
 
     def _getEndpoint(self, routerName):
         '''
@@ -307,16 +330,18 @@ class zenConnector():
         self.log.info('_getEndpoint: router:%s' % (routerName))
         if routerName in self._routersInfo.keys():
             return self._routersInfo[routerName]['urlpath']
-        elif  routerName == 'IntrospectionRouter':
+        elif routerName == 'IntrospectionRouter':
             return '/zport/dmd/introspection_router'
         else:
             self.log.error('Router not found')
             return ""
-        
+
+
 class ZenAPIConnector(zenConnector):
     '''
     Backwards compatibility for zenoss_api/ZenAPIConnector.py
     '''
+
     def __init__(self, router, method, data):
         self._url = ''
         self._routerName = ''
@@ -331,7 +356,7 @@ class ZenAPIConnector(zenConnector):
         self.setRouter(router)
         self.method = method
         self.data = data
-        
+
     def send(self):
         self._apiResultsRaw = True
         return self.callMethod(self.method, **self.data)
@@ -344,6 +369,7 @@ class TitleParser(HTMLParser):
     '''
     Parse HTML text and return HTML Title
     '''
+
     def __init__(self):
         HTMLParser.__init__(self)
         self.match = False
@@ -360,5 +386,5 @@ class TitleParser(HTMLParser):
 
 if __name__ == '__main__':
     print("For help reference the README.md file")
-    print("If you are trying to make a command line call to the API, all command line invocations functions have been moved to zenApiCli.py")
-    
+    print(
+        "If you are trying to make a command line call to the API, all command line invocations functions have been moved to zenApiCli.py")
